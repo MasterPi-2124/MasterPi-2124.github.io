@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Not so hard as you think, but takes some time to play with it'><title>How to Make a Github Blog</title>
+
+<link rel='canonical' href='https://masterpi-2124.github.io/p/how-to-make-a-github-blog/'>
+
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='How to Make a Github Blog'>
+<meta property='og:description' content='Not so hard as you think, but takes some time to play with it'>
+<meta property='og:url' content='https://masterpi-2124.github.io/p/how-to-make-a-github-blog/'>
+<meta property='og:site_name' content='Master Pi'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='hugo' /><meta property='article:tag' content='blog' /><meta property='article:tag' content='github' /><meta property='article:published_time' content='2021-09-10T01:42:12&#43;07:00'/><meta property='article:modified_time' content='2021-09-10T01:42:12&#43;07:00'/><meta property='og:image' content='https://masterpi-2124.github.io/p/how-to-make-a-github-blog/cover.png' />
+<meta name="twitter:title" content="How to Make a Github Blog">
+<meta name="twitter:description" content="Not so hard as you think, but takes some time to play with it"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://masterpi-2124.github.io/p/how-to-make-a-github-blog/cover.png' />
+    </head>
+    <body class="
+    article-page has-toc
+">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex 
+    
+        extended
+    
+">
+    
+        <div id="article-toolbar">
+            <a href="https://masterpi-2124.github.io" class="back-home">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+                <span>Back</span>
+            </a>
+        </div>
+    
+<main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/how-to-make-a-github-blog/">
+                <img src="/p/how-to-make-a-github-blog/cover_hu44155343768364342e37da43d40f3a9f_382410_800x0_resize_box_3.png"
+                        srcset="/p/how-to-make-a-github-blog/cover_hu44155343768364342e37da43d40f3a9f_382410_800x0_resize_box_3.png 800w, /p/how-to-make-a-github-blog/cover_hu44155343768364342e37da43d40f3a9f_382410_1600x0_resize_box_3.png 1600w"
+                        width="800" 
+                        height="325" 
+                        loading="lazy"
+                        alt="Featured image of post How to Make a Github Blog" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-tags">
+        
+            <a href="/tags/hugo/" >
+                hugo
+            </a>
+        
+            <a href="/tags/blog/" >
+                blog
+            </a>
+        
+            <a href="/tags/github/" >
+                github
+            </a>
+        
+    </header>
+    
+
+    <h2 class="article-title">
+        <a href="/p/how-to-make-a-github-blog/">How to Make a Github Blog</a>
+    </h2>
+
+    
+    <h3 class="article-subtitle">
+        Not so hard as you think, but takes some time to play with it
+    </h3>
+    
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Sep 10, 2021</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    3 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+</div>
+</header>
+
+    <section class="article-content">
+    <p>Hi, this is my way to make a Github blog for my self, which will contain blogs, some projects, and some tips from my experience. I am a webasite newbie, so it took me almost 2 days to setup from start to finish, and it&rsquo;s pretty easy. Here is how I made it.</p>
+<h2 id="initial-setup">Initial setup</h2>
+<h3 id="create-repositories">Create repositories</h3>
+<p>First, let take a look at what a <a class="link" href="https://pages.github.com/"  target="_blank" rel="noopener"
+    >Github Page</a> is, and how to create one. You should be able to create a repository for your Github Page named <code>username.github.io</code>, where username is your Github username.</p>
+<p>The repository above will store the content of your website, but we will create another repository where the website development/authoring will take place, for example, <code>Personal-Blog</code>.</p>
+<h3 id="install-hugo">Install Hugo</h3>
+<p>There are multiple ways to install <strong>Hugo</strong>:</p>
+<ul>
+<li>Install from binary releases on <a class="link" href="https://github.com/gohugoio/hugo/releases"  target="_blank" rel="noopener"
+    >Github</a>. I reccommend installing the <strong>extended</strong> version, because some themes will run only on this version.</li>
+<li>On a Mac with <code>Homebrew</code> installed, run <code>brew install hugo</code></li>
+<li>On Windows with <code>Chocolatey</code>: <code>choco install hugo[-extended] -confirm</code></li>
+</ul>
+<h2 id="create-a-site">Create a site</h2>
+<h3 id="initialize-a-new-site">Initialize a new site</h3>
+<p>Let&rsquo;s clone 2 repositories we created above to start:</p>
+<pre tabindex="0"><code>git clone https://github.com/username/Personal-Blog.git
+</code></pre><p>Replace <code>username</code> with your <em>username</em> and <code>Personal-Blog</code> with your <em>repository&rsquo;s name</em>.</p>
+<p>Goto the repository&rsquo;s root directory, and start with <code>hugo new site .</code>with <code>.</code> will tell Hugo to create the site in the current directory.</p>
+<p>You will see the folders and files like in this structure:</p>
+<pre tabindex="0"><code>site_root
+    |-- archetypes
+    |-- assets
+    |-- content
+    |-- data
+    |-- layouts
+    |-- static
+    |-- themes  
+    |-- config.toml
+</code></pre><p>The detail explaination for each folder is published on <a class="link" href="https://gohugo.io/getting-started/directory-structure/"  target="_blank" rel="noopener"
+    >Hugo documentation</a>, and it is necessary to understand it before continue.</p>
+<h3 id="install-theme">Install theme</h3>
+<p>Next, we wll pick a theme at <a class="link" href="https://themes.gohugo.io/"  target="_blank" rel="noopener"
+    >Hugo theme website</a> and install in <code>themes</code> folder. I will choose <strong>Hugo Stack Theme</strong> for the demonstration.</p>
+<p>Copy the theme&rsquo;s github path, and install:</p>
+<pre tabindex="0"><code>git submodule add https://github.com/CaiJimmy/hugo-theme-stack themes/hugo-theme-stack
+</code></pre><p>Go to the installed theme directory, you will see the <code>exampleSite</code> folder. Copy its content and paste into <code>content</code> folder. It stores all page and post we create for the website, so we will use it to test the new site.</p>
+<p>Replace <code>config.toml</code> by <code>config.yaml</code> copied above, and modify this file as in <a class="link" href="https://docs.stack.jimmycai.com/"  target="_blank" rel="noopener"
+    >this intruction</a>.</p>
+<h3 id="publish-to-github-page">Publish to Github Page</h3>
+<p>After you add a post or a site, it&rsquo;s time to push into the repository and publish. But first, we have to link the Github page repository to the current development repository:</p>
+<pre tabindex="0"><code>git submodule add -b master https://github.com/username/username.github.io.git public
+</code></pre><p>It will clone the repository into <code>public</code> folder, as in Hugo documentation about directory structure.
+Check again with <code>git remote -v</code>:</p>
+<pre tabindex="0"><code>origin	https://github.com/username/username.github.io.git (fetch)
+origin	https://github.com/username/username.github.io.git (push)
+</code></pre><p>Then publish the site by running <code>./deploy.sh</code>:</p>
+<pre tabindex="0"><code>#!/bin/sh
+
+# If a command fails then the deploy stops
+set -e
+
+printf &quot;\033[0;32mDeploying updates to GitHub...\033[0m\n&quot;
+
+# Create commit message
+msg=&quot;rebuilding site $(date)&quot;
+if [ -n &quot;$*&quot; ]; then
+	msg=&quot;$*&quot;
+fi
+
+# Build the project.
+echo &quot;&quot;
+echo &quot;&quot;
+echo &quot;Committing changes to $(pwd)&quot;
+hugo -D
+
+# Go To Public folder
+cd public
+
+# Add 'public' (Github Pages repo) changes to git and commit/push.
+echo &quot;&quot;
+echo &quot;&quot;
+echo &quot;Committing changes to $(pwd)&quot;
+git add .
+git commit -m &quot;$msg&quot;
+git push origin master
+
+# Add this repos changes to git and commit/push. First 'cd' out of public
+cd ..
+echo &quot;&quot;
+echo &quot;&quot;
+echo &quot;Committing changes to $(pwd)&quot;
+git add .
+git commit -m &quot;$msg&quot;
+git push origin master
+</code></pre><h2 id="modification">Modification</h2>
+<p>You can also modify the theme to suit your need. All documentations is on these websites:</p>
+<ul>
+<li><a class="link" href="https://docs.stack.jimmycai.com/"  target="_blank" rel="noopener"
+    >https://docs.stack.jimmycai.com/</a></li>
+<li><a class="link" href="https://gohugo.io/documentation/"  target="_blank" rel="noopener"
+    >https://gohugo.io/documentation/</a></li>
+</ul>
+<p>Here is my work:</p>
+<ul>
+<li><a class="link" href="https://github.com/MasterPi-2124/Personal-Blog"  target="_blank" rel="noopener"
+    >The blog sourece code</a></li>
+<li><a class="link" href="https://github.com/MasterPi-2124/MasterPi-2124.github.io"  target="_blank" rel="noopener"
+    >The Github Page repository</a></li>
+</ul>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>Licensed under CC BY-NC-SA 4.0</span>
+    </section>
+    <section class="article-author">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+        <span>
+            by  Master Pi
+        </span>
+    </section></footer>
+
+
+    
+</article>
+
+    <aside class="related-contents--wrapper">
+    
+    
+</aside>
+
+     
+     
+        
+    <div class="disqus-container">
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "masterpi007" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</div>
+
+<style>
+    .disqus-container {
+        background-color: var(--card-background);
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--shadow-l1);
+        padding: var(--card-padding);
+    }
+</style>
+
+<script>
+    window.addEventListener('onColorSchemeChange', (e) => {
+        if (DISQUS) {
+            DISQUS.reset({
+                reload: true
+            });
+        }
+    })
+</script>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2021 Master Pi
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.2.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
+            >
+
+            </main>
+    
+        <aside class="sidebar right-sidebar sticky">
+            <section class="widget archives">
+                <div class="widget-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                </div>
+                <h2 class="widget-title section-title">Table of contents</h2>
+                
+                <div class="widget--toc">
+                    <nav id="TableOfContents">
+  <ol>
+    <li><a href="#initial-setup">Initial setup</a>
+      <ol>
+        <li><a href="#create-repositories">Create repositories</a></li>
+        <li><a href="#install-hugo">Install Hugo</a></li>
+      </ol>
+    </li>
+    <li><a href="#create-a-site">Create a site</a>
+      <ol>
+        <li><a href="#initialize-a-new-site">Initialize a new site</a></li>
+        <li><a href="#install-theme">Install theme</a></li>
+        <li><a href="#publish-to-github-page">Publish to Github Page</a></li>
+      </ol>
+    </li>
+    <li><a href="#modification">Modification</a></li>
+  </ol>
+</nav>
+                </div>
+            </section>
+        </aside>
+    
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
+                defer="false"
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>
