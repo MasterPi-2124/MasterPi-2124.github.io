@@ -17,6 +17,15 @@
     </item>
     
     <item>
+      <title>Markdown Examples</title>
+      <link>https://masterpi-2124.github.io/p/markdown-examples/</link>
+      <pubDate>Thu, 02 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://masterpi-2124.github.io/p/markdown-examples/</guid>
+      <description>&lt;p&gt;This article offers a sample of basic Markdown syntax that can be used in Hugo content files, also it shows whether basic HTML elements are decorated with CSS in a Hugo theme.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>Rich Content</title>
       <link>https://masterpi-2124.github.io/p/rich-content/</link>
       <pubDate>Wed, 09 Sep 2020 00:00:00 +0000</pubDate>
@@ -34,15 +43,6 @@
       
       <guid>https://masterpi-2124.github.io/p/math-typesetting/</guid>
       <description>&lt;p&gt;Mathematical notation in a Hugo project can be enabled by using third party JavaScript libraries.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Markdown Examples</title>
-      <link>https://masterpi-2124.github.io/p/markdown-examples/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://masterpi-2124.github.io/p/markdown-examples/</guid>
-      <description>&lt;p&gt;This article offers a sample of basic Markdown syntax that can be used in Hugo content files, also it shows whether basic HTML elements are decorated with CSS in a Hugo theme.&lt;/p&gt;</description>
     </item>
     
   </channel>

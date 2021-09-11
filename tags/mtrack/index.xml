@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>mtrack on Master Pi</title>
+    <link>https://masterpi-2124.github.io/tags/mtrack/</link>
+    <description>Recent content in mtrack on Master Pi</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 11 Sep 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://masterpi-2124.github.io/tags/mtrack/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How to Make Your Trackpad Like Macbook</title>
+      <link>https://masterpi-2124.github.io/p/how-to-make-your-trackpad-like-macbook/</link>
+      <pubDate>Sat, 11 Sep 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://masterpi-2124.github.io/p/how-to-make-your-trackpad-like-macbook/</guid>
+      <description>If you used Mac products before, I bet the only thing you will never forget is its multi-touch trackpad. Its convenience can improve the work performance a lot, and it even made me feel confused when using other products&amp;rsquo;s trackpad. Luckily, when you say &amp;ldquo;Linux&amp;rdquo;, you are talking about the &amp;ldquo;Open Sources&amp;rdquo;, and there are some drivers that support it, like mtrack.
+In this blog, we will dive into how we can make our trackpad as close to Mac experience as we can get with mtrack.</description>
+    </item>
+    
+  </channel>
+</rss>

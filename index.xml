@@ -6,10 +6,302 @@
         <description>Recent content on Master Pi</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Fri, 10 Sep 2021 01:42:12 +0700</lastBuildDate><atom:link href="https://masterpi-2124.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sat, 11 Sep 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://masterpi-2124.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>How to Make Your Trackpad Like Macbook</title>
+        <link>https://masterpi-2124.github.io/p/how-to-make-your-trackpad-like-macbook/</link>
+        <pubDate>Sat, 11 Sep 2021 00:00:00 +0000</pubDate>
+        
+        <guid>https://masterpi-2124.github.io/p/how-to-make-your-trackpad-like-macbook/</guid>
+        <description>&lt;img src="https://masterpi-2124.github.io/p/how-to-make-your-trackpad-like-macbook/cover.jpg" alt="Featured image of post How to Make Your Trackpad Like Macbook" /&gt;&lt;p&gt;If you used Mac products before, I bet the only thing you will never forget is its multi-touch trackpad. Its convenience can improve the work performance a lot, and it even made me feel confused when using other products&amp;rsquo;s trackpad. Luckily, when you say &lt;em&gt;&lt;strong&gt;&amp;ldquo;Linux&amp;rdquo;&lt;/strong&gt;&lt;/em&gt;, you are talking about the &lt;em&gt;&lt;strong&gt;&amp;ldquo;Open Sources&amp;rdquo;&lt;/strong&gt;&lt;/em&gt;, and there are some drivers that support it, like &lt;em&gt;&lt;code&gt;mtrack&lt;/code&gt;&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;In this blog, we will dive into how we can make our trackpad as close to Mac experience as we can get with &lt;em&gt;&lt;code&gt;mtrack&lt;/code&gt;&lt;/em&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;why-mtrack&#34;&gt;Why &lt;em&gt;&lt;strong&gt;mtrack&lt;/strong&gt;&lt;/em&gt;?&lt;/h2&gt;
+&lt;p&gt;In Linux, there are 3 options for mouse driver: &lt;em&gt;mtrack&lt;/em&gt;, &lt;em&gt;libinput&lt;/em&gt; and &lt;em&gt;synaptics&lt;/em&gt;, but the default driver for almost every Linux distro &lt;em&gt;libinput&lt;/em&gt; doesn&amp;rsquo;t have many options for us to tweak, while &lt;em&gt;mtrack&lt;/em&gt; has many flexible configurations, and supports a lot of gestures. The only downside of &lt;em&gt;mtrack&lt;/em&gt; is it&amp;rsquo;s quite &lt;a class=&#34;link&#34; href=&#34;https://github.com/BlueDragonX/xf86-input-mtrack&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;outdate&lt;/a&gt; (since 2015), so we will have to clone the community&amp;rsquo;s driver from &lt;a class=&#34;link&#34; href=&#34;https://github.com/p2rkw/xf86-input-mtrack&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;GitHub&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;And be noted that &lt;em&gt;mtrack&lt;/em&gt; supports only &lt;cite&gt;&lt;strong&gt;Xorg&lt;/strong&gt; environment.&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/cite&gt;&lt;/p&gt;
+&lt;h2 id=&#34;install-the-driver&#34;&gt;Install the driver&lt;/h2&gt;
+&lt;p&gt;First, we need to install the prerequisites for the driver:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo apt update &lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; sudo apt upgrade
+sudo apt install build-essential git pkg-config libmtdev-dev mtdev-tools xserver-xorg-dev xutils-dev
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Install &lt;em&gt;mtrack&lt;/em&gt; driver:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; /tmp
+git clone git clone https://github.com/p2rkw/xf86-input-mtrack.git &lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; xf86-input-mtrack
+./configure --with-xorg-module-dir&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;/usr/lib/xorg/modules
+sudo make
+sudo make install
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;If you get stuck on the install progress, leave me a comment down there.&lt;/p&gt;
+&lt;h2 id=&#34;configure-the-new-driver&#34;&gt;Configure the new driver&lt;/h2&gt;
+&lt;p&gt;If the install progress is successfull, the driver should be in the system, but we still need to edit the configuration file so that the system could recognize and use it.&lt;/p&gt;
+&lt;h3 id=&#34;configuration-file&#34;&gt;Configuration file&lt;/h3&gt;
+&lt;p&gt;The configuration file gets placed in &lt;code&gt;/usr/share/X11/xorg.conf.d/50-mtrack.conf&lt;/code&gt; and it contains options for the trackpad too. We will edit this file and &lt;cite&gt;&lt;strong&gt;restart the system&lt;/strong&gt;&lt;sup id=&#34;fnref:2&#34;&gt;&lt;a href=&#34;#fn:2&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;&lt;/cite&gt; to make changes.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# You can use other text editor, but it can only be saved with root permission&lt;/span&gt;
+sudo nano /usr/share/X11/xorg.conf.d/50-mtrack.conf
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The configuration file should be in this form (mine):&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;# https://github.com/p2rkw/xf86-input-mtrack
+Section		&amp;quot;InputClass&amp;quot;
+MatchIsTouchpad	&amp;quot;on&amp;quot;
+Identifier	&amp;quot;Touchpads&amp;quot;
+MatchDevicePath &amp;quot;/dev/input/event*&amp;quot;
+Driver		&amp;quot;mtrack&amp;quot;
+
+## Basic
+# Disable Trackpad
+Option		&amp;quot;TrackpadDisable&amp;quot;		&amp;quot;false&amp;quot;
+# Whether or not to enable physical button on trackpad
+Option          &amp;quot;ButtonEnable&amp;quot;                  &amp;quot;true&amp;quot;
+# If the button is integrated into the trackpad like Macbook Pros, this option has to be &amp;quot;true&amp;quot;
+Option          &amp;quot;ButtonIntegrated&amp;quot;              &amp;quot;false&amp;quot;
+
+## Responsiveness
+# The faster you move, the more distance pointer will travel, using &amp;quot;polynomial&amp;quot; profile
+Option          &amp;quot;AccelerationProfile&amp;quot;		&amp;quot;2&amp;quot;
+# Sensitivity controls how fast your cursor will move. 1 is the default
+Option          &amp;quot;Sensitivity&amp;quot;                   &amp;quot;1&amp;quot; 
+# Define the pressure at which a finger is detected as a touch
+Option          &amp;quot;FingerHigh&amp;quot;                    &amp;quot;5&amp;quot;  
+# Defines the pressure at which a finger is detected as a release
+Option          &amp;quot;FingerLow&amp;quot;                     &amp;quot;5&amp;quot;
+# Whether or not to ignore touches that are determined to be thumbs
+Option          &amp;quot;IgnoreThumb&amp;quot;                   &amp;quot;true&amp;quot;
+# The minimum size of what&#39;s considered a thumb.
+# It is expected that a thumb will be larger than other fingers
+Option          &amp;quot;ThumbSize&amp;quot;                     &amp;quot;25&amp;quot;  
+# The width/length ratio of what&#39;s considered a thumb.
+# It is expected that a thumb is longer than it is wide
+Option          &amp;quot;ThumbRatio&amp;quot;                    &amp;quot;70&amp;quot;  
+# Whether or not to disable the entire trackpad when a thumb is touching
+Option          &amp;quot;DisableOnThumb&amp;quot;                &amp;quot;false&amp;quot;
+# Whether or not to ignore touches that are determined to be palms
+Option          &amp;quot;IgnorePalm&amp;quot;                    &amp;quot;true&amp;quot;
+# Whether or not to disable the entire trackpad when a palm is touching
+Option          &amp;quot;DisableOnPalm&amp;quot;                 &amp;quot;false&amp;quot;
+# The minimum size of what&#39;s considered a palm.
+# Palms are expected to be very large on the trackpad
+Option          &amp;quot;PalmSize&amp;quot;                      &amp;quot;40&amp;quot;      
+
+## Zones
+# Whether or not to enable button zones.
+# If button zones are enabled then the trackpad will be
+# split into one, two, or three vertical zones
+Option		&amp;quot;ButtonZonesEnable&amp;quot;		&amp;quot;false&amp;quot;
+# The button to emulate when the zone is pressed.
+# This is the leftmost part of the pad.
+Option		&amp;quot;FirstZoneButton&amp;quot;		&amp;quot;0&amp;quot;
+# The button to emulate when the zone is pressed.
+# This will float to the right of the leftmost zone.
+Option		&amp;quot;SecondZoneButton&amp;quot;		&amp;quot;0&amp;quot;
+# The button to emulate when the zone is pressed.
+# This will float to the right of the leftmost zone.
+Option		&amp;quot;ThirdZoneButton&amp;quot;		&amp;quot;0&amp;quot;
+# Restrict button zones inside the &amp;quot;EdgeBottom&amp;quot; area.
+# So instead of enabling zones on the full pad height,
+# the zone is limited to the percentage set for the &amp;quot;EdgeBottom&amp;quot;.
+Option		&amp;quot;LimitButtonZonesToBottomEdge&amp;quot;	&amp;quot;false&amp;quot;
+
+## Physical Click
+# Which button to emulate when no valid finger placement
+# is touching the trackpad during a click, as on &amp;quot;EdgeBottom&amp;quot;.
+Option		&amp;quot;ClickFinger0&amp;quot;			&amp;quot;0&amp;quot;
+# Which button to emulate when one finger is touching the trackpad during a click.
+Option		&amp;quot;ClickFinger1&amp;quot;			&amp;quot;1&amp;quot;
+# Which button to emulate when two fingers are touching the trackpad during a click.
+Option		&amp;quot;ClickFinger2&amp;quot;			&amp;quot;3&amp;quot;
+# Which button to emulate when three fingers are touching the trackpad during a click.
+Option		&amp;quot;ClickFinger3&amp;quot;			&amp;quot;2&amp;quot;
+# Whether or not to count the moving finger when emulating button clicks.
+Option		&amp;quot;ButtonMoveEmulate&amp;quot;		&amp;quot;true&amp;quot;
+# How long (in ms) to consider a touching finger as part of button emulation.
+Option		&amp;quot;ButtonTouchExpire&amp;quot;		&amp;quot;100&amp;quot;
+
+## Tap
+# Which button to emulate for one-finger tapping.
+Option          &amp;quot;TapButton1&amp;quot;			&amp;quot;1&amp;quot;
+# Which button to emulate for two-finger tapping.
+Option          &amp;quot;TapButton2&amp;quot;			&amp;quot;3&amp;quot;
+# Which button to emulate for three-finger tapping.
+Option          &amp;quot;TapButton3&amp;quot;			&amp;quot;2&amp;quot;
+# Which button to emulate for four-finger tapping.
+Option		&amp;quot;TapButton4&amp;quot;			&amp;quot;0&amp;quot;
+# When tapping, how much time to hold down the emulated button.
+Option		&amp;quot;ClickTime&amp;quot;			&amp;quot;25&amp;quot;
+# The amount of time to wait for incoming touches
+# after first one before counting it as emulated button click.
+Option		&amp;quot;MaxTapTime&amp;quot;			&amp;quot;120&amp;quot;
+# How far a touch is allowed to move before counting it is no longer considered a tap.
+Option		&amp;quot;MaxTapMove&amp;quot;			&amp;quot;400&amp;quot;
+
+## Gesture
+# When a gesture triggers a click, how much time to hold down the emulated button.
+Option		&amp;quot;GestureClickTime&amp;quot;		&amp;quot;10&amp;quot;
+# Touches are allowed to transition from one gesture to another.
+# For example, you may go from scrolling to swiping without
+# releasing your fingers from the pad. This value is the amount
+# of time you must be performing the new gesture before it is triggered.
+# This prevents accidental touches from triggering other gestures.
+Option		&amp;quot;GestureWaitTime&amp;quot;		&amp;quot;100&amp;quot;
+
+# How far you must move your fingers before a button click is triggered.
+Option		&amp;quot;ScrollDistance&amp;quot;		&amp;quot;22&amp;quot;
+# For two finger scrolling. How long button triggered by scrolling will be hold down.
+Option		&amp;quot;ScrollClickTime&amp;quot;		&amp;quot;12&amp;quot;
+# For two finger scrolling. Sensitivity (movement speed) of pointer during two finger scrolling.
+Option		&amp;quot;ScrollSensitivity&amp;quot;		&amp;quot;0&amp;quot;
+# For two finger scrolling. The button that is triggered by scrolling up.
+Option		&amp;quot;ScrollUpButton&amp;quot;		&amp;quot;5&amp;quot;
+# For two finger scrolling. The button that is triggered by scrolling down.
+Option		&amp;quot;ScrollDownButton&amp;quot;		&amp;quot;4&amp;quot;
+# For two finger scrolling. The button that is triggered by scrolling left.
+Option		&amp;quot;ScrollLeftButton&amp;quot;		&amp;quot;7&amp;quot;
+# For two finger scrolling. The button that is triggered by scrolling right.
+Option		&amp;quot;ScrollRightButton&amp;quot;		&amp;quot;6&amp;quot;
+# For two finger scrolling. Whether to generate high precision scroll events.
+Option		&amp;quot;ScrollSmooth&amp;quot;			&amp;quot;1&amp;quot;
+# How long after finished scrolling movement should be continued. Works only with smooth scrolling enabled.
+Option		&amp;quot;ScrollCoastDuration&amp;quot;		&amp;quot;500&amp;quot;
+# How fast scroll should be to enable coasting feature.
+Option		&amp;quot;ScrollCoastEnableSpeed&amp;quot;	&amp;quot;0.1&amp;quot;
+
+# For three finger swiping. How far you must move your fingers before a button click is triggered.
+Option		&amp;quot;SwipeDistance&amp;quot;			&amp;quot;1&amp;quot;
+# For three finger swiping. How long button triggered by swiping will be hold down.
+Option		&amp;quot;SwipeClickTime&amp;quot;		&amp;quot;0&amp;quot;
+# For three finger scrolling. Sensitivity (movement speed) of pointer during three finger scrolling.
+Option		&amp;quot;SwipeSensitivity&amp;quot;		&amp;quot;1000&amp;quot;
+# For three finger swiping. The button that is triggered by swiping up.
+Option		&amp;quot;SwipeUpButton&amp;quot;			&amp;quot;1&amp;quot;
+# For three finger swiping. The button that is triggered by swiping down.
+Option		&amp;quot;SwipeDownButton&amp;quot;		&amp;quot;1&amp;quot;
+# For three finger swiping. The button that is triggered by swiping left.
+Option		&amp;quot;SwipeLeftButton&amp;quot;		&amp;quot;1&amp;quot;
+# For three finger swiping. The button that is triggered by swiping right.
+Option		&amp;quot;SwipeRightButton&amp;quot;		&amp;quot;1&amp;quot;
+
+# For four finger swiping. How far you must move your fingers before a button click is triggered.
+Option          &amp;quot;Swipe4Distance&amp;quot;                 &amp;quot;700&amp;quot;
+# For four finger swiping. How long button triggered by swiping will be hold down.
+Option          &amp;quot;Swipe4ClickTime&amp;quot;                &amp;quot;300&amp;quot;
+# For for finger scrolling. Sensitivity (movement speed) of pointer during four finger scrolling.
+Option          &amp;quot;Swipe4Sensitivity&amp;quot;              &amp;quot;0&amp;quot;
+# For four finger swiping. The button that is triggered by swiping up.
+Option          &amp;quot;Swipe4UpButton&amp;quot;                 &amp;quot;8&amp;quot;
+# For four finger swiping. The button that is triggered by swiping down.
+Option          &amp;quot;Swipe4DownButton&amp;quot;               &amp;quot;9&amp;quot;
+# For four finger swiping. The button that is triggered by swiping left.
+Option          &amp;quot;Swipe4LeftButton&amp;quot;               &amp;quot;10&amp;quot;
+# For four finger swiping. The button that is triggered by swiping right.
+Option          &amp;quot;Swipe4RightButton&amp;quot;              &amp;quot;11&amp;quot;
+
+# For one finger edge scrolling. How far you must move your finger on edge before a button click is triggered.
+Option          &amp;quot;SwipeDistance&amp;quot;                 &amp;quot;700&amp;quot;
+# For one finger edge scrolling. How long button triggered by edge scrolling will be hold down.
+Option          &amp;quot;SwipeClickTime&amp;quot;                &amp;quot;300&amp;quot;
+# For one finger edge scrolling. Sensitivity (movement speed) of pointer during one finger scrolling.
+Option          &amp;quot;SwipeSensitivity&amp;quot;              &amp;quot;0&amp;quot;
+# For one finger edge scrolling. The button that is triggered by edge scrolling up.
+Option          &amp;quot;SwipeUpButton&amp;quot;                 &amp;quot;4&amp;quot;
+# For one finger edge scrolling. The button that is triggered by edge scrolling down.
+Option          &amp;quot;SwipeDownButton&amp;quot;               &amp;quot;5&amp;quot;
+# For one finger edge scrolling. The button that is triggered by edge scrolling left.
+Option          &amp;quot;SwipeLeftButton&amp;quot;               &amp;quot;6&amp;quot;
+# For one finger edge scrolling. The button that is triggered by edge scrolling right.
+Option          &amp;quot;SwipeRightButton&amp;quot;              &amp;quot;7&amp;quot;
+
+# For pinch scaling. How far you must move your fingers before a button click is triggered.
+Option		&amp;quot;ScaleDistance&amp;quot;			&amp;quot;300&amp;quot;
+# For pinch scaling. The button that is triggered by scaling up.
+Option		&amp;quot;ScaleUpButton&amp;quot;			&amp;quot;12&amp;quot;
+# For pinch scaling. The button that is triggered by scaling down.
+Option		&amp;quot;ScaleDownButton&amp;quot;		&amp;quot;13&amp;quot;
+
+# For two finger rotation. How far you must move your fingers before a button click is triggered.
+Option		&amp;quot;RotateDistance&amp;quot;		&amp;quot;150&amp;quot;
+# For two finger rotation. The button that is triggered by rotating left.
+Option		&amp;quot;RotateLeftButton&amp;quot;		&amp;quot;14&amp;quot;
+# For two finger rotation. The button that is triggered by rotating right.
+Option		&amp;quot;RotateRightButton&amp;quot;		&amp;quot;15&amp;quot;
+
+## Edge
+# The size of an area at the top of the trackpad where new touches are ignored
+# (fingers travelling into this area from the bottom will still be tracked).
+Option		&amp;quot;EdgeTopSize&amp;quot;			&amp;quot;0&amp;quot;
+# The size of an area at the bottom of the trackpad where new touches are ignored
+# (fingers travelling into this area from the bottom will still be tracked).
+Option          &amp;quot;EdgeBottomSize&amp;quot;		&amp;quot;0&amp;quot;
+# The size of an area at the left of the trackpad where new touches are ignored
+# (fingers travelling into this area from the bottom will still be tracked).
+Option          &amp;quot;EdgeLeftSize&amp;quot;                  &amp;quot;0&amp;quot;
+# The size of an area at the right of the trackpad where new touches are ignored
+# (fingers travelling into this area from the bottom will still be tracked).
+Option          &amp;quot;EdgeRightSize&amp;quot;                 &amp;quot;0&amp;quot;
+
+## Special Features
+# For two finger hold-and-move functionality. The button that is triggered
+# by holding one finger and moving another one.
+Option		&amp;quot;Hold1Move1StationaryButton&amp;quot;	&amp;quot;1&amp;quot;
+# For two finger hold-and-move functionality. Fow far stationary finger can be moved berfore gesture invalidation.
+Option		&amp;quot;Hold1Move1StationaryMaxMove&amp;quot;	&amp;quot;20&amp;quot;
+# Whether or not to enable tap-to-drag functionality.
+Option		&amp;quot;TapDragEnable&amp;quot;			&amp;quot;false&amp;quot;
+# The tap-to-drag timeout. This is how long the driver will wait
+# after a single tap for a movement event before sending the click.
+Option		&amp;quot;TapDragTime&amp;quot;			&amp;quot;350&amp;quot;
+# How long after detecting movement to trigger a button down event.
+# During this time pointer movement will be disabled.
+Option		&amp;quot;TapDragWait&amp;quot;			&amp;quot;40&amp;quot;
+# How far the finger is allowed to move during drag wait time.
+# If the finger moves farther than this distance during the wait time
+# then dragging will be canceled and pointer movement will resume.
+Option		&amp;quot;TapDragDist&amp;quot;			&amp;quot;200&amp;quot;
+# This is how long the driver will wait after initial drag in &#39;drag ready&#39; state
+# in which it will be able to resume previous drag without additional up, down sequence.
+Option		&amp;quot;TapDragLockTimeout&amp;quot;		&amp;quot;500&amp;quot;
+# Whether or not to invert the X axis.
+Option		&amp;quot;AxisXInvert&amp;quot;			&amp;quot;false&amp;quot;
+# Whether or not to invert the Y axis.
+Option          &amp;quot;AxisYInvert&amp;quot;                   &amp;quot;false&amp;quot;
+EndSection
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;It&amp;rsquo;s quite long, but it contains all options for the trackpad with the detail explaination, so you don&amp;rsquo;t need to search google for any other options. My configuration above is as close as my Mac experience as I can get, and you can adjust to suit your need too.&lt;/p&gt;
+&lt;p&gt;More tweaks, head to the driver&amp;rsquo;s &lt;a class=&#34;link&#34; href=&#34;https://github.com/p2rkw/xf86-input-mtrack&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;README&lt;/a&gt;.&lt;/p&gt;
+&lt;h3 id=&#34;disable-when-typing&#34;&gt;Disable when typing&lt;/h3&gt;
+&lt;p&gt;As the title, the most annoying thing when using &lt;em&gt;mtrack&lt;/em&gt; is that it is not disable when typing, if you set option &lt;code&gt;TapButton1&lt;/code&gt; to &lt;code&gt;1&lt;/code&gt;. So we will need &lt;code&gt;dispad&lt;/code&gt;, a daemon from the origion authors of &lt;em&gt;mtrack&lt;/em&gt;:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo apt install libconfuse-dev libxi-dev
+&lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; /tmp
+git clone https://github.com/BlueDragonX/dispad.git &lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; dispad
+./configure
+sudo make
+sudo make install
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;After built successfully, start the daemon by typing &lt;code&gt;dispad&lt;/code&gt;.&lt;/p&gt;
+&lt;h3 id=&#34;add-more-gestures&#34;&gt;Add more gestures&lt;/h3&gt;
+&lt;p&gt;Currently, &lt;em&gt;mtrack&lt;/em&gt; supports up to 15 mouse simulations, however, Ubuntu and some other distros only uses mouse buttons up to 9. To make use of other gestures, we will need some tools.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo apt install xbindkeys xdotool
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;code&gt;xbindkeys&lt;/code&gt; is a daemon listening to your inputs from any input devices including keyboard, mouse and touchpad. You’ll define a rule at which, if an input or combination of inputs matches, some command can be executed. That’s where &lt;code&gt;xdotool&lt;/code&gt; come in. &lt;code&gt;xdotool&lt;/code&gt; is the command line tool which is able to simulate other key inputs. So by combining &lt;code&gt;xbindkeys&lt;/code&gt; and &lt;code&gt;xdotool&lt;/code&gt;, we’ll be able to map high mouse buttons (&amp;gt; 9) to certain shortcuts that suit our needs.&lt;/p&gt;
+&lt;p&gt;To define the rule, we need to edit the configuration file which is at &lt;code&gt;~/.xbindkeysrc&lt;/code&gt;, and the detail of the tool is here if you need to see: &lt;a class=&#34;link&#34; href=&#34;https://wiki.archlinux.org/title/Xbindkeys&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://wiki.archlinux.org/title/Xbindkeys&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt;That’s my setup for multi-touch touchpad, and it is the as closest as Mac experience I can get. However, there still are some issues with &lt;em&gt;mtrack&lt;/em&gt; driver after a lot of use, which is minor and do not affect the experience much:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Scroll coast are sometimes sticky and make scroll move quickly in subsequence scroll gestures.&lt;/li&gt;
+&lt;li&gt;Dispad sometimes doesn’t detect typing and lets the caret jump.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Thanks for reading, and let me know in the comment if it helps you!&lt;/p&gt;
+&lt;section class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn:1&#34; role=&#34;doc-endnote&#34;&gt;
+&lt;p&gt;It doesn&amp;rsquo;t work on &lt;em&gt;Wayland&lt;/em&gt; environment, but I&amp;rsquo;m fine about that because &lt;em&gt;Xorg&lt;/em&gt; is more popular and has better performance and resource usage.&amp;#160;&lt;a href=&#34;#fnref:1&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li id=&#34;fn:2&#34; role=&#34;doc-endnote&#34;&gt;
+&lt;p&gt;The only way to make it work is by restarting &lt;em&gt;X Server&lt;/em&gt;, but you can&amp;rsquo;t just run &lt;code&gt;startx&lt;/code&gt; or log out and log in again, so my official reccommendation is restarting the system.&amp;#160;&lt;a href=&#34;#fnref:2&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/section&gt;
+</description>
+        </item>
+        <item>
         <title>How to Make a Github Blog</title>
         <link>https://masterpi-2124.github.io/p/how-to-make-a-github-blog/</link>
-        <pubDate>Fri, 10 Sep 2021 01:42:12 +0700</pubDate>
+        <pubDate>Fri, 10 Sep 2021 00:00:00 +0000</pubDate>
         
         <guid>https://masterpi-2124.github.io/p/how-to-make-a-github-blog/</guid>
         <description>&lt;img src="https://masterpi-2124.github.io/p/how-to-make-a-github-blog/cover.png" alt="Featured image of post How to Make a Github Blog" /&gt;&lt;p&gt;Hi, this is my way to make a Github blog for my self, which will contain blogs, some projects, and some tips from my experience. I am a webasite newbie, so it took me almost 2 days to setup from start to finish, and it&amp;rsquo;s pretty easy. Here is how I made it.&lt;/p&gt;
@@ -127,7 +419,8 @@ git push origin master
     &gt;Inline Shortcodes&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;To enable emoji globally, set &lt;code&gt;enableEmoji&lt;/code&gt; to &lt;code&gt;true&lt;/code&gt; in your site&amp;rsquo;s &lt;a class=&#34;link&#34; href=&#34;https://gohugo.io/getting-started/configuration/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;configuration&lt;/a&gt; and then you can type emoji shorthand codes directly in content files; e.g.&lt;/p&gt;
-&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;&lt;span class=&#34;nowrap&#34;&gt;&lt;span class=&#34;emojify&#34;&gt;🙈&lt;/span&gt; &lt;code&gt;:see_no_evil:&lt;/code&gt;&lt;/span&gt;  &lt;span class=&#34;nowrap&#34;&gt;&lt;span class=&#34;emojify&#34;&gt;🙉&lt;/span&gt; &lt;code&gt;:hear_no_evil:&lt;/code&gt;&lt;/span&gt;  &lt;span class=&#34;nowrap&#34;&gt;&lt;span class=&#34;emojify&#34;&gt;🙊&lt;/span&gt; &lt;code&gt;:speak_no_evil:&lt;/code&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;br&gt;
 &lt;p&gt;The &lt;a class=&#34;link&#34; href=&#34;http://www.emoji-cheat-sheet.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Emoji cheat sheet&lt;/a&gt; is a useful reference for emoji shorthand codes.&lt;/p&gt;
 &lt;hr&gt;
@@ -137,130 +430,9 @@ git push origin master
 }&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
         </item>
         <item>
-        <title>Rich Content</title>
-        <link>https://masterpi-2124.github.io/p/rich-content/</link>
-        <pubDate>Wed, 09 Sep 2020 00:00:00 +0000</pubDate>
-        
-        <guid>https://masterpi-2124.github.io/p/rich-content/</guid>
-        <description>&lt;p&gt;Hugo ships with several &lt;a class=&#34;link&#34; href=&#34;https://gohugo.io/content-management/shortcodes/#use-hugo-s-built-in-shortcodes&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;Built-in Shortcodes&lt;/a&gt; for rich content, along with a &lt;a class=&#34;link&#34; href=&#34;https://gohugo.io/about/hugo-and-gdpr/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;Privacy Config&lt;/a&gt; and a set of Simple Shortcodes that enable static and no-JS versions of various social media embeds.&lt;/p&gt;
-&lt;hr&gt;
-&lt;h2 id=&#34;youtube-privacy-enhanced-shortcode&#34;&gt;YouTube Privacy Enhanced Shortcode&lt;/h2&gt;
-&lt;div class=&#34;video-wrapper&#34;&gt;
-    &lt;iframe loading=&#34;lazy&#34; 
-            src=&#34;https://www.youtube.com/embed/ZJthWmvUzzc&#34; 
-            allowfullscreen 
-            title=&#34;YouTube Video&#34;
-    &gt;
-    &lt;/iframe&gt;
-&lt;/div&gt;
-
-&lt;!-- raw HTML omitted --&gt;
-&lt;hr&gt;
-&lt;h2 id=&#34;twitter-simple-shortcode&#34;&gt;Twitter Simple Shortcode&lt;/h2&gt;
-
-
-
-
-&lt;style type=&#34;text/css&#34;&gt;
-  .twitter-tweet {
-  font: 14px/1.45 -apple-system,BlinkMacSystemFont,&#34;Segoe UI&#34;,Roboto,Oxygen-Sans,Ubuntu,Cantarell,&#34;Helvetica Neue&#34;,sans-serif;
-  border-left: 4px solid #2b7bb9;
-  padding-left: 1.5em;
-  color: #555;
-}
-  .twitter-tweet a {
-  color: #2b7bb9;
-  text-decoration: none;
-}
-  blockquote.twitter-tweet a:hover,
-  blockquote.twitter-tweet a:focus {
-  text-decoration: underline;
-}
-&lt;/style&gt;
-
-&lt;blockquote class=&#34;twitter-tweet&#34;&gt;&lt;p lang=&#34;en&#34; dir=&#34;ltr&#34;&gt;“In addition to being more logical, asymmetry has the advantage that its complete appearance is far more optically effective than symmetry.”&lt;br&gt;— Jan Tschichold &lt;a href=&#34;https://t.co/gcv7SrhvJb&#34;&gt;pic.twitter.com/gcv7SrhvJb&lt;/a&gt;&lt;/p&gt;&amp;mdash; Graphic Design History (@DesignReviewed) &lt;a href=&#34;https://twitter.com/DesignReviewed/status/1085870671291310081?ref_src=twsrc%5Etfw&#34;&gt;January 17, 2019&lt;/a&gt;&lt;/blockquote&gt;
-
-&lt;!-- raw HTML omitted --&gt;
-&lt;hr&gt;
-&lt;h2 id=&#34;vimeo-simple-shortcode&#34;&gt;Vimeo Simple Shortcode&lt;/h2&gt;
-
-
-
-
-
-
-&lt;style&gt;
-.__h_video {
-   position: relative;
-   padding-bottom: 56.23%;
-   height: 0;
-   overflow: hidden;
-   width: 100%;
-   background: #000;
-}
-.__h_video img {
-   width: 100%;
-   height: auto;
-   color: #000;
-}
-.__h_video .play {
-   height: 72px;
-   width: 72px;
-   left: 50%;
-   top: 50%;
-   margin-left: -36px;
-   margin-top: -36px;
-   position: absolute;
-   cursor: pointer;
-}
-&lt;/style&gt;
-
-
-&lt;div class=&#34;s_video_simple __h_video&#34;&gt;
-&lt;a href=&#34;https://vimeo.com/4.8912912e&amp;#43;07&#34; rel=&#34;noopener&#34; target=&#34;_blank&#34;&gt;
-
-
-&lt;img src=&#34;https://i.vimeocdn.com/video/337401969_640&#34; srcset=&#34;https://i.vimeocdn.com/video/337401969_640 1x, https://i.vimeocdn.com/video/337401969_640 2x&#34; alt=&#34;Sing Jan Swing - Kinetic Type&#34;&gt;
-&lt;div class=&#34;play&#34;&gt;&lt;svg version=&#34;1&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34; viewBox=&#34;0 0 61 61&#34;&gt;&lt;circle cx=&#34;30.5&#34; cy=&#34;30.5&#34; r=&#34;30.5&#34; opacity=&#34;.8&#34; fill=&#34;#000&#34;&gt;&lt;/circle&gt;&lt;path d=&#34;M25.3 19.2c-2.1-1.2-3.8-.2-3.8 2.2v18.1c0 2.4 1.7 3.4 3.8 2.2l16.6-9.1c2.1-1.2 2.1-3.2 0-4.4l-16.6-9z&#34; fill=&#34;#fff&#34;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/div&gt;&lt;/a&gt;&lt;/div&gt;</description>
-        </item>
-        <item>
-        <title>Math Typesetting</title>
-        <link>https://masterpi-2124.github.io/p/math-typesetting/</link>
-        <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
-        
-        <guid>https://masterpi-2124.github.io/p/math-typesetting/</guid>
-        <description>&lt;p&gt;Mathematical notation in a Hugo project can be enabled by using third party JavaScript libraries.&lt;/p&gt;
-&lt;p&gt;In this example we will be using &lt;a class=&#34;link&#34; href=&#34;https://katex.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;KaTeX&lt;/a&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Create a partial under &lt;code&gt;/layouts/partials/math.html&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;Within this partial reference the &lt;a class=&#34;link&#34; href=&#34;https://katex.org/docs/autorender.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;Auto-render Extension&lt;/a&gt; or host these scripts locally.&lt;/li&gt;
-&lt;li&gt;Include the partial in your templates like so:&lt;/li&gt;
-&lt;/ul&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;o&#34;&gt;{{&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; or .Params.math .Site.Params.math &lt;span class=&#34;o&#34;&gt;}}&lt;/span&gt;
-&lt;span class=&#34;o&#34;&gt;{{&lt;/span&gt; partial &lt;span class=&#34;s2&#34;&gt;&amp;#34;math.html&amp;#34;&lt;/span&gt; . &lt;span class=&#34;o&#34;&gt;}}&lt;/span&gt;
-&lt;span class=&#34;o&#34;&gt;{{&lt;/span&gt; end &lt;span class=&#34;o&#34;&gt;}}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
-&lt;li&gt;To enable KaTex globally set the parameter &lt;code&gt;math&lt;/code&gt; to &lt;code&gt;true&lt;/code&gt; in a project&amp;rsquo;s configuration&lt;/li&gt;
-&lt;li&gt;To enable KaTex on a per page basis include the parameter &lt;code&gt;math: true&lt;/code&gt; in content files&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; Use the online reference of &lt;a class=&#34;link&#34; href=&#34;https://katex.org/docs/supported.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;Supported TeX Functions&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&#34;examples&#34;&gt;Examples&lt;/h3&gt;
-
-&lt;p&gt;Block math:
-$$
-\varphi = 1+\frac{1} {1+\frac{1} {1+\frac{1} {1+\cdots} } }
-$$&lt;/p&gt;</description>
-        </item>
-        <item>
         <title>Markdown Examples</title>
         <link>https://masterpi-2124.github.io/p/markdown-examples/</link>
-        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        <pubDate>Thu, 02 Sep 2021 00:00:00 +0000</pubDate>
         
         <guid>https://masterpi-2124.github.io/p/markdown-examples/</guid>
         <description>&lt;img src="https://masterpi-2124.github.io/p/markdown-examples/florian-klauer-nptLmg6jqDo-unsplash.jpg" alt="Featured image of post Markdown Examples" /&gt;&lt;p&gt;This article offers a sample of basic Markdown syntax that can be used in Hugo content files, also it shows whether basic HTML elements are decorated with CSS in a Hugo theme.&lt;/p&gt;
@@ -284,8 +456,8 @@ $$&lt;/p&gt;</description>
 &lt;/blockquote&gt;
 &lt;h4 id=&#34;blockquote-with-attribution&#34;&gt;Blockquote with attribution&lt;/h4&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Don&amp;rsquo;t communicate by sharing memory, share memory by communicating.&lt;!-- raw HTML omitted --&gt;
-— &lt;!-- raw HTML omitted --&gt;Rob Pike&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;p&gt;Don&amp;rsquo;t communicate by sharing memory, share memory by communicating.&lt;br&gt;
+— &lt;cite&gt;Rob Pike&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/cite&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2 id=&#34;tables&#34;&gt;Tables&lt;/h2&gt;
 &lt;p&gt;Tables aren&amp;rsquo;t part of the core Markdown spec, but Hugo supports supports them out-of-the-box.&lt;/p&gt;
@@ -389,11 +561,11 @@ $$&lt;/p&gt;</description>
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;other-elements--abbr-sub-sup-kbd-mark&#34;&gt;Other Elements — abbr, sub, sup, kbd, mark&lt;/h2&gt;
-&lt;p&gt;&lt;!-- raw HTML omitted --&gt;GIF&lt;!-- raw HTML omitted --&gt; is a bitmap image format.&lt;/p&gt;
-&lt;p&gt;H&lt;!-- raw HTML omitted --&gt;2&lt;!-- raw HTML omitted --&gt;O&lt;/p&gt;
-&lt;p&gt;X&lt;!-- raw HTML omitted --&gt;n&lt;!-- raw HTML omitted --&gt; + Y&lt;!-- raw HTML omitted --&gt;n&lt;!-- raw HTML omitted --&gt;: Z&lt;!-- raw HTML omitted --&gt;n&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
-&lt;p&gt;Press &lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt;CTRL&lt;!-- raw HTML omitted --&gt;+&lt;!-- raw HTML omitted --&gt;ALT&lt;!-- raw HTML omitted --&gt;+&lt;!-- raw HTML omitted --&gt;Delete&lt;!-- raw HTML omitted --&gt;&lt;!-- raw HTML omitted --&gt; to end the session.&lt;/p&gt;
-&lt;p&gt;Most &lt;!-- raw HTML omitted --&gt;salamanders&lt;!-- raw HTML omitted --&gt; are nocturnal, and hunt for insects, worms, and other small creatures.&lt;/p&gt;
+&lt;p&gt;&lt;abbr title=&#34;Graphics Interchange Format&#34;&gt;GIF&lt;/abbr&gt; is a bitmap image format.&lt;/p&gt;
+&lt;p&gt;H&lt;sub&gt;2&lt;/sub&gt;O&lt;/p&gt;
+&lt;p&gt;X&lt;sup&gt;n&lt;/sup&gt; + Y&lt;sup&gt;n&lt;/sup&gt;: Z&lt;sup&gt;n&lt;/sup&gt;&lt;/p&gt;
+&lt;p&gt;Press &lt;kbd&gt;&lt;kbd&gt;CTRL&lt;/kbd&gt;+&lt;kbd&gt;ALT&lt;/kbd&gt;+&lt;kbd&gt;Delete&lt;/kbd&gt;&lt;/kbd&gt; to end the session.&lt;/p&gt;
+&lt;p&gt;Most &lt;mark&gt;salamanders&lt;/mark&gt; are nocturnal, and hunt for insects, worms, and other small creatures.&lt;/p&gt;
 &lt;h2 id=&#34;images&#34;&gt;Images&lt;/h2&gt;
 &lt;p&gt;&lt;figure 
 	
@@ -499,6 +671,127 @@ $$&lt;/p&gt;</description>
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;/section&gt;</description>
+        </item>
+        <item>
+        <title>Rich Content</title>
+        <link>https://masterpi-2124.github.io/p/rich-content/</link>
+        <pubDate>Wed, 09 Sep 2020 00:00:00 +0000</pubDate>
+        
+        <guid>https://masterpi-2124.github.io/p/rich-content/</guid>
+        <description>&lt;p&gt;Hugo ships with several &lt;a class=&#34;link&#34; href=&#34;https://gohugo.io/content-management/shortcodes/#use-hugo-s-built-in-shortcodes&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Built-in Shortcodes&lt;/a&gt; for rich content, along with a &lt;a class=&#34;link&#34; href=&#34;https://gohugo.io/about/hugo-and-gdpr/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Privacy Config&lt;/a&gt; and a set of Simple Shortcodes that enable static and no-JS versions of various social media embeds.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;youtube-privacy-enhanced-shortcode&#34;&gt;YouTube Privacy Enhanced Shortcode&lt;/h2&gt;
+&lt;div class=&#34;video-wrapper&#34;&gt;
+    &lt;iframe loading=&#34;lazy&#34; 
+            src=&#34;https://www.youtube.com/embed/ZJthWmvUzzc&#34; 
+            allowfullscreen 
+            title=&#34;YouTube Video&#34;
+    &gt;
+    &lt;/iframe&gt;
+&lt;/div&gt;
+
+&lt;br&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;twitter-simple-shortcode&#34;&gt;Twitter Simple Shortcode&lt;/h2&gt;
+
+
+
+
+&lt;style type=&#34;text/css&#34;&gt;
+  .twitter-tweet {
+  font: 14px/1.45 -apple-system,BlinkMacSystemFont,&#34;Segoe UI&#34;,Roboto,Oxygen-Sans,Ubuntu,Cantarell,&#34;Helvetica Neue&#34;,sans-serif;
+  border-left: 4px solid #2b7bb9;
+  padding-left: 1.5em;
+  color: #555;
+}
+  .twitter-tweet a {
+  color: #2b7bb9;
+  text-decoration: none;
+}
+  blockquote.twitter-tweet a:hover,
+  blockquote.twitter-tweet a:focus {
+  text-decoration: underline;
+}
+&lt;/style&gt;
+
+&lt;blockquote class=&#34;twitter-tweet&#34;&gt;&lt;p lang=&#34;en&#34; dir=&#34;ltr&#34;&gt;“In addition to being more logical, asymmetry has the advantage that its complete appearance is far more optically effective than symmetry.”&lt;br&gt;— Jan Tschichold &lt;a href=&#34;https://t.co/gcv7SrhvJb&#34;&gt;pic.twitter.com/gcv7SrhvJb&lt;/a&gt;&lt;/p&gt;&amp;mdash; Graphic Design History (@DesignReviewed) &lt;a href=&#34;https://twitter.com/DesignReviewed/status/1085870671291310081?ref_src=twsrc%5Etfw&#34;&gt;January 17, 2019&lt;/a&gt;&lt;/blockquote&gt;
+
+&lt;br&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;vimeo-simple-shortcode&#34;&gt;Vimeo Simple Shortcode&lt;/h2&gt;
+
+
+
+
+
+
+&lt;style&gt;
+.__h_video {
+   position: relative;
+   padding-bottom: 56.23%;
+   height: 0;
+   overflow: hidden;
+   width: 100%;
+   background: #000;
+}
+.__h_video img {
+   width: 100%;
+   height: auto;
+   color: #000;
+}
+.__h_video .play {
+   height: 72px;
+   width: 72px;
+   left: 50%;
+   top: 50%;
+   margin-left: -36px;
+   margin-top: -36px;
+   position: absolute;
+   cursor: pointer;
+}
+&lt;/style&gt;
+
+
+&lt;div class=&#34;s_video_simple __h_video&#34;&gt;
+&lt;a href=&#34;https://vimeo.com/4.8912912e&amp;#43;07&#34; rel=&#34;noopener&#34; target=&#34;_blank&#34;&gt;
+
+
+&lt;img src=&#34;https://i.vimeocdn.com/video/337401969_640&#34; srcset=&#34;https://i.vimeocdn.com/video/337401969_640 1x, https://i.vimeocdn.com/video/337401969_640 2x&#34; alt=&#34;Sing Jan Swing - Kinetic Type&#34;&gt;
+&lt;div class=&#34;play&#34;&gt;&lt;svg version=&#34;1&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34; viewBox=&#34;0 0 61 61&#34;&gt;&lt;circle cx=&#34;30.5&#34; cy=&#34;30.5&#34; r=&#34;30.5&#34; opacity=&#34;.8&#34; fill=&#34;#000&#34;&gt;&lt;/circle&gt;&lt;path d=&#34;M25.3 19.2c-2.1-1.2-3.8-.2-3.8 2.2v18.1c0 2.4 1.7 3.4 3.8 2.2l16.6-9.1c2.1-1.2 2.1-3.2 0-4.4l-16.6-9z&#34; fill=&#34;#fff&#34;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/div&gt;&lt;/a&gt;&lt;/div&gt;</description>
+        </item>
+        <item>
+        <title>Math Typesetting</title>
+        <link>https://masterpi-2124.github.io/p/math-typesetting/</link>
+        <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
+        
+        <guid>https://masterpi-2124.github.io/p/math-typesetting/</guid>
+        <description>&lt;p&gt;Mathematical notation in a Hugo project can be enabled by using third party JavaScript libraries.&lt;/p&gt;
+&lt;p&gt;In this example we will be using &lt;a class=&#34;link&#34; href=&#34;https://katex.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;KaTeX&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Create a partial under &lt;code&gt;/layouts/partials/math.html&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Within this partial reference the &lt;a class=&#34;link&#34; href=&#34;https://katex.org/docs/autorender.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Auto-render Extension&lt;/a&gt; or host these scripts locally.&lt;/li&gt;
+&lt;li&gt;Include the partial in your templates like so:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;o&#34;&gt;{{&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; or .Params.math .Site.Params.math &lt;span class=&#34;o&#34;&gt;}}&lt;/span&gt;
+&lt;span class=&#34;o&#34;&gt;{{&lt;/span&gt; partial &lt;span class=&#34;s2&#34;&gt;&amp;#34;math.html&amp;#34;&lt;/span&gt; . &lt;span class=&#34;o&#34;&gt;}}&lt;/span&gt;
+&lt;span class=&#34;o&#34;&gt;{{&lt;/span&gt; end &lt;span class=&#34;o&#34;&gt;}}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;To enable KaTex globally set the parameter &lt;code&gt;math&lt;/code&gt; to &lt;code&gt;true&lt;/code&gt; in a project&amp;rsquo;s configuration&lt;/li&gt;
+&lt;li&gt;To enable KaTex on a per page basis include the parameter &lt;code&gt;math: true&lt;/code&gt; in content files&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; Use the online reference of &lt;a class=&#34;link&#34; href=&#34;https://katex.org/docs/supported.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Supported TeX Functions&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;examples&#34;&gt;Examples&lt;/h3&gt;
+
+&lt;p&gt;Block math:
+$$
+\varphi = 1+\frac{1} {1+\frac{1} {1+\frac{1} {1+\cdots} } }
+$$&lt;/p&gt;</description>
         </item>
         
     </channel>
