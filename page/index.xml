@@ -13,7 +13,25 @@
       <pubDate>Thu, 28 Feb 2019 00:00:00 +0000</pubDate>
       
       <guid>https://masterpi-2124.github.io/about/</guid>
-      <description>Hi, I am Master Pi, and this is my personal blog. I have to learn so many thing, so this is the good way to store it and share with everyone. This blog is createed with Hugo, using Hugo Stack Theme and some more modifications. If you like and want to make one, follow the link.</description>
+      <description>Hi, I&amp;rsquo;m Minh, and this is my personal blog. I have learned so many thing, so this is the good way to store it and share with everyone. I will talk about my personal life, some of my projects and how I become a developer. It would be a great story, so if you are interested, please leave your mail at subscribe section to receive latest posts when it&amp;rsquo;s published.</description>
+    </item>
+    
+    <item>
+      <title>Archives</title>
+      <link>https://masterpi-2124.github.io/archives/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://masterpi-2124.github.io/archives/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>RSS Feeds</title>
+      <link>https://masterpi-2124.github.io/rss-feeds/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://masterpi-2124.github.io/rss-feeds/</guid>
+      <description></description>
     </item>
     
     <item>

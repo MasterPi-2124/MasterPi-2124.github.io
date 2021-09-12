@@ -14,12 +14,12 @@
         <guid>https://masterpi-2124.github.io/p/how-to-make-your-trackpad-like-macbook/</guid>
         <description>&lt;img src="https://masterpi-2124.github.io/p/how-to-make-your-trackpad-like-macbook/cover.jpg" alt="Featured image of post How to Make Your Trackpad Like Macbook" /&gt;&lt;p&gt;If you used Mac products before, I bet the only thing you will never forget is its multi-touch trackpad. Its convenience can improve the work performance a lot, and it even made me feel confused when using other products&amp;rsquo;s trackpad. Luckily, when you say &lt;em&gt;&lt;strong&gt;&amp;ldquo;Linux&amp;rdquo;&lt;/strong&gt;&lt;/em&gt;, you are talking about the &lt;em&gt;&lt;strong&gt;&amp;ldquo;Open Sources&amp;rdquo;&lt;/strong&gt;&lt;/em&gt;, and there are some drivers that support it, like &lt;em&gt;&lt;code&gt;mtrack&lt;/code&gt;&lt;/em&gt;.&lt;/p&gt;
 &lt;p&gt;In this blog, we will dive into how we can make our trackpad as close to Mac experience as we can get with &lt;em&gt;&lt;code&gt;mtrack&lt;/code&gt;&lt;/em&gt;.&lt;/p&gt;
-&lt;h2 id=&#34;why-mtrack&#34;&gt;Why &lt;em&gt;&lt;strong&gt;mtrack&lt;/strong&gt;&lt;/em&gt;?&lt;/h2&gt;
+&lt;h1 id=&#34;why-mtrack&#34;&gt;Why &lt;em&gt;&lt;strong&gt;mtrack&lt;/strong&gt;&lt;/em&gt;?&lt;/h1&gt;
 &lt;p&gt;In Linux, there are 3 options for mouse driver: &lt;em&gt;mtrack&lt;/em&gt;, &lt;em&gt;libinput&lt;/em&gt; and &lt;em&gt;synaptics&lt;/em&gt;, but the default driver for almost every Linux distro &lt;em&gt;libinput&lt;/em&gt; doesn&amp;rsquo;t have many options for us to tweak, while &lt;em&gt;mtrack&lt;/em&gt; has many flexible configurations, and supports a lot of gestures. The only downside of &lt;em&gt;mtrack&lt;/em&gt; is it&amp;rsquo;s quite &lt;a class=&#34;link&#34; href=&#34;https://github.com/BlueDragonX/xf86-input-mtrack&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;outdate&lt;/a&gt; (since 2015), so we will have to clone the community&amp;rsquo;s driver from &lt;a class=&#34;link&#34; href=&#34;https://github.com/p2rkw/xf86-input-mtrack&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;GitHub&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;And be noted that &lt;em&gt;mtrack&lt;/em&gt; supports only &lt;cite&gt;&lt;strong&gt;Xorg&lt;/strong&gt; environment.&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/cite&gt;&lt;/p&gt;
-&lt;h2 id=&#34;install-the-driver&#34;&gt;Install the driver&lt;/h2&gt;
+&lt;h1 id=&#34;install-the-driver&#34;&gt;Install the driver&lt;/h1&gt;
 &lt;p&gt;First, we need to install the prerequisites for the driver:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo apt update &lt;span class=&#34;o&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; sudo apt upgrade
 sudo apt install build-essential git pkg-config libmtdev-dev mtdev-tools xserver-xorg-dev xutils-dev
@@ -30,9 +30,9 @@ git clone git clone https://github.com/p2rkw/xf86-input-mtrack.git &lt;span clas
 sudo make
 sudo make install
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;If you get stuck on the install progress, leave me a comment down there.&lt;/p&gt;
-&lt;h2 id=&#34;configure-the-new-driver&#34;&gt;Configure the new driver&lt;/h2&gt;
+&lt;h1 id=&#34;configure-the-new-driver&#34;&gt;Configure the new driver&lt;/h1&gt;
 &lt;p&gt;If the install progress is successfull, the driver should be in the system, but we still need to edit the configuration file so that the system could recognize and use it.&lt;/p&gt;
-&lt;h3 id=&#34;configuration-file&#34;&gt;Configuration file&lt;/h3&gt;
+&lt;h2 id=&#34;configuration-file&#34;&gt;Configuration file&lt;/h2&gt;
 &lt;p&gt;The configuration file gets placed in &lt;code&gt;/usr/share/X11/xorg.conf.d/50-mtrack.conf&lt;/code&gt; and it contains options for the trackpad too. We will edit this file and &lt;cite&gt;&lt;strong&gt;restart the system&lt;/strong&gt;&lt;sup id=&#34;fnref:2&#34;&gt;&lt;a href=&#34;#fn:2&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;&lt;/cite&gt; to make changes.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# You can use other text editor, but it can only be saved with root permission&lt;/span&gt;
 sudo nano /usr/share/X11/xorg.conf.d/50-mtrack.conf
@@ -44,7 +44,7 @@ Identifier	&amp;quot;Touchpads&amp;quot;
 MatchDevicePath &amp;quot;/dev/input/event*&amp;quot;
 Driver		&amp;quot;mtrack&amp;quot;
 
-## Basic
+# Basic
 # Disable Trackpad
 Option		&amp;quot;TrackpadDisable&amp;quot;		&amp;quot;false&amp;quot;
 # Whether or not to enable physical button on trackpad
@@ -52,7 +52,7 @@ Option          &amp;quot;ButtonEnable&amp;quot;                  &amp;quot;true
 # If the button is integrated into the trackpad like Macbook Pros, this option has to be &amp;quot;true&amp;quot;
 Option          &amp;quot;ButtonIntegrated&amp;quot;              &amp;quot;false&amp;quot;
 
-## Responsiveness
+# Responsiveness
 # The faster you move, the more distance pointer will travel, using &amp;quot;polynomial&amp;quot; profile
 Option          &amp;quot;AccelerationProfile&amp;quot;		&amp;quot;2&amp;quot;
 # Sensitivity controls how fast your cursor will move. 1 is the default
@@ -79,7 +79,7 @@ Option          &amp;quot;DisableOnPalm&amp;quot;                 &amp;quot;fals
 # Palms are expected to be very large on the trackpad
 Option          &amp;quot;PalmSize&amp;quot;                      &amp;quot;40&amp;quot;      
 
-## Zones
+# Zones
 # Whether or not to enable button zones.
 # If button zones are enabled then the trackpad will be
 # split into one, two, or three vertical zones
@@ -98,7 +98,7 @@ Option		&amp;quot;ThirdZoneButton&amp;quot;		&amp;quot;0&amp;quot;
 # the zone is limited to the percentage set for the &amp;quot;EdgeBottom&amp;quot;.
 Option		&amp;quot;LimitButtonZonesToBottomEdge&amp;quot;	&amp;quot;false&amp;quot;
 
-## Physical Click
+# Physical Click
 # Which button to emulate when no valid finger placement
 # is touching the trackpad during a click, as on &amp;quot;EdgeBottom&amp;quot;.
 Option		&amp;quot;ClickFinger0&amp;quot;			&amp;quot;0&amp;quot;
@@ -113,7 +113,7 @@ Option		&amp;quot;ButtonMoveEmulate&amp;quot;		&amp;quot;true&amp;quot;
 # How long (in ms) to consider a touching finger as part of button emulation.
 Option		&amp;quot;ButtonTouchExpire&amp;quot;		&amp;quot;100&amp;quot;
 
-## Tap
+# Tap
 # Which button to emulate for one-finger tapping.
 Option          &amp;quot;TapButton1&amp;quot;			&amp;quot;1&amp;quot;
 # Which button to emulate for two-finger tapping.
@@ -130,7 +130,7 @@ Option		&amp;quot;MaxTapTime&amp;quot;			&amp;quot;120&amp;quot;
 # How far a touch is allowed to move before counting it is no longer considered a tap.
 Option		&amp;quot;MaxTapMove&amp;quot;			&amp;quot;400&amp;quot;
 
-## Gesture
+# Gesture
 # When a gesture triggers a click, how much time to hold down the emulated button.
 Option		&amp;quot;GestureClickTime&amp;quot;		&amp;quot;10&amp;quot;
 # Touches are allowed to transition from one gesture to another.
@@ -220,7 +220,7 @@ Option		&amp;quot;RotateLeftButton&amp;quot;		&amp;quot;14&amp;quot;
 # For two finger rotation. The button that is triggered by rotating right.
 Option		&amp;quot;RotateRightButton&amp;quot;		&amp;quot;15&amp;quot;
 
-## Edge
+# Edge
 # The size of an area at the top of the trackpad where new touches are ignored
 # (fingers travelling into this area from the bottom will still be tracked).
 Option		&amp;quot;EdgeTopSize&amp;quot;			&amp;quot;0&amp;quot;
@@ -234,7 +234,7 @@ Option          &amp;quot;EdgeLeftSize&amp;quot;                  &amp;quot;0&am
 # (fingers travelling into this area from the bottom will still be tracked).
 Option          &amp;quot;EdgeRightSize&amp;quot;                 &amp;quot;0&amp;quot;
 
-## Special Features
+# Special Features
 # For two finger hold-and-move functionality. The button that is triggered
 # by holding one finger and moving another one.
 Option		&amp;quot;Hold1Move1StationaryButton&amp;quot;	&amp;quot;1&amp;quot;
@@ -263,7 +263,7 @@ EndSection
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;It&amp;rsquo;s quite long, but it contains all options for the trackpad with the detail explaination, so you don&amp;rsquo;t need to search google for any other options. My configuration above is as close as my Mac experience as I can get, and you can adjust to suit your need too.&lt;/p&gt;
 &lt;p&gt;More tweaks, head to the driver&amp;rsquo;s &lt;a class=&#34;link&#34; href=&#34;https://github.com/p2rkw/xf86-input-mtrack&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;README&lt;/a&gt;.&lt;/p&gt;
-&lt;h3 id=&#34;disable-when-typing&#34;&gt;Disable when typing&lt;/h3&gt;
+&lt;h2 id=&#34;disable-when-typing&#34;&gt;Disable when typing&lt;/h2&gt;
 &lt;p&gt;As the title, the most annoying thing when using &lt;em&gt;mtrack&lt;/em&gt; is that it is not disable when typing, if you set option &lt;code&gt;TapButton1&lt;/code&gt; to &lt;code&gt;1&lt;/code&gt;. So we will need &lt;code&gt;dispad&lt;/code&gt;, a daemon from the origion authors of &lt;em&gt;mtrack&lt;/em&gt;:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo apt install libconfuse-dev libxi-dev
 &lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; /tmp
@@ -272,13 +272,13 @@ git clone https://github.com/BlueDragonX/dispad.git &lt;span class=&#34;o&#34;&g
 sudo make
 sudo make install
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;After built successfully, start the daemon by typing &lt;code&gt;dispad&lt;/code&gt;.&lt;/p&gt;
-&lt;h3 id=&#34;add-more-gestures&#34;&gt;Add more gestures&lt;/h3&gt;
+&lt;h2 id=&#34;add-more-gestures&#34;&gt;Add more gestures&lt;/h2&gt;
 &lt;p&gt;Currently, &lt;em&gt;mtrack&lt;/em&gt; supports up to 15 mouse simulations, however, Ubuntu and some other distros only uses mouse buttons up to 9. To make use of other gestures, we will need some tools.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo apt install xbindkeys xdotool
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;code&gt;xbindkeys&lt;/code&gt; is a daemon listening to your inputs from any input devices including keyboard, mouse and touchpad. You’ll define a rule at which, if an input or combination of inputs matches, some command can be executed. That’s where &lt;code&gt;xdotool&lt;/code&gt; come in. &lt;code&gt;xdotool&lt;/code&gt; is the command line tool which is able to simulate other key inputs. So by combining &lt;code&gt;xbindkeys&lt;/code&gt; and &lt;code&gt;xdotool&lt;/code&gt;, we’ll be able to map high mouse buttons (&amp;gt; 9) to certain shortcuts that suit our needs.&lt;/p&gt;
 &lt;p&gt;To define the rule, we need to edit the configuration file which is at &lt;code&gt;~/.xbindkeysrc&lt;/code&gt;, and the detail of the tool is here if you need to see: &lt;a class=&#34;link&#34; href=&#34;https://wiki.archlinux.org/title/Xbindkeys&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://wiki.archlinux.org/title/Xbindkeys&lt;/a&gt;.&lt;/p&gt;
-&lt;h2 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h2&gt;
+&lt;h1 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h1&gt;
 &lt;p&gt;That’s my setup for multi-touch touchpad, and it is the as closest as Mac experience I can get. However, there still are some issues with &lt;em&gt;mtrack&lt;/em&gt; driver after a lot of use, which is minor and do not affect the experience much:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Scroll coast are sometimes sticky and make scroll move quickly in subsequence scroll gestures.&lt;/li&gt;
@@ -305,12 +305,12 @@ sudo make install
         
         <guid>https://masterpi-2124.github.io/p/how-to-make-a-github-blog/</guid>
         <description>&lt;img src="https://masterpi-2124.github.io/p/how-to-make-a-github-blog/cover.png" alt="Featured image of post How to Make a Github Blog" /&gt;&lt;p&gt;Hi, this is my way to make a Github blog for my self, which will contain blogs, some projects, and some tips from my experience. I am a webasite newbie, so it took me almost 2 days to setup from start to finish, and it&amp;rsquo;s pretty easy. Here is how I made it.&lt;/p&gt;
-&lt;h2 id=&#34;initial-setup&#34;&gt;Initial setup&lt;/h2&gt;
-&lt;h3 id=&#34;create-repositories&#34;&gt;Create repositories&lt;/h3&gt;
+&lt;h1 id=&#34;initial-setup&#34;&gt;Initial setup&lt;/h1&gt;
+&lt;h2 id=&#34;create-repositories&#34;&gt;Create repositories&lt;/h2&gt;
 &lt;p&gt;First, let take a look at what a &lt;a class=&#34;link&#34; href=&#34;https://pages.github.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Github Page&lt;/a&gt; is, and how to create one. You should be able to create a repository for your Github Page named &lt;code&gt;username.github.io&lt;/code&gt;, where username is your Github username.&lt;/p&gt;
 &lt;p&gt;The repository above will store the content of your website, but we will create another repository where the website development/authoring will take place, for example, &lt;code&gt;Personal-Blog&lt;/code&gt;.&lt;/p&gt;
-&lt;h3 id=&#34;install-hugo&#34;&gt;Install Hugo&lt;/h3&gt;
+&lt;h2 id=&#34;install-hugo&#34;&gt;Install Hugo&lt;/h2&gt;
 &lt;p&gt;There are multiple ways to install &lt;strong&gt;Hugo&lt;/strong&gt;:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Install from binary releases on &lt;a class=&#34;link&#34; href=&#34;https://github.com/gohugoio/hugo/releases&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -318,8 +318,8 @@ sudo make install
 &lt;li&gt;On a Mac with &lt;code&gt;Homebrew&lt;/code&gt; installed, run &lt;code&gt;brew install hugo&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;On Windows with &lt;code&gt;Chocolatey&lt;/code&gt;: &lt;code&gt;choco install hugo[-extended] -confirm&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;create-a-site&#34;&gt;Create a site&lt;/h2&gt;
-&lt;h3 id=&#34;initialize-a-new-site&#34;&gt;Initialize a new site&lt;/h3&gt;
+&lt;h1 id=&#34;create-a-site&#34;&gt;Create a site&lt;/h1&gt;
+&lt;h2 id=&#34;initialize-a-new-site&#34;&gt;Initialize a new site&lt;/h2&gt;
 &lt;p&gt;Let&amp;rsquo;s clone 2 repositories we created above to start:&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;git clone https://github.com/username/Personal-Blog.git
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Replace &lt;code&gt;username&lt;/code&gt; with your &lt;em&gt;username&lt;/em&gt; and &lt;code&gt;Personal-Blog&lt;/code&gt; with your &lt;em&gt;repository&amp;rsquo;s name&lt;/em&gt;.&lt;/p&gt;
@@ -336,7 +336,7 @@ sudo make install
     |-- config.toml
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;The detail explaination for each folder is published on &lt;a class=&#34;link&#34; href=&#34;https://gohugo.io/getting-started/directory-structure/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Hugo documentation&lt;/a&gt;, and it is necessary to understand it before continue.&lt;/p&gt;
-&lt;h3 id=&#34;install-theme&#34;&gt;Install theme&lt;/h3&gt;
+&lt;h2 id=&#34;install-theme&#34;&gt;Install theme&lt;/h2&gt;
 &lt;p&gt;Next, we wll pick a theme at &lt;a class=&#34;link&#34; href=&#34;https://themes.gohugo.io/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Hugo theme website&lt;/a&gt; and install in &lt;code&gt;themes&lt;/code&gt; folder. I will choose &lt;strong&gt;Hugo Stack Theme&lt;/strong&gt; for the demonstration.&lt;/p&gt;
 &lt;p&gt;Copy the theme&amp;rsquo;s github path, and install:&lt;/p&gt;
@@ -344,7 +344,7 @@ sudo make install
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Go to the installed theme directory, you will see the &lt;code&gt;exampleSite&lt;/code&gt; folder. Copy its content and paste into &lt;code&gt;content&lt;/code&gt; folder. It stores all page and post we create for the website, so we will use it to test the new site.&lt;/p&gt;
 &lt;p&gt;Replace &lt;code&gt;config.toml&lt;/code&gt; by &lt;code&gt;config.yaml&lt;/code&gt; copied above, and modify this file as in &lt;a class=&#34;link&#34; href=&#34;https://docs.stack.jimmycai.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;this intruction&lt;/a&gt;.&lt;/p&gt;
-&lt;h3 id=&#34;publish-to-github-page&#34;&gt;Publish to Github Page&lt;/h3&gt;
+&lt;h2 id=&#34;publish-to-github-page&#34;&gt;Publish to Github Page&lt;/h2&gt;
 &lt;p&gt;After you add a post or a site, it&amp;rsquo;s time to push into the repository and publish. But first, we have to link the Github page repository to the current development repository:&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;git submodule add -b master https://github.com/username/username.github.io.git public
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;It will clone the repository into &lt;code&gt;public&lt;/code&gt; folder, as in Hugo documentation about directory structure.
@@ -390,7 +390,7 @@ echo &amp;quot;Committing changes to $(pwd)&amp;quot;
 git add .
 git commit -m &amp;quot;$msg&amp;quot;
 git push origin master
-&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;modification&#34;&gt;Modification&lt;/h2&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;h1 id=&#34;modification&#34;&gt;Modification&lt;/h1&gt;
 &lt;p&gt;You can also modify the theme to suit your need. All documentations is on these websites:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://docs.stack.jimmycai.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -682,7 +682,7 @@ git push origin master
     &gt;Built-in Shortcodes&lt;/a&gt; for rich content, along with a &lt;a class=&#34;link&#34; href=&#34;https://gohugo.io/about/hugo-and-gdpr/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Privacy Config&lt;/a&gt; and a set of Simple Shortcodes that enable static and no-JS versions of various social media embeds.&lt;/p&gt;
 &lt;hr&gt;
-&lt;h2 id=&#34;youtube-privacy-enhanced-shortcode&#34;&gt;YouTube Privacy Enhanced Shortcode&lt;/h2&gt;
+&lt;h1 id=&#34;youtube-privacy-enhanced-shortcode&#34;&gt;YouTube Privacy Enhanced Shortcode&lt;/h1&gt;
 &lt;div class=&#34;video-wrapper&#34;&gt;
     &lt;iframe loading=&#34;lazy&#34; 
             src=&#34;https://www.youtube.com/embed/ZJthWmvUzzc&#34; 
@@ -694,7 +694,7 @@ git push origin master
 
 &lt;br&gt;
 &lt;hr&gt;
-&lt;h2 id=&#34;twitter-simple-shortcode&#34;&gt;Twitter Simple Shortcode&lt;/h2&gt;
+&lt;h1 id=&#34;twitter-simple-shortcode&#34;&gt;Twitter Simple Shortcode&lt;/h1&gt;
 
 
 
@@ -720,7 +720,7 @@ git push origin master
 
 &lt;br&gt;
 &lt;hr&gt;
-&lt;h2 id=&#34;vimeo-simple-shortcode&#34;&gt;Vimeo Simple Shortcode&lt;/h2&gt;
+&lt;h1 id=&#34;vimeo-simple-shortcode&#34;&gt;Vimeo Simple Shortcode&lt;/h1&gt;
 
 
 
@@ -786,7 +786,7 @@ git push origin master
 &lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; Use the online reference of &lt;a class=&#34;link&#34; href=&#34;https://katex.org/docs/supported.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Supported TeX Functions&lt;/a&gt;&lt;/p&gt;
 
-&lt;h3 id=&#34;examples&#34;&gt;Examples&lt;/h3&gt;
+&lt;h2 id=&#34;examples&#34;&gt;Examples&lt;/h2&gt;
 
 &lt;p&gt;Block math:
 $$
