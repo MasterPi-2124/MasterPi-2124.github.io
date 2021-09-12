@@ -6,7 +6,51 @@
         <description>Recent content on Master Pi</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Sat, 11 Sep 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://masterpi-2124.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sun, 12 Sep 2021 14:50:51 +0700</lastBuildDate><atom:link href="https://masterpi-2124.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>What This Blog Is All About</title>
+        <link>https://masterpi-2124.github.io/p/what-this-blog-is-all-about/</link>
+        <pubDate>Sun, 12 Sep 2021 14:50:51 +0700</pubDate>
+        
+        <guid>https://masterpi-2124.github.io/p/what-this-blog-is-all-about/</guid>
+        <description>&lt;h1 id=&#34;some-first-words&#34;&gt;Some first words&lt;/h1&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;The Journey&lt;/strong&gt;&lt;/em&gt;, my blog, is a story book of mine which is about all aspects in my life, and knowledge I learned in life of living (I&amp;rsquo;m not sure about that, my life is quite boring).&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;Why I name my site &amp;ldquo;The Journey&amp;rdquo;?&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Good question. I don&amp;rsquo;t know, too. I feel it is catchy.&lt;/p&gt;
+&lt;p&gt;But blogging is &lt;em&gt;not&lt;/em&gt; the main target of this site. I have a bad memory, so writing things down is the best way to store it, and maybe it could be helpful for some people. I will mainly talk about everything in my development path, which can be cover from casual stories when coding, some tips and hacks, or some TL;DR topics. I will dive deeper about topic in below &lt;a class=&#34;link&#34; href=&#34;#topics-i-plan-to-cover&#34; &gt;section&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;This site includes 3 parts: &lt;a class=&#34;link&#34; href=&#34;https://masterpi-2124.github.io/categories/guideline/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Guideline&lt;/a&gt;, &lt;a class=&#34;link&#34; href=&#34;https://masterpi-2124.github.io/categories/blog/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Blogs&lt;/a&gt; and &lt;a class=&#34;link&#34; href=&#34;https://masterpi-2124.github.io/categories/project/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Projects&lt;/a&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Guideline&lt;/strong&gt;: My how-to on almost everything in both development and life. How to live? How to implement Metamask or other wallet into your blockchain? I don&amp;rsquo;t know the answer of both question, but I will answer in the near future.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Blog&lt;/strong&gt;: As its name, it is about my personal stories. What &lt;em&gt;personal stories&lt;/em&gt;? Personal stories that I want to share.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Project&lt;/strong&gt;: That&amp;rsquo;s is the main one. I will document my project, so that you will have the most overview of the whole thing, and you can dive into the detail too, if you can.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;I really want to document everything, so that if someone want to learn, or me when forget, can go to the site, read the blog, do some pratice with it, and we could save a lot of time. My document skill is not so good, so if there are some typo, or some misleading information, leave the comment in the comment section, or contact me so I can fix as quickly as possible.&lt;/p&gt;
+&lt;h1 id=&#34;topics-i-plan-to-cover&#34;&gt;Topics I plan to cover&lt;/h1&gt;
+&lt;p&gt;I am a developer, so obviously my main posts will be around the development progress. These below are the topics that interest me, and it is flexible.&lt;/p&gt;
+&lt;h2 id=&#34;open-source&#34;&gt;Open source&lt;/h2&gt;
+&lt;p&gt;I&amp;rsquo;m currently using many open-source applications, and participate in open-source projects, from 2017. These applicaions (or projects) are maintained by a group of people, and they are free. But there are also some downsides of it, especially &lt;strong&gt;bugs&lt;/strong&gt;. When I started diving in open source world, the first thing I faced is bugs. A lot of bugs, and many of them were not fixed, so at that time, the only thing I did is rebuilding the whole thing. Luckily, after 4 years, it doesn&amp;rsquo;t happens so frequently, and I learnt a lot from that.&lt;/p&gt;
+&lt;p&gt;There are a lot of thing to talk about open source, but I will focus mainly on my experiences, some fixes or workarounds, or some advices how to contribute to open source projects. I will also explain and document my projects, because you have the rights to learn, read and contribute. You are welcome to contribute my blog too, by supporting or editting, and I really appreciate that.&lt;/p&gt;
+&lt;p&gt;The most important thing in Open source is &lt;em&gt;&lt;strong&gt;License&lt;/strong&gt;&lt;/em&gt;. I will create a post about difference among license types, and some advices to choose licenses in your projects. You can see at the end of every post in my site, there is a license for that.&lt;/p&gt;
+&lt;h2 id=&#34;linux&#34;&gt;Linux&lt;/h2&gt;
+&lt;p&gt;I started using Linux from 2016, and since then, I&amp;rsquo;ve experienced a lot in inux world. In this topic, I will talk about how I tweak my Linux distro, use Linux for daily development work, and my projects on KDE.&lt;/p&gt;
+&lt;p&gt;I also reccommend if you are developer, you must know how to use Linux (or some thing similar to that). It is open source, and I bet you will like it right after you boot into the desktop enviroment.&lt;/p&gt;
+&lt;h2 id=&#34;blockchain&#34;&gt;Blockchain&lt;/h2&gt;
+&lt;p&gt;Yes, I&amp;rsquo;m learning Blockchain, it is the main reason why I created this blog. I do not know much about it, because I&amp;rsquo;ve just touched it for 3 months, and I really need somewhere to store my knowledge.&lt;/p&gt;
+&lt;p&gt;In this topic, I won&amp;rsquo;t talk about how to become rich in Blockchain, it&amp;rsquo;s not how blockchain works. I will talk about the engine behind it, some technical terms, how things work,&amp;hellip; alongside with my blockchain projects.&lt;/p&gt;
+&lt;h2 id=&#34;other-topics&#34;&gt;Other topics&lt;/h2&gt;
+&lt;p&gt;When I wrote this post, I only planned talking about these above, but as I say, it is not flexible, and I will write down everything as long as I know about it. So stay focus, and ask me if you want to know something.&lt;/p&gt;
+&lt;p&gt;For example, I can talk about books, materials, some helpful links and other things that help people. If you have something want to share with me, please let me know in the comment, or contact.&lt;/p&gt;
+&lt;h1 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h1&gt;
+&lt;p&gt;Here is my post about the aim of this blog. I do not expect much about that, but I hope it could help someone in the future.&lt;/p&gt;
+&lt;p&gt;If you want to be informed, subscribe to this page in the subscribe section, so you will receive latest posts when it is coming to my blog. If you want to support (that&amp;rsquo;s so nice), please &lt;a class=&#34;link&#34; href=&#34;https://coindrop.to/masterpi007&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;drop me some coins&lt;/a&gt; or help me make this blog better. Thank you!&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>How to Make Your Trackpad Like Macbook</title>
         <link>https://masterpi-2124.github.io/p/how-to-make-your-trackpad-like-macbook/</link>
         <pubDate>Sat, 11 Sep 2021 00:00:00 +0000</pubDate>
