@@ -6,13 +6,124 @@
         <description>Recent content on Master Pi</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Tue, 14 Sep 2021 21:39:04 +0700</lastBuildDate><atom:link href="https://masterpi-2124.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>Story behind my TEDx event</title>
+        <lastBuildDate>Thu, 16 Sep 2021 21:54:03 +0700</lastBuildDate><atom:link href="https://masterpi-2124.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>How I Setup My Development Environment</title>
+        <link>https://masterpi-2124.github.io/p/how-i-setup-my-development-environment/</link>
+        <pubDate>Thu, 16 Sep 2021 21:54:03 +0700</pubDate>
+        
+        <guid>https://masterpi-2124.github.io/p/how-i-setup-my-development-environment/</guid>
+        <description>&lt;img src="https://masterpi-2124.github.io/p/how-i-setup-my-development-environment/cover.png" alt="Featured image of post How I Setup My Development Environment" /&gt;&lt;p&gt;Hi, this is my quick guideline on how to improve linux development experience.&lt;/p&gt;
+&lt;h1 id=&#34;operating-system&#34;&gt;Operating system&lt;/h1&gt;
+&lt;p&gt;When you search for &amp;ldquo;Linux OS&amp;rdquo;, Google would give you thousands of &amp;ldquo;operation systems&amp;rdquo; like Ubuntu, Arch, Mint, &amp;hellip; So which one is best for you?&lt;/p&gt;
+&lt;p&gt;First, &amp;ldquo;Linux&amp;rdquo; as you say is not &amp;ldquo;&lt;em&gt;operating system&lt;/em&gt;&amp;rdquo;. It is the kernel, the &lt;em&gt;&lt;strong&gt;bridge&lt;/strong&gt;&lt;/em&gt; between software and hardware, and reponsible for almost everything in the computer. When you boot your computer, it is the first part of the OS loaded into the RAM for your system to start working.&lt;/p&gt;
+&lt;p&gt;There are many Linux distributions built upon the kernel and use a separate &lt;em&gt;&lt;strong&gt;package managing system&lt;/strong&gt;&lt;/em&gt; to suit many specific purposes. So before choosing a distro, you should know your reasons of using linux.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;If you are new to linux and just need a boost, start with &lt;a class=&#34;link&#34; href=&#34;https://ubuntu.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Ubuntu&lt;/a&gt;, &lt;a class=&#34;link&#34; href=&#34;https://nxos.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Nitrux&lt;/a&gt; or &lt;a class=&#34;link&#34; href=&#34;https://zorin.com/os/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Zorin OS&lt;/a&gt;. They are both friendly to new users, with Windows-like interface, so you shouldn&amp;rsquo;t get confused when migrating.&lt;/li&gt;
+&lt;li&gt;If you want to have a perfect environment for developing, &lt;a class=&#34;link&#34; href=&#34;https://www.debian.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Debian&lt;/a&gt; is one of your consideration list. There are also many other distros, like &lt;a class=&#34;link&#34; href=&#34;https://manjaro.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Manjaro&lt;/a&gt;, &lt;a class=&#34;link&#34; href=&#34;https://www.opensuse.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;openSUSE&lt;/a&gt;, &lt;a class=&#34;link&#34; href=&#34;https://getsol.us/home/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Solus&lt;/a&gt;, &lt;a class=&#34;link&#34; href=&#34;https://getfedora.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Fedora&lt;/a&gt; &amp;hellip; You can install dev-branch of many distros for its specific development too.&lt;/li&gt;
+&lt;li&gt;If you want a light weight distro and do not need many unnecessary apps, &lt;a class=&#34;link&#34; href=&#34;https://www.linuxliteos.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Linux Lite&lt;/a&gt; or &lt;a class=&#34;link&#34; href=&#34;https://zorin.com/os/download/15/lite/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;ZorinOS Lite&lt;/a&gt; is the best choice.&lt;/li&gt;
+&lt;li&gt;If you are advanced user, the only distro I can reccommend is &lt;a class=&#34;link&#34; href=&#34;https://archlinux.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Arch&lt;/a&gt;.&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;look-and-feel&#34;&gt;Look and feel&lt;/h1&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;Desktop enviroment&lt;/strong&gt;&lt;/em&gt; is also an important part in the OS. I will list some of them here, by my actual experience:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;KDE Plasma 5&lt;/strong&gt;: My most favorite DE, which I am also contributing to.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Xfce&lt;/strong&gt;: it&amp;rsquo;s really simple and light-weight&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Cinnamon&lt;/strong&gt;: It&amp;rsquo;s good looking at first glance, and easy to tweak too&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;LXDE&lt;/strong&gt;: another light-weight DE for old machines&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;GNOME Shell&lt;/strong&gt;: The most popular one, and look like MacOS too&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Deepin&lt;/strong&gt;: the best-looking DE by some f*** chinese guys who don&amp;rsquo;t care about privacy&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Let&amp;rsquo;s note that you can choose your favorite DE in some distros, but some others don&amp;rsquo;t give you that option.&lt;/p&gt;
+&lt;p&gt;Here is my KDE Plama DE:
+&lt;figure 
+	
+		class=&#34;gallery-image&#34; 
+		style=&#34;
+			flex-grow: 177; 
+			flex-basis: 426px&#34;
+	&gt;
+	&lt;a href=&#34;https://masterpi-2124.github.io/p/how-i-setup-my-development-environment/plasma.png&#34; data-size=&#34;1921x1080&#34;&gt;
+		&lt;img src=&#34;https://masterpi-2124.github.io/p/how-i-setup-my-development-environment/plasma.png&#34;
+			width=&#34;1921&#34;
+			height=&#34;1080&#34;
+			srcset=&#34;https://masterpi-2124.github.io/p/how-i-setup-my-development-environment/plasma_hu1011aa3b8f66c7f996a2303d0abb827a_980206_480x0_resize_box_3.png 480w, https://masterpi-2124.github.io/p/how-i-setup-my-development-environment/plasma_hu1011aa3b8f66c7f996a2303d0abb827a_980206_1024x0_resize_box_3.png 1024w&#34;
+			loading=&#34;lazy&#34;
+			alt=&#34;My Desktop Environment&#34;&gt;
+	&lt;/a&gt;
+	
+	&lt;figcaption&gt;My Desktop Environment&lt;/figcaption&gt;
+	
+&lt;/figure&gt; &lt;figure 
+	
+		class=&#34;gallery-image&#34; 
+		style=&#34;
+			flex-grow: 177; 
+			flex-basis: 426px&#34;
+	&gt;
+	&lt;a href=&#34;https://masterpi-2124.github.io/p/how-i-setup-my-development-environment/konsole.png&#34; data-size=&#34;1921x1080&#34;&gt;
+		&lt;img src=&#34;https://masterpi-2124.github.io/p/how-i-setup-my-development-environment/konsole.png&#34;
+			width=&#34;1921&#34;
+			height=&#34;1080&#34;
+			srcset=&#34;https://masterpi-2124.github.io/p/how-i-setup-my-development-environment/konsole_hu41272c472aa9b49a58a71f46d9c89e62_1991984_480x0_resize_box_3.png 480w, https://masterpi-2124.github.io/p/how-i-setup-my-development-environment/konsole_hu41272c472aa9b49a58a71f46d9c89e62_1991984_1024x0_resize_box_3.png 1024w&#34;
+			loading=&#34;lazy&#34;
+			alt=&#34;Konsole&#34;&gt;
+	&lt;/a&gt;
+	
+	&lt;figcaption&gt;Konsole&lt;/figcaption&gt;
+	
+&lt;/figure&gt;&lt;/p&gt;
+&lt;h1 id=&#34;essential-packages&#34;&gt;Essential packages&lt;/h1&gt;
+&lt;p&gt;I use so many packages to support my projects, and it depends on your purposes too. But these following are the most importatnt tools that everyone needs.&lt;/p&gt;
+&lt;p&gt;Remember, you can install them via package managers like &lt;code&gt;apt&lt;/code&gt;, &lt;code&gt;pacman&lt;/code&gt;, &lt;code&gt;pkg&lt;/code&gt;, &amp;hellip; but many of them are not upgrade frequently and it may causes problems with your projects. If you need cutting-edge packages for your project, I suggest installing from source.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;git&lt;/code&gt;, and(or) &lt;code&gt;gh&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;docker&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;gcc&lt;/code&gt;, &lt;code&gt;g++&lt;/code&gt;, &lt;code&gt;make&lt;/code&gt;, &lt;code&gt;cmake&lt;/code&gt;, &lt;code&gt;autoconf&lt;/code&gt;, &lt;code&gt;automake&lt;/code&gt;, &lt;code&gt;build-essential&lt;/code&gt;, &lt;code&gt;gdb&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Popular languages: NodeJS, python3, ruby, perl, go, java, &amp;hellip;&lt;/li&gt;
+&lt;li&gt;Visual Studio Code, or your favorite text editor.&lt;/li&gt;
+&lt;li&gt;Some system tools: &lt;code&gt;gparted&lt;/code&gt;, &lt;code&gt;timeshift&lt;/code&gt;, &amp;hellip;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&#34;what-to-know&#34;&gt;What to know?&lt;/h1&gt;
+&lt;p&gt;Using linux means you should know a lot about it, but some errors may appear suddenly and you can&amp;rsquo;t just search Google for help. So basic understanding and skills are required to join the party.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;CLI - Commandline Interface&lt;/strong&gt;. You have to control everything almost by command in the terminal, so get used to that.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Users and groups&lt;/strong&gt;. Permission in Linux is really important, so knowing who you are is the fisrt lesson to survive through system errors.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Compile packages&lt;/strong&gt;. There are so many ways to build a package, and this is the most boring part when you have to deal with any errors that can happen anytime. You should be familiar with building from source, installing binary archives, or using package managers. The completion of your experience relies on the number of errors you meet.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Search Google&lt;/strong&gt;. This is your life rescuer, so learn how to use it effeciently.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;How linux works&lt;/strong&gt;. You should have basic knowledge about how a linux system works, the meaning of folders in root directory, how kernel interacts with hardwares and sofwares,&amp;hellip; This is useful when you face a system problem (and it&amp;rsquo;s frequent). &lt;strong&gt;Reseting the system&lt;/strong&gt; should be the last way of rescuing your system.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h1&gt;
+&lt;p&gt;Yes, it&amp;rsquo;s hard, and you may spend your whole life to buid a linux system. But it&amp;rsquo;s funny though.&lt;/p&gt;
+&lt;p&gt;Some final words, the above is based on my actual experience of 5-year using Linux, so it can contain something hard to understand. And you can personalize your liux distro to suit your need.&lt;/p&gt;
+&lt;p&gt;Thank you for reading!&lt;/p&gt;
+&lt;section class=&#34;footnotes&#34; role=&#34;doc-endnotes&#34;&gt;
+&lt;hr&gt;
+&lt;ol&gt;
+&lt;li id=&#34;fn:1&#34; role=&#34;doc-endnote&#34;&gt;
+&lt;p&gt;btw I use Arch.&amp;#160;&lt;a href=&#34;#fnref:1&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/section&gt;
+</description>
+        </item>
+        <item>
+        <title>Story Behind My TEDx Event</title>
         <link>https://masterpi-2124.github.io/p/story-behind-my-tedx-event/</link>
         <pubDate>Tue, 14 Sep 2021 21:39:04 +0700</pubDate>
         
         <guid>https://masterpi-2124.github.io/p/story-behind-my-tedx-event/</guid>
-        <description>&lt;img src="https://masterpi-2124.github.io/p/story-behind-my-tedx-event/cover.png" alt="Featured image of post Story behind my TEDx event" /&gt;&lt;p&gt;When I was in high school, I was inspired by TED videos and its idea to share people&amp;rsquo;s thinking with the world. I started watching a lot of its videos, and became a translator, to help bring TED&amp;rsquo;s videos to more people in the country. The deeper I dived in, the more I wanted to become a TEDx organizer, because it&amp;rsquo;s still not very popular in the community. Finally, when I came to university, I had a chance, but some people still block my way to reach the end.&lt;/p&gt;
+        <description>&lt;img src="https://masterpi-2124.github.io/p/story-behind-my-tedx-event/cover.png" alt="Featured image of post Story Behind My TEDx Event" /&gt;&lt;p&gt;When I was in high school, I was inspired by TED videos and its idea to share people&amp;rsquo;s thinking with the world. I started watching a lot of its videos, and became a translator, to help bring TED&amp;rsquo;s videos to more people in the country. The deeper I dived in, the more I wanted to become a TEDx organizer, because it&amp;rsquo;s still not very popular in the community. Finally, when I came to university, I had a chance, but some people still block my way to reach the end.&lt;/p&gt;
 &lt;p&gt;The story begins when I told my friends about my idea of a TEDx event inside the university. They really liked it, and even helped me start this project. We still are students, so a approval from teacher is required to organize an legal event in a university. At first, I thought that&amp;rsquo;s weird, but actually, it&amp;rsquo;s good because it can help prevent many meaningless events from going rampant. We brought this idea to some teachers, and they loved it too. They assured that, if we have an idea that help local students, just do it. Luckily, it&amp;rsquo;s also the purpose of this event, so to this point, we were 100% proud of the bright future of this event.&lt;/p&gt;
 &lt;p&gt;But things are always not as you expected.&lt;/p&gt;
 &lt;p&gt;In the last minutes, when we prepared our event proposal to the school administrators, they somehow denied and told me that:&lt;/p&gt;

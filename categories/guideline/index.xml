@@ -7,6 +7,17 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language><atom:link href="https://masterpi-2124.github.io/categories/guideline/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>How I Setup My Development Environment</title>
+      <link>https://masterpi-2124.github.io/p/how-i-setup-my-development-environment/</link>
+      <pubDate>Thu, 16 Sep 2021 21:54:03 +0700</pubDate>
+      
+      <guid>https://masterpi-2124.github.io/p/how-i-setup-my-development-environment/</guid>
+      <description>Hi, this is my quick guideline on how to improve linux development experience.
+Operating system When you search for &amp;ldquo;Linux OS&amp;rdquo;, Google would give you thousands of &amp;ldquo;operation systems&amp;rdquo; like Ubuntu, Arch, Mint, &amp;hellip; So which one is best for you?
+First, &amp;ldquo;Linux&amp;rdquo; as you say is not &amp;ldquo;operating system&amp;rdquo;. It is the kernel, the bridge between software and hardware, and reponsible for almost everything in the computer. When you boot your computer, it is the first part of the OS loaded into the RAM for your system to start working.</description>
+    </item>
+    
+    <item>
       <title>How to Make Your Trackpad Like Macbook</title>
       <link>https://masterpi-2124.github.io/p/how-to-make-your-trackpad-like-macbook/</link>
       <pubDate>Sat, 11 Sep 2021 00:00:00 +0000</pubDate>
