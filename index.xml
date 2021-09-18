@@ -6,7 +6,165 @@
         <description>Recent content on Master Pi</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Thu, 16 Sep 2021 21:54:03 +0700</lastBuildDate><atom:link href="https://masterpi-2124.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sat, 18 Sep 2021 16:36:56 +0700</lastBuildDate><atom:link href="https://masterpi-2124.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Getting Used To GitHub, Eps. 1</title>
+        <link>https://masterpi-2124.github.io/p/getting-used-to-github-eps-1/</link>
+        <pubDate>Sat, 18 Sep 2021 16:36:56 +0700</pubDate>
+        
+        <guid>https://masterpi-2124.github.io/p/getting-used-to-github-eps-1/</guid>
+        <description>&lt;img src="https://masterpi-2124.github.io/p/getting-used-to-github-eps-1/cover.jpg" alt="Featured image of post Getting Used To GitHub, Eps. 1" /&gt;&lt;p&gt;Hi, this is my first series about how to use git and github effectively. This would include some basic commands, tips and what to do in some specific situations. You also know how to deal with problems occur during the building setup, and a basic knowledge of GitHub Flow, what CI/CD is, &amp;hellip; This is the first post in series &amp;ldquo;Github 101&amp;rdquo;, and you can find other posts at &amp;ldquo;See also&amp;rdquo; section.&lt;/p&gt;
+&lt;p&gt;This series also contain many real-life situations, and the procedures for each situation. Of course it will never be enough, and it comes from my experience too, so my series could be not enough for you. I reccommend you to leave your comment or help me to complete this guideline for as many people as possible.&lt;/p&gt;
+&lt;h1 id=&#34;first-words&#34;&gt;First words&lt;/h1&gt;
+&lt;p&gt;You may don&amp;rsquo;t need to read this part, but I still write for who want to see what is &lt;code&gt;git&lt;/code&gt; and what it can do. So let&amp;rsquo;s go through some boring theoretical knowledge of it.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;Git&lt;/code&gt; is a tool to managing your code project. That&amp;rsquo;s the simplest meaning of &lt;code&gt;git&lt;/code&gt;. When you collaborate with your friends in projects, you can&amp;rsquo;t know what others do, and even you also don&amp;rsquo;t know if your code is working or not. So your team will need a &lt;em&gt;&lt;strong&gt;Version Control System&lt;/strong&gt;&lt;/em&gt; to control your code, versions of the project, and you can go back if there are any problems. &lt;code&gt;Git&lt;/code&gt; helps you get updated with your code, change version of project, see the difference between branchs or commits, merge or create a new branch to work separately,&amp;hellip; A lot of work could never be done without &lt;code&gt;git&lt;/code&gt;, so this means if you want to start you coding life, you must know how to use &lt;code&gt;git&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;Github&lt;/code&gt;, &lt;code&gt;Gitlab&lt;/code&gt;, &lt;code&gt;BitBucket&lt;/code&gt; are code collaboration and version control tools offering repository management. In this guide, we will focus on &lt;code&gt;Github&lt;/code&gt;, because it is quite popular (not really true), and quite suitable for starters. But I always reccommend you to try the other options, especially &lt;code&gt;Gitlab&lt;/code&gt;, and you can decide yourself later.&lt;/p&gt;
+&lt;h1 id=&#34;install-git&#34;&gt;Install git&lt;/h1&gt;
+&lt;p&gt;First, let&amp;rsquo;s start by having &lt;code&gt;git&lt;/code&gt; on our machine.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# If you are Mac user and have Homebrew installed&lt;/span&gt;
+brew install git
+
+&lt;span class=&#34;c1&#34;&gt;# If you use Linux, many distros have git installed for you. If not, try installing via package management. For example:&lt;/span&gt;
+sudo apt install git
+
+&lt;span class=&#34;c1&#34;&gt;# If you use Windows, follow instruction on https://git-scm.com/download/win&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;There are also GUI version of git, but I reccommend CLI, for two reasons:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;It looks cooler than GUI&lt;/li&gt;
+&lt;li&gt;Almost every git guideline is by commands, so CLI help you understand better.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;getting-started&#34;&gt;Getting started&lt;/h1&gt;
+&lt;p&gt;Once you got &lt;code&gt;git&lt;/code&gt; installed, let&amp;rsquo;s dive in.&lt;/p&gt;
+&lt;h2 id=&#34;configure&#34;&gt;Configure&lt;/h2&gt;
+&lt;p&gt;Check git version:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;git --version
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Configure &lt;code&gt;git&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;git config --global user.name &lt;span class=&#34;s2&#34;&gt;&amp;#34;Your name here&amp;#34;&lt;/span&gt;
+git config --global user.email &lt;span class=&#34;s2&#34;&gt;&amp;#34;Your mail here&amp;#34;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;These are basic configurations of git to make your life easier, and of course there are more. You can check other configurations with:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;git config -h
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;or check what you edited:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;git config -l
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;getting-and-creating-projects&#34;&gt;Getting and creating projects&lt;/h2&gt;
+&lt;p&gt;What&amp;rsquo;s git used for? Projects. I hope you guess right. Let&amp;rsquo;s see how we make a project or clone some.&lt;/p&gt;
+&lt;p&gt;You can make a project, and initialize with git:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;git init
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;It will generate a new folder, named &amp;ldquo;.git&amp;rdquo; inside your project. You can take a look to see more, but it&amp;rsquo;s not quite neccessary.&lt;/p&gt;
+&lt;p&gt;Want to work on a project from Github? Here&amp;rsquo;s how:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;git clone URL_TO_YOUR_PROJECT
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;It will create a folder and download all the content of the project into that folder.&lt;/p&gt;
+&lt;h2 id=&#34;basic-commands&#34;&gt;Basic commands&lt;/h2&gt;
+&lt;p&gt;So you got you project. Let&amp;rsquo;s make some changes in it. After you complete, you may need to snapshot it to a &amp;ldquo;&lt;em&gt;&lt;strong&gt;commit&lt;/strong&gt;&lt;/em&gt;&amp;rdquo;, like a version of the project, or a checkpoint (if you are a gamer), which will track any changes in there. From that, you can easily trace or go back if you code is not working.&lt;/p&gt;
+&lt;p&gt;In &lt;code&gt;git&lt;/code&gt;, you may see the term &amp;ldquo;&lt;em&gt;&lt;strong&gt;stage&lt;/strong&gt;&lt;/em&gt;&amp;rdquo;. Think it like actors about to perform on stage. They first have to stay in a room behind the stage to prepare, and &amp;ldquo;&lt;em&gt;&lt;strong&gt;stage&lt;/strong&gt;&lt;/em&gt;&amp;rdquo; in &lt;code&gt;git&lt;/code&gt; is like that too. When you working on changes, you first have to place your file into a place called &amp;ldquo;&lt;em&gt;&lt;strong&gt;stage&lt;/strong&gt;&lt;/em&gt;&amp;rdquo; before taking a snapshot.
+&lt;figure 
+	
+		class=&#34;gallery-image&#34; 
+		style=&#34;
+			flex-grow: 260; 
+			flex-basis: 624px&#34;
+	&gt;
+	&lt;a href=&#34;https://masterpi-2124.github.io/p/getting-used-to-github-eps-1/stage.png&#34; data-size=&#34;874x336&#34;&gt;
+		&lt;img src=&#34;https://masterpi-2124.github.io/p/getting-used-to-github-eps-1/stage.png&#34;
+			width=&#34;874&#34;
+			height=&#34;336&#34;
+			srcset=&#34;https://masterpi-2124.github.io/p/getting-used-to-github-eps-1/stage_hu0f39497d3fb2e6f1383f1e7252216c23_47551_480x0_resize_box_3.png 480w, https://masterpi-2124.github.io/p/getting-used-to-github-eps-1/stage_hu0f39497d3fb2e6f1383f1e7252216c23_47551_1024x0_resize_box_3.png 1024w&#34;
+			loading=&#34;lazy&#34;
+			alt=&#34;A visual explaination of stage&#34;&gt;
+	&lt;/a&gt;
+	
+	&lt;figcaption&gt;A visual explaination of stage&lt;/figcaption&gt;
+	
+&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;To commit changes, run this:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# Add all changed file to &amp;#34;stage&amp;#34;&lt;/span&gt;
+git add .
+
+&lt;span class=&#34;c1&#34;&gt;# Create a commit with a message&lt;/span&gt;
+git commit -m &lt;span class=&#34;s2&#34;&gt;&amp;#34;Your message&amp;#34;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;You may see the file named &amp;ldquo;.gitingnore&amp;rdquo; in your project. This file will contain folders and files you don&amp;rsquo;t want to track (add to stage), so when you run &lt;code&gt;git add .&lt;/code&gt;, it will add all changed file which are not in the file, to stage. Here is an example of this file:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# Binaries for programs and plugins&lt;/span&gt;
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+&lt;span class=&#34;c1&#34;&gt;# Test binary, built with `go test -c`&lt;/span&gt;
+*.test
+
+&lt;span class=&#34;c1&#34;&gt;# Output of the go coverage tool, specifically when used with LiteIDE&lt;/span&gt;
+*.out
+
+&lt;span class=&#34;c1&#34;&gt;# Dependency directories (remove the comment below to include it)&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# vendor/&lt;/span&gt;
+public/
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;So when you run &lt;code&gt;git add .&lt;/code&gt;, it will ignore files with extension &lt;code&gt;.exe&lt;/code&gt;, &lt;code&gt;.exe~&lt;/code&gt;, &amp;hellip;, or &lt;code&gt;public&lt;/code&gt; folder.&lt;/p&gt;
+&lt;p&gt;A more tip about how to write a &amp;ldquo;readable&amp;rdquo; message: Always show what you have changed, or problem you fix, and it could help you very much when you want to go back. An example:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;Add README file, fix issue #1, fix rendering error&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;not&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;Hey other coders, guess what I changed?&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;You can also see history of commits in the current branch by:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;git log
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Don&amp;rsquo;t worry, we will discuss about &lt;em&gt;&lt;strong&gt;branch&lt;/strong&gt;&lt;/em&gt; later.
+&lt;figure 
+	
+		class=&#34;gallery-image&#34; 
+		style=&#34;
+			flex-grow: 352; 
+			flex-basis: 847px&#34;
+	&gt;
+	&lt;a href=&#34;https://masterpi-2124.github.io/p/getting-used-to-github-eps-1/commit.png&#34; data-size=&#34;713x202&#34;&gt;
+		&lt;img src=&#34;https://masterpi-2124.github.io/p/getting-used-to-github-eps-1/commit.png&#34;
+			width=&#34;713&#34;
+			height=&#34;202&#34;
+			srcset=&#34;https://masterpi-2124.github.io/p/getting-used-to-github-eps-1/commit_hu238f5401f179a5b8f81496f6e37f1ae2_48341_480x0_resize_box_3.png 480w, https://masterpi-2124.github.io/p/getting-used-to-github-eps-1/commit_hu238f5401f179a5b8f81496f6e37f1ae2_48341_1024x0_resize_box_3.png 1024w&#34;
+			loading=&#34;lazy&#34;
+			alt=&#34;Example output of git log&#34;&gt;
+	&lt;/a&gt;
+	
+	&lt;figcaption&gt;Example output of git log&lt;/figcaption&gt;
+	
+&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;You may see &amp;ldquo;&lt;code&gt;HEAD&lt;/code&gt;&amp;rdquo;. It is like a pointer. For example, you are currently at commit &amp;ldquo;Commit 1&amp;rdquo;, so &lt;code&gt;HEAD&lt;/code&gt; will point to this commit.
+&lt;figure 
+	
+		class=&#34;gallery-image&#34; 
+		style=&#34;
+			flex-grow: 174; 
+			flex-basis: 419px&#34;
+	&gt;
+	&lt;a href=&#34;https://masterpi-2124.github.io/p/getting-used-to-github-eps-1/HEAD.png&#34; data-size=&#34;800x458&#34;&gt;
+		&lt;img src=&#34;https://masterpi-2124.github.io/p/getting-used-to-github-eps-1/HEAD.png&#34;
+			width=&#34;800&#34;
+			height=&#34;458&#34;
+			srcset=&#34;https://masterpi-2124.github.io/p/getting-used-to-github-eps-1/HEAD_huad7c5e68185a1dd21b96d1328a7c97dd_4341_480x0_resize_box_3.png 480w, https://masterpi-2124.github.io/p/getting-used-to-github-eps-1/HEAD_huad7c5e68185a1dd21b96d1328a7c97dd_4341_1024x0_resize_box_3.png 1024w&#34;
+			loading=&#34;lazy&#34;
+			alt=&#34;HEAD - like a pointer&#34;&gt;
+	&lt;/a&gt;
+	
+	&lt;figcaption&gt;HEAD - like a pointer&lt;/figcaption&gt;
+	
+&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;You can see details of a commit, by running this:&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;git show COMMIT_ADDRESS
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;While &lt;code&gt;COMMIT_ADDRESS&lt;/code&gt; is the string of characters right after &amp;ldquo;commit&amp;rdquo;, or you just use &lt;code&gt;HEAD&lt;/code&gt; for current commit.&lt;/p&gt;
+&lt;h1 id=&#34;final-words&#34;&gt;Final words&lt;/h1&gt;
+&lt;p&gt;So above is &amp;ldquo;&lt;strong&gt;Getting used to Github&lt;/strong&gt;&amp;rdquo;, eps. 1. I really want to show more, but a rule in my blog that every post should not exceed 20 minutes read, and I am revising for exam too, I have to spend other usefull commands on next post. You can subscribe to read other articles in the future.&lt;/p&gt;
+&lt;p&gt;There are some images in the post, some are mine, some are from the Internet, and it&amp;rsquo;s free to use as in the LICENSE below. But I always leave credit here to support authors, and so do you if you want to use content in my article.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Visualisation of stage: &lt;a class=&#34;link&#34; href=&#34;https://rogerdudler.github.io/git-guide/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://rogerdudler.github.io/git-guide/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;HEAD - like a pointer: &lt;a class=&#34;link&#34; href=&#34;https://community.atlassian.com/t5/Git-questions/git-checkout-lt-commit-gt-doesn-t-update-commit-history/qaq-p/1100953&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://community.atlassian.com/t5/Git-questions/git-checkout-lt-commit-gt-doesn-t-update-commit-history/qaq-p/1100953&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Cover image: &lt;a class=&#34;link&#34; href=&#34;https://singleboardbytes.com/649/use-github-raspberry-pi.htm&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://singleboardbytes.com/649/use-github-raspberry-pi.htm&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        <item>
         <title>How I Setup My Development Environment</title>
         <link>https://masterpi-2124.github.io/p/how-i-setup-my-development-environment/</link>
         <pubDate>Thu, 16 Sep 2021 21:54:03 +0700</pubDate>
