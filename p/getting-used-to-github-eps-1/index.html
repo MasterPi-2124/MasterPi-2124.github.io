@@ -2,17 +2,17 @@
 <html lang="en-us">
     <head><meta charset='utf-8'>
 
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Hi, this is my first series about how to use git and github effectively. This would include some basic commands, tips and what to do in some specific situations. You also know how to deal with problems occur during the building setup, and a basic knowledge of GitHub Flow, what CI/CD is, &amp;hellip; This is the first post in series &amp;ldquo;Github 101&amp;rdquo;, and you can find other posts at &amp;ldquo;See also&amp;rdquo; section.'><title>Getting Used To GitHub, Eps. 1</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Getting started'><title>Getting Used to GitHub, Eps. 1</title>
 
 <link rel='canonical' href='https://masterpi-2124.github.io/p/getting-used-to-github-eps-1/'>
 
-<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='Getting Used To GitHub, Eps. 1'>
-<meta property='og:description' content='Hi, this is my first series about how to use git and github effectively. This would include some basic commands, tips and what to do in some specific situations. You also know how to deal with problems occur during the building setup, and a basic knowledge of GitHub Flow, what CI/CD is, &amp;hellip; This is the first post in series &amp;ldquo;Github 101&amp;rdquo;, and you can find other posts at &amp;ldquo;See also&amp;rdquo; section.'>
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='Getting Used to GitHub, Eps. 1'>
+<meta property='og:description' content='Getting started'>
 <meta property='og:url' content='https://masterpi-2124.github.io/p/getting-used-to-github-eps-1/'>
 <meta property='og:site_name' content='Master Pi'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='git' /><meta property='article:tag' content='github 101' /><meta property='article:published_time' content='2021-09-18T16:36:56&#43;07:00'/><meta property='article:modified_time' content='2021-09-18T16:36:56&#43;07:00'/><meta property='og:image' content='https://masterpi-2124.github.io/p/getting-used-to-github-eps-1/cover.jpg' />
-<meta name="twitter:title" content="Getting Used To GitHub, Eps. 1">
-<meta name="twitter:description" content="Hi, this is my first series about how to use git and github effectively. This would include some basic commands, tips and what to do in some specific situations. You also know how to deal with problems occur during the building setup, and a basic knowledge of GitHub Flow, what CI/CD is, &amp;hellip; This is the first post in series &amp;ldquo;Github 101&amp;rdquo;, and you can find other posts at &amp;ldquo;See also&amp;rdquo; section."><meta name="twitter:card" content="summary_large_image">
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='git' /><meta property='article:tag' content='github 101' /><meta property='article:tag' content='commit' /><meta property='article:published_time' content='2021-09-18T16:36:56&#43;07:00'/><meta property='article:modified_time' content='2021-09-18T19:22:21&#43;07:00'/><meta property='og:image' content='https://masterpi-2124.github.io/p/getting-used-to-github-eps-1/cover.jpg' />
+<meta name="twitter:title" content="Getting Used to GitHub, Eps. 1">
+<meta name="twitter:description" content="Getting started"><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='https://masterpi-2124.github.io/p/getting-used-to-github-eps-1/cover.jpg' />
     <link rel="shortcut icon" href="/img/logo.jpg" />
 
@@ -71,7 +71,7 @@
                         width="800" 
                         height="450" 
                         loading="lazy"
-                        alt="Featured image of post Getting Used To GitHub, Eps. 1" />
+                        alt="Featured image of post Getting Used to GitHub, Eps. 1" />
                 
             </a>
         </div>
@@ -89,13 +89,21 @@
                 github 101
             </a>
         
+            <a href="/tags/commit/" >
+                commit
+            </a>
+        
     </header>
     
 
     <h2 class="article-title">
-        <a href="/p/getting-used-to-github-eps-1/">Getting Used To GitHub, Eps. 1</a>
+        <a href="/p/getting-used-to-github-eps-1/">Getting Used to GitHub, Eps. 1</a>
     </h2>
 
+    
+    <h3 class="article-subtitle">
+        Getting started
+    </h3>
     
 
     
@@ -143,18 +151,23 @@
 <p><code>Git</code> is a tool to managing your code project. That&rsquo;s the simplest meaning of <code>git</code>. When you collaborate with your friends in projects, you can&rsquo;t know what others do, and even you also don&rsquo;t know if your code is working or not. So your team will need a <em><strong>Version Control System</strong></em> to control your code, versions of the project, and you can go back if there are any problems. <code>Git</code> helps you get updated with your code, change version of project, see the difference between branchs or commits, merge or create a new branch to work separately,&hellip; A lot of work could never be done without <code>git</code>, so this means if you want to start you coding life, you must know how to use <code>git</code>.</p>
 <p><code>Github</code>, <code>Gitlab</code>, <code>BitBucket</code> are code collaboration and version control tools offering repository management. In this guide, we will focus on <code>Github</code>, because it is quite popular (not really true), and quite suitable for starters. But I always reccommend you to try the other options, especially <code>Gitlab</code>, and you can decide yourself later.</p>
 <h1 id="install-git">Install git</h1>
-<p>First, let&rsquo;s start by having <code>git</code> on our machine.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># If you are Mac user and have Homebrew installed</span>
-brew install git
-
-<span class="c1"># If you use Linux, many distros have git installed for you. If not, try installing via package management. For example:</span>
-sudo apt install git
-
-<span class="c1"># If you use Windows, follow instruction on https://git-scm.com/download/win</span>
-</code></pre></div><p>There are also GUI version of git, but I reccommend CLI, for two reasons:</p>
+<p>First, let&rsquo;s start by getting <code>git</code> on our machine.</p>
+<ul>
+<li>If you are Mac user and have Homebrew installed</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">brew install git
+</code></pre></div><ul>
+<li>If you use Linux, many distros have git installed for you. If not, try installing via package management. For example:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">sudo apt install git
+</code></pre></div><ul>
+<li>If you use Windows, follow instruction on <a class="link" href="https://git-scm.com/download/win"  target="_blank" rel="noopener"
+    >https://git-scm.com/download/win</a>.</li>
+</ul>
+<p>There are also GUI version of git, but I reccommend CLI, for two reasons:</p>
 <ul>
 <li>It looks cooler than GUI</li>
-<li>Almost every git guideline is by commands, so CLI help you understand better.</li>
+<li>Almost every git guideline is by commands, so CLI help you understand git better.</li>
 </ul>
 <h1 id="getting-started">Getting started</h1>
 <p>Once you got <code>git</code> installed, let&rsquo;s dive in.</p>
@@ -176,7 +189,7 @@ git config --global user.email <span class="s2">&#34;Your mail here&#34;</span>
 <p>Want to work on a project from Github? Here&rsquo;s how:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">git clone URL_TO_YOUR_PROJECT
 </code></pre></div><p>It will create a folder and download all the content of the project into that folder.</p>
-<h2 id="basic-commands">Basic commands</h2>
+<h2 id="commit">Commit</h2>
 <p>So you got you project. Let&rsquo;s make some changes in it. After you complete, you may need to snapshot it to a &ldquo;<em><strong>commit</strong></em>&rdquo;, like a version of the project, or a checkpoint (if you are a gamer), which will track any changes in there. From that, you can easily trace or go back if you code is not working.</p>
 <p>In <code>git</code>, you may see the term &ldquo;<em><strong>stage</strong></em>&rdquo;. Think it like actors about to perform on stage. They first have to stay in a room behind the stage to prepare, and &ldquo;<em><strong>stage</strong></em>&rdquo; in <code>git</code> is like that too. When you working on changes, you first have to place your file into a place called &ldquo;<em><strong>stage</strong></em>&rdquo; before taking a snapshot.
 <figure 
@@ -204,7 +217,7 @@ git add .
 
 <span class="c1"># Create a commit with a message</span>
 git commit -m <span class="s2">&#34;Your message&#34;</span>
-</code></pre></div><p>You may see the file named &ldquo;.gitingnore&rdquo; in your project. This file will contain folders and files you don&rsquo;t want to track (add to stage), so when you run <code>git add .</code>, it will add all changed file which are not in the file, to stage. Here is an example of this file:</p>
+</code></pre></div><p>You may see the file named <em>.gitingnore</em> in your project. This file will contain folders and files you don&rsquo;t want to track (add to stage), so when you run <code>git add .</code>, it will add all changed file which are not in the file, to stage. Here is an example of this file:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># Binaries for programs and plugins</span>
 *.exe
 *.exe~
@@ -252,7 +265,7 @@ public/
 	<figcaption>Example output of git log</figcaption>
 	
 </figure></p>
-<p>You may see &ldquo;<code>HEAD</code>&rdquo;. It is like a pointer. For example, you are currently at commit &ldquo;Commit 1&rdquo;, so <code>HEAD</code> will point to this commit.
+<p>You may see <code>HEAD</code>. It is like a pointer. For example, you are currently at commit &ldquo;Commit 1&rdquo;, so <code>HEAD</code> will point to this commit.
 <figure 
 	
 		class="gallery-image" 
@@ -304,7 +317,19 @@ public/
 
         <span>LICENSED UNDER CC BY-NC-SA 4.0</span>
     </section>
-    <section class="article-author">
+    <section class="article-lastmod">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+        <span>
+            Last updated on Sep 18, 2021 19:22 GMT&#43;7
+        </span>
+    </section><section class="article-author">
         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
   <circle cx="12" cy="7" r="4" />
@@ -325,52 +350,95 @@ public/
     <aside class="related-contents--wrapper">
     
     
+        <h2 class="section-title">Related contents</h2>
+        <div class="related-contents">
+            <div class="flex article-list--tile">
+                
+                    
+<article class="has-image">
+    <a href="/p/getting-used-to-github-eps-2/">
+        
+        
+            <div class="article-image">
+                <img src="/p/getting-used-to-github-eps-2/cover.47a38a0d8f037a87ccf490af0f618be7_hu556c4ec09a3780b9f6b4506e3d45f0ae_562273_250x150_fill_box_smart1_3.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy" 
+                        data-key="getting-used-to-github-eps-2" 
+                        data-hash="md5-R6OKDY8DeofM9JCvD2GL5w==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Getting Used to GitHub, Eps. 2</h2>
+        </div>
+    </a>
+</article>
+                
+            </div>
+        </div>
+    
 </aside>
 
      
      
         
-    <div class="disqus-container">
-    <div id="disqus_thread"></div>
-<script type="application/javascript">
-    var disqus_config = function () {
-    
-    
-    
-    };
-    (function() {
-        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
-            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
-            return;
+    <div id="giscus" class="giscus-container">
+    <style>
+        .giscus-container {
+            background-color: var(--card-background);
+            border-radius: var(--card-border-radius);
+            box-shadow: var(--shadow-l1);
+            padding: var(--card-padding);
         }
-        var d = document, s = d.createElement('script'); s.async = true;
-        s.src = '//' + "masterpi007" + '.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-</div>
+    </style><script
+        src="https://giscus.app/client.js"
+        data-repo="MasterPi-2124/MasterPi-2124.github.io"
+        data-repo-id="MDEwOlJlcG9zaXRvcnk0MDQwNDgxMjM="
+        data-category="General"
+        data-category-id="DIC_kwDOGBVI-84B_HDA"
+        data-mapping="title"
+        data-reactions-enabled="1"
+        data-emit-metadata="1"
+        data-theme="light"
+        crossorigin="anonymous"
+        async
+    ></script>
 
-<style>
-    .disqus-container {
-        background-color: var(--card-background);
-        border-radius: var(--card-border-radius);
-        box-shadow: var(--shadow-l1);
-        padding: var(--card-padding);
-    }
-</style>
+    <script>
+        function setGiscusTheme(theme) {
+            let giscus = document.querySelector('iframe.giscus-frame');
+            if (giscus) {
+                giscus.contentWindow.postMessage(
+                    { 
+                        giscus: {
+                            setConfig: { 
+                                theme: theme 
+                            }
+                        }
+                    },
+                    "https://giscus.app"
+                );
+            };
+        };
 
-<script>
-    window.addEventListener('onColorSchemeChange', (e) => {
-        if (DISQUS) {
-            DISQUS.reset({
-                reload: true
+        (function(){
+            addEventListener('message', (e) => {
+                if (event.origin !== 'https://giscus.app') return;
+                handler()
             });
-        }
-    })
-</script>
+            window.addEventListener('onColorSchemeChange', handler);
+
+            function handler() {
+                if (document.documentElement.dataset.scheme === "light") {
+                    setGiscusTheme('light');
+                } else {
+                    setGiscusTheme('dark_dimmed');
+                };
+            };
+        }());
+    </script></div>
 
     
 
@@ -493,7 +561,7 @@ public/
       <ol>
         <li><a href="#configure">Configure</a></li>
         <li><a href="#getting-and-creating-projects">Getting and creating projects</a></li>
-        <li><a href="#basic-commands">Basic commands</a></li>
+        <li><a href="#commit">Commit</a></li>
       </ol>
     </li>
     <li><a href="#final-words">Final words</a></li>
@@ -523,7 +591,7 @@ public/
       
       
       <li>
-        <a href="https://twitter.com/intent/tweet?hashtags=codingnconcepts&amp;url=https%3a%2f%2fmasterpi-2124.github.io%2fp%2fgetting-used-to-github-eps-1%2f&amp;text=Getting%20Used%20To%20GitHub%2c%20Eps.%201" target="_blank" rel="noopener" title="Tweet me!" class="share-btn twitter">
+        <a href="https://twitter.com/intent/tweet?hashtags=codingnconcepts&amp;url=https%3a%2f%2fmasterpi-2124.github.io%2fp%2fgetting-used-to-github-eps-1%2f&amp;text=Getting%20Used%20to%20GitHub%2c%20Eps.%201" target="_blank" rel="noopener" title="Tweet me!" class="share-btn twitter">
           <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
    <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z"></path>
@@ -549,7 +617,7 @@ public/
       
       
       <li>
-        <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fmasterpi-2124.github.io%2fp%2fgetting-used-to-github-eps-1%2f&amp;source=https%3a%2f%2fmasterpi-2124.github.io%2fp%2fgetting-used-to-github-eps-1%2f&amp;title=Getting%20Used%20To%20GitHub%2c%20Eps.%201&amp;summary=Getting%20Used%20To%20GitHub%2c%20Eps.%201" target="_blank" rel="noopener" title="Share me on LinkedIn!" class="share-btn linkedin">
+        <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fmasterpi-2124.github.io%2fp%2fgetting-used-to-github-eps-1%2f&amp;source=https%3a%2f%2fmasterpi-2124.github.io%2fp%2fgetting-used-to-github-eps-1%2f&amp;title=Getting%20Used%20to%20GitHub%2c%20Eps.%201&amp;summary=Getting%20Used%20to%20GitHub%2c%20Eps.%201" target="_blank" rel="noopener" title="Share me on LinkedIn!" class="share-btn linkedin">
           <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-linkedin" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
    <rect x="4" y="4" width="16" height="16" rx="2"></rect>
@@ -566,7 +634,7 @@ public/
       
       
       <li>
-        <a href="mailto:?subject=Master%20Pi - Getting%20Used%20To%20GitHub%2c%20Eps.%201.&amp;body=Getting%20Used%20To%20GitHub%2c%20Eps.%201%2c%20by%20Master%20Pi%0a%0a%0ahttps%3a%2f%2fmasterpi-2124.github.io%2fp%2fgetting-used-to-github-eps-1%2f%0a" target="_blank" title="Send me via email!" class="share-btn email">
+        <a href="mailto:?subject=Master%20Pi - Getting%20Used%20to%20GitHub%2c%20Eps.%201.&amp;body=Getting%20Used%20to%20GitHub%2c%20Eps.%201%2c%20by%20Master%20Pi%0aGetting%20started%0a%0ahttps%3a%2f%2fmasterpi-2124.github.io%2fp%2fgetting-used-to-github-eps-1%2f%0a" target="_blank" title="Send me via email!" class="share-btn email">
           <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-mail" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
    <rect x="3" y="5" width="18" height="14" rx="2"></rect>

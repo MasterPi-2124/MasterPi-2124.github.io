@@ -6,31 +6,267 @@
         <description>Recent content on Master Pi</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Sat, 18 Sep 2021 16:36:56 +0700</lastBuildDate><atom:link href="https://masterpi-2124.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>Getting Used To GitHub, Eps. 1</title>
+        <lastBuildDate>Sun, 19 Sep 2021 14:11:37 +0700</lastBuildDate><atom:link href="https://masterpi-2124.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Getting Used to GitHub, Eps. 2</title>
+        <link>https://masterpi-2124.github.io/p/getting-used-to-github-eps-2/</link>
+        <pubDate>Sun, 19 Sep 2021 14:11:37 +0700</pubDate>
+        
+        <guid>https://masterpi-2124.github.io/p/getting-used-to-github-eps-2/</guid>
+        <description>&lt;img src="https://masterpi-2124.github.io/p/getting-used-to-github-eps-2/cover.png" alt="Featured image of post Getting Used to GitHub, Eps. 2" /&gt;&lt;p&gt;Hello, in this episode we will discuss branches in git, and how to push, pull or merge. We also talk about the remote repository and local repository, and how to connect them. There are a lot of things to discuss but I will focus on the background, and the remain can be learned by exercising.&lt;/p&gt;
+&lt;h1 id=&#34;remote-repository&#34;&gt;Remote repository&lt;/h1&gt;
+&lt;p&gt;When you clone a repository from the Internet, you may notice that it will copy &lt;em&gt;&lt;strong&gt;all the content&lt;/strong&gt;&lt;/em&gt; of the project, even every versions, branches, &amp;hellip; In other word, you are simply &lt;em&gt;&lt;strong&gt;link&lt;/strong&gt;&lt;/em&gt; the remote project to your local repository. You can check the remote repository with:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;git remote -v
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The result may be similar to this:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;origin  https://github.com/MasterPi-2124/MasterPi-2124.github.io.git &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;fetch&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+origin  https://github.com/MasterPi-2124/MasterPi-2124.github.io.git &lt;span class=&#34;o&#34;&gt;(&lt;/span&gt;push&lt;span class=&#34;o&#34;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;code&gt;origin&lt;/code&gt; is the shortname of the remote repository that your project was originally cloned from. It is the replacement for the repository&amp;rsquo;s URL, and can be helpful when you push or pull from this remote one. You can change this too, but it&amp;rsquo;s better to leave it unchanged (because people leave that too).&lt;/p&gt;
+&lt;p&gt;So if you have a local repository and want to connect to a remote repository, simply do this:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;git remote add origin URL_TO_YOUR_PROJECT
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Be careful before connecting. Run &lt;code&gt;git commit&lt;/code&gt; if there are unsaved changes.&lt;/p&gt;
+&lt;h1 id=&#34;branch&#34;&gt;Branch&lt;/h1&gt;
+&lt;p&gt;Let&amp;rsquo;s say, you have a project about an application. There are so many versions of it, and you are working on a specific version, &lt;code&gt;v1.0.6&lt;/code&gt;. The stable version of the application is &lt;code&gt;v1.0.0&lt;/code&gt;, so you should not fuck up with this because any errors in your code may ruin the project. In this case, you will have to create a new branch, named &lt;code&gt;v1.0.6&lt;/code&gt; or something, so your change is on this branch, not the stable branch &lt;code&gt;v1.0.0&lt;/code&gt;. Here is an illustration of &lt;strong&gt;branches&lt;/strong&gt; in git:
+&lt;figure 
+	&gt;
+	&lt;a href=&#34;https://masterpi-2124.github.io/p/getting-used-to-github-eps-2/branches.svg&#34; &gt;
+		&lt;img src=&#34;https://masterpi-2124.github.io/p/getting-used-to-github-eps-2/branches.svg&#34;
+			
+			
+			
+			loading=&#34;lazy&#34;
+			alt=&#34;Branches&#34;&gt;
+	&lt;/a&gt;
+	
+	&lt;figcaption&gt;Branches&lt;/figcaption&gt;
+	
+&lt;/figure&gt;
+From the image, you can see that branch is a version of the project, which is isolated from the others and does not affect other versions of the project. You can work in branches, commit changes, push, and merge branches, which will be discussed in this episode.&lt;/p&gt;
+&lt;p&gt;You can check all branches in your local repository:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;git branch
+&lt;span class=&#34;c1&#34;&gt;# Similar to git branch -l&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Want to see all remote branches too?&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;git branch -r
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;You can use &lt;code&gt;-a&lt;/code&gt; flag to see all local and remote branches.&lt;/p&gt;
+&lt;p&gt;You can create a new branch too, but not check out to it yet:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;git branch BRANCH_NAME
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;If you want to create a branch and check out:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;git checkout -b BRANCH_NAME
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Remember that the branches you created above are not shown on the remote repository, they are just at the local and can be checked with &lt;code&gt;git branch -a&lt;/code&gt;. If you want to create a branch in a remote repository, jump to &amp;ldquo;&lt;a class=&#34;link&#34; href=&#34;#push&#34; &gt;Push&lt;/a&gt;&amp;rdquo; section.&lt;/p&gt;
+&lt;p&gt;Want to delete the branch you are working on?&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;git branch -d BRANCH_NAME
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;This will &lt;em&gt;safely&lt;/em&gt; delete the specific branch, it stops if this branch has unmerged changes. You can overwrite this by using &lt;code&gt;-D&lt;/code&gt; flag, it will delete everything in this branch.&lt;/p&gt;
+&lt;p&gt;You can jump to different branches too:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;git checkout BRANCH_NAME
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Make sure &lt;code&gt;BRANCH_NAME&lt;/code&gt; exists.&lt;/p&gt;
+&lt;p&gt;Let&amp;rsquo;s go to a specific example. You are here, &lt;code&gt;main&lt;/code&gt; branch&amp;quot;
+&lt;figure 
+	
+		class=&#34;gallery-image&#34; 
+		style=&#34;
+			flex-grow: 234; 
+			flex-basis: 562px&#34;
+	&gt;
+	&lt;a href=&#34;https://masterpi-2124.github.io/p/getting-used-to-github-eps-2/ahihi.jpg&#34; data-size=&#34;890x380&#34;&gt;
+		&lt;img src=&#34;https://masterpi-2124.github.io/p/getting-used-to-github-eps-2/ahihi.jpg&#34;
+			width=&#34;890&#34;
+			height=&#34;380&#34;
+			srcset=&#34;https://masterpi-2124.github.io/p/getting-used-to-github-eps-2/ahihi_hu824ff75bdace2ba661bbd61165973b9c_22244_480x0_resize_q75_box.jpg 480w, https://masterpi-2124.github.io/p/getting-used-to-github-eps-2/ahihi_hu824ff75bdace2ba661bbd61165973b9c_22244_1024x0_resize_q75_box.jpg 1024w&#34;
+			loading=&#34;lazy&#34;
+			alt=&#34;You are at &amp;ldquo;main&amp;rdquo;&#34;&gt;
+	&lt;/a&gt;
+	
+	&lt;figcaption&gt;You are at “main”&lt;/figcaption&gt;
+	
+&lt;/figure&gt;
+Then, create and check out to a local branch named &amp;ldquo;ahihi&amp;rdquo;:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;git checkout -b ahihi
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;figure 
+	
+		class=&#34;gallery-image&#34; 
+		style=&#34;
+			flex-grow: 210; 
+			flex-basis: 506px&#34;
+	&gt;
+	&lt;a href=&#34;https://masterpi-2124.github.io/p/getting-used-to-github-eps-2/main.jpg&#34; data-size=&#34;890x422&#34;&gt;
+		&lt;img src=&#34;https://masterpi-2124.github.io/p/getting-used-to-github-eps-2/main.jpg&#34;
+			width=&#34;890&#34;
+			height=&#34;422&#34;
+			srcset=&#34;https://masterpi-2124.github.io/p/getting-used-to-github-eps-2/main_hu4d49d0c5becc6ccc13af81a3972b3267_27319_480x0_resize_q75_box.jpg 480w, https://masterpi-2124.github.io/p/getting-used-to-github-eps-2/main_hu4d49d0c5becc6ccc13af81a3972b3267_27319_1024x0_resize_q75_box.jpg 1024w&#34;
+			loading=&#34;lazy&#34;
+			alt=&#34;You are now at &amp;ldquo;ahihi&amp;rdquo;&#34;&gt;
+	&lt;/a&gt;
+	
+	&lt;figcaption&gt;You are now at “ahihi”&lt;/figcaption&gt;
+	
+&lt;/figure&gt;
+Remember, &lt;code&gt;HEAD&lt;/code&gt; is now at &lt;code&gt;ahihi&lt;/code&gt;, not &lt;code&gt;main&lt;/code&gt; anymore.
+&lt;figure 
+	
+		class=&#34;gallery-image&#34; 
+		style=&#34;
+			flex-grow: 197; 
+			flex-basis: 473px&#34;
+	&gt;
+	&lt;a href=&#34;https://masterpi-2124.github.io/p/getting-used-to-github-eps-2/commit.jpg&#34; data-size=&#34;1080x547&#34;&gt;
+		&lt;img src=&#34;https://masterpi-2124.github.io/p/getting-used-to-github-eps-2/commit.jpg&#34;
+			width=&#34;1080&#34;
+			height=&#34;547&#34;
+			srcset=&#34;https://masterpi-2124.github.io/p/getting-used-to-github-eps-2/commit_hu14706a334267d74149546e96407c7e04_36162_480x0_resize_q75_box.jpg 480w, https://masterpi-2124.github.io/p/getting-used-to-github-eps-2/commit_hu14706a334267d74149546e96407c7e04_36162_1024x0_resize_q75_box.jpg 1024w&#34;
+			loading=&#34;lazy&#34;
+			alt=&#34;HEAD is now at &amp;ldquo;ahihi&amp;rdquo;&#34;&gt;
+	&lt;/a&gt;
+	
+	&lt;figcaption&gt;HEAD is now at “ahihi”&lt;/figcaption&gt;
+	
+&lt;/figure&gt;
+&lt;code&gt;ahihi&lt;/code&gt; is now ahead of &lt;code&gt;main&lt;/code&gt; with unmerged changes, so you just can&amp;rsquo;t delete &lt;code&gt;ahihi&lt;/code&gt; safely. You have to use &lt;code&gt;-D&lt;/code&gt; to completely remove this branch:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;git branch -D ahihi
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id=&#34;push&#34;&gt;Push&lt;/h1&gt;
+&lt;p&gt;When you are in a local branch and want to push to the remote repository, you have to commit your change and make sure that &lt;em&gt;&lt;strong&gt;your local repository is synced with the remote&lt;/strong&gt;&lt;/em&gt;.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;git push origin BRANCH_NAME
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;This will push to the specific branch in the remote repository. If the branch is not on the remote, this branch will be created. So check carefully before pushing. Here is an illustration of push:
+&lt;figure 
+	
+		class=&#34;gallery-image&#34; 
+		style=&#34;
+			flex-grow: 150; 
+			flex-basis: 360px&#34;
+	&gt;
+	&lt;a href=&#34;https://masterpi-2124.github.io/p/getting-used-to-github-eps-2/before_push.png&#34; data-size=&#34;420x280&#34;&gt;
+		&lt;img src=&#34;https://masterpi-2124.github.io/p/getting-used-to-github-eps-2/before_push.png&#34;
+			width=&#34;420&#34;
+			height=&#34;280&#34;
+			srcset=&#34;https://masterpi-2124.github.io/p/getting-used-to-github-eps-2/before_push_hua7db8a64f967fd74f478a0d48192f6b2_12009_480x0_resize_box_3.png 480w, https://masterpi-2124.github.io/p/getting-used-to-github-eps-2/before_push_hua7db8a64f967fd74f478a0d48192f6b2_12009_1024x0_resize_box_3.png 1024w&#34;
+			loading=&#34;lazy&#34;
+			alt=&#34;Before push&#34;&gt;
+	&lt;/a&gt;
+	
+	&lt;figcaption&gt;Before push&lt;/figcaption&gt;
+	
+&lt;/figure&gt;&lt;figure 
+	
+		class=&#34;gallery-image&#34; 
+		style=&#34;
+			flex-grow: 159; 
+			flex-basis: 382px&#34;
+	&gt;
+	&lt;a href=&#34;https://masterpi-2124.github.io/p/getting-used-to-github-eps-2/after_push.png&#34; data-size=&#34;434x272&#34;&gt;
+		&lt;img src=&#34;https://masterpi-2124.github.io/p/getting-used-to-github-eps-2/after_push.png&#34;
+			width=&#34;434&#34;
+			height=&#34;272&#34;
+			srcset=&#34;https://masterpi-2124.github.io/p/getting-used-to-github-eps-2/after_push_hu4c16a0ab9ceb0ae9cff7b3d38c17856b_12636_480x0_resize_box_3.png 480w, https://masterpi-2124.github.io/p/getting-used-to-github-eps-2/after_push_hu4c16a0ab9ceb0ae9cff7b3d38c17856b_12636_1024x0_resize_box_3.png 1024w&#34;
+			loading=&#34;lazy&#34;
+			alt=&#34;After push&#34;&gt;
+	&lt;/a&gt;
+	
+	&lt;figcaption&gt;After push&lt;/figcaption&gt;
+	
+&lt;/figure&gt;
+You can also use &lt;code&gt;git push&lt;/code&gt; to delete a remote branch too:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;git push origin :BRANCH_NAME
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The colon &lt;code&gt;:&lt;/code&gt; before branch will tell git push to delete the remote branch. It&amp;rsquo;s suggested to delete both local and remote branches.&lt;/p&gt;
+&lt;h1 id=&#34;fetch-pull-and-merge&#34;&gt;Fetch, Pull and Merge&lt;/h1&gt;
+&lt;p&gt;&lt;code&gt;git fetch&lt;/code&gt; is a primary command used to download contents from a remote repository. &lt;code&gt;git fetch&lt;/code&gt; has similar behavior to &lt;code&gt;git pull&lt;/code&gt;, however, &lt;code&gt;git fetch&lt;/code&gt; can be considered a safer, nondestructive version. Think &lt;code&gt;git fetch&lt;/code&gt; like synchronizing the *&lt;strong&gt;remote repository&lt;/strong&gt;, which will download all content from the repository without updating the local repository to match that content, while &lt;code&gt;git pull&lt;/code&gt; creates a merge commit and &lt;code&gt;HEAD&lt;/code&gt; is updated to point at the new commit.&lt;/p&gt;
+&lt;p&gt;In conclusion,&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;code&gt;git pull&lt;/code&gt; = &lt;code&gt;git fetch&lt;/code&gt; + &lt;code&gt;git merge&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;figure 
+	
+		class=&#34;gallery-image&#34; 
+		style=&#34;
+			flex-grow: 98; 
+			flex-basis: 235px&#34;
+	&gt;
+	&lt;a href=&#34;https://masterpi-2124.github.io/p/getting-used-to-github-eps-2/before_fetch.png&#34; data-size=&#34;270x275&#34;&gt;
+		&lt;img src=&#34;https://masterpi-2124.github.io/p/getting-used-to-github-eps-2/before_fetch.png&#34;
+			width=&#34;270&#34;
+			height=&#34;275&#34;
+			srcset=&#34;https://masterpi-2124.github.io/p/getting-used-to-github-eps-2/before_fetch_hu00d3723cc82135c669a3288d6103c962_10374_480x0_resize_box_3.png 480w, https://masterpi-2124.github.io/p/getting-used-to-github-eps-2/before_fetch_hu00d3723cc82135c669a3288d6103c962_10374_1024x0_resize_box_3.png 1024w&#34;
+			loading=&#34;lazy&#34;
+			alt=&#34;Before fetch&#34;&gt;
+	&lt;/a&gt;
+	
+	&lt;figcaption&gt;Before fetch&lt;/figcaption&gt;
+	
+&lt;/figure&gt;&lt;figure 
+	
+		class=&#34;gallery-image&#34; 
+		style=&#34;
+			flex-grow: 153; 
+			flex-basis: 368px&#34;
+	&gt;
+	&lt;a href=&#34;https://masterpi-2124.github.io/p/getting-used-to-github-eps-2/after_fetch.png&#34; data-size=&#34;543x354&#34;&gt;
+		&lt;img src=&#34;https://masterpi-2124.github.io/p/getting-used-to-github-eps-2/after_fetch.png&#34;
+			width=&#34;543&#34;
+			height=&#34;354&#34;
+			srcset=&#34;https://masterpi-2124.github.io/p/getting-used-to-github-eps-2/after_fetch_hu2b424cfb4db83a39cd6089c0dafcfc7c_17022_480x0_resize_box_3.png 480w, https://masterpi-2124.github.io/p/getting-used-to-github-eps-2/after_fetch_hu2b424cfb4db83a39cd6089c0dafcfc7c_17022_1024x0_resize_box_3.png 1024w&#34;
+			loading=&#34;lazy&#34;
+			alt=&#34;After fetch&#34;&gt;
+	&lt;/a&gt;
+	
+	&lt;figcaption&gt;After fetch&lt;/figcaption&gt;
+	
+&lt;/figure&gt;&lt;figure 
+	
+		class=&#34;gallery-image&#34; 
+		style=&#34;
+			flex-grow: 199; 
+			flex-basis: 479px&#34;
+	&gt;
+	&lt;a href=&#34;https://masterpi-2124.github.io/p/getting-used-to-github-eps-2/after_merge.png&#34; data-size=&#34;543x272&#34;&gt;
+		&lt;img src=&#34;https://masterpi-2124.github.io/p/getting-used-to-github-eps-2/after_merge.png&#34;
+			width=&#34;543&#34;
+			height=&#34;272&#34;
+			srcset=&#34;https://masterpi-2124.github.io/p/getting-used-to-github-eps-2/after_merge_hu2ce81a2748c331142ff05615a7800de4_17734_480x0_resize_box_3.png 480w, https://masterpi-2124.github.io/p/getting-used-to-github-eps-2/after_merge_hu2ce81a2748c331142ff05615a7800de4_17734_1024x0_resize_box_3.png 1024w&#34;
+			loading=&#34;lazy&#34;
+			alt=&#34;After merge&#34;&gt;
+	&lt;/a&gt;
+	
+	&lt;figcaption&gt;After merge&lt;/figcaption&gt;
+	
+&lt;/figure&gt;
+In many scenarios, &lt;code&gt;git pull&lt;/code&gt; may lead to conflict when trying to merge branches, that require you to manually check for differences. More particular situations will be shown in the next episodes.&lt;/p&gt;
+&lt;h1 id=&#34;final-words&#34;&gt;Final words&lt;/h1&gt;
+&lt;p&gt;So above is &amp;ldquo;&lt;strong&gt;Getting used to Github&lt;/strong&gt;&amp;rdquo;, eps. 2. This episode contains the most important parts of &lt;code&gt;git&lt;/code&gt;, so be sure you understand it. If not, leave comments below and try some real-life problems.&lt;/p&gt;
+&lt;p&gt;There are some images in the post, some are mine, some are from the Internet, and it&amp;rsquo;s free to use as in the LICENSE below. But I always leave credit here to support authors, and so do you if you want to use content in my article.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Visualisation of push, pull, fetch and merge: &lt;a class=&#34;link&#34; href=&#34;https://www.atlassian.com/git/tutorials&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.atlassian.com/git/tutorials&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Cover image: &lt;a class=&#34;link&#34; href=&#34;https://www.hostinger.vn/huong-dan/huong-dan-su-dung-git-lenh-git-co-ban&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.hostinger.vn/huong-dan/huong-dan-su-dung-git-lenh-git-co-ban&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        <item>
+        <title>Getting Used to GitHub, Eps. 1</title>
         <link>https://masterpi-2124.github.io/p/getting-used-to-github-eps-1/</link>
         <pubDate>Sat, 18 Sep 2021 16:36:56 +0700</pubDate>
         
         <guid>https://masterpi-2124.github.io/p/getting-used-to-github-eps-1/</guid>
-        <description>&lt;img src="https://masterpi-2124.github.io/p/getting-used-to-github-eps-1/cover.jpg" alt="Featured image of post Getting Used To GitHub, Eps. 1" /&gt;&lt;p&gt;Hi, this is my first series about how to use git and github effectively. This would include some basic commands, tips and what to do in some specific situations. You also know how to deal with problems occur during the building setup, and a basic knowledge of GitHub Flow, what CI/CD is, &amp;hellip; This is the first post in series &amp;ldquo;Github 101&amp;rdquo;, and you can find other posts at &amp;ldquo;See also&amp;rdquo; section.&lt;/p&gt;
+        <description>&lt;img src="https://masterpi-2124.github.io/p/getting-used-to-github-eps-1/cover.jpg" alt="Featured image of post Getting Used to GitHub, Eps. 1" /&gt;&lt;p&gt;Hi, this is my first series about how to use git and github effectively. This would include some basic commands, tips and what to do in some specific situations. You also know how to deal with problems occur during the building setup, and a basic knowledge of GitHub Flow, what CI/CD is, &amp;hellip; This is the first post in series &amp;ldquo;Github 101&amp;rdquo;, and you can find other posts at &amp;ldquo;See also&amp;rdquo; section.&lt;/p&gt;
 &lt;p&gt;This series also contain many real-life situations, and the procedures for each situation. Of course it will never be enough, and it comes from my experience too, so my series could be not enough for you. I reccommend you to leave your comment or help me to complete this guideline for as many people as possible.&lt;/p&gt;
 &lt;h1 id=&#34;first-words&#34;&gt;First words&lt;/h1&gt;
 &lt;p&gt;You may don&amp;rsquo;t need to read this part, but I still write for who want to see what is &lt;code&gt;git&lt;/code&gt; and what it can do. So let&amp;rsquo;s go through some boring theoretical knowledge of it.&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;Git&lt;/code&gt; is a tool to managing your code project. That&amp;rsquo;s the simplest meaning of &lt;code&gt;git&lt;/code&gt;. When you collaborate with your friends in projects, you can&amp;rsquo;t know what others do, and even you also don&amp;rsquo;t know if your code is working or not. So your team will need a &lt;em&gt;&lt;strong&gt;Version Control System&lt;/strong&gt;&lt;/em&gt; to control your code, versions of the project, and you can go back if there are any problems. &lt;code&gt;Git&lt;/code&gt; helps you get updated with your code, change version of project, see the difference between branchs or commits, merge or create a new branch to work separately,&amp;hellip; A lot of work could never be done without &lt;code&gt;git&lt;/code&gt;, so this means if you want to start you coding life, you must know how to use &lt;code&gt;git&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;Github&lt;/code&gt;, &lt;code&gt;Gitlab&lt;/code&gt;, &lt;code&gt;BitBucket&lt;/code&gt; are code collaboration and version control tools offering repository management. In this guide, we will focus on &lt;code&gt;Github&lt;/code&gt;, because it is quite popular (not really true), and quite suitable for starters. But I always reccommend you to try the other options, especially &lt;code&gt;Gitlab&lt;/code&gt;, and you can decide yourself later.&lt;/p&gt;
 &lt;h1 id=&#34;install-git&#34;&gt;Install git&lt;/h1&gt;
-&lt;p&gt;First, let&amp;rsquo;s start by having &lt;code&gt;git&lt;/code&gt; on our machine.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# If you are Mac user and have Homebrew installed&lt;/span&gt;
-brew install git
-
-&lt;span class=&#34;c1&#34;&gt;# If you use Linux, many distros have git installed for you. If not, try installing via package management. For example:&lt;/span&gt;
-sudo apt install git
-
-&lt;span class=&#34;c1&#34;&gt;# If you use Windows, follow instruction on https://git-scm.com/download/win&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;There are also GUI version of git, but I reccommend CLI, for two reasons:&lt;/p&gt;
+&lt;p&gt;First, let&amp;rsquo;s start by getting &lt;code&gt;git&lt;/code&gt; on our machine.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;If you are Mac user and have Homebrew installed&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;brew install git
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;If you use Linux, many distros have git installed for you. If not, try installing via package management. For example:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;sudo apt install git
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;If you use Windows, follow instruction on &lt;a class=&#34;link&#34; href=&#34;https://git-scm.com/download/win&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://git-scm.com/download/win&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;There are also GUI version of git, but I reccommend CLI, for two reasons:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;It looks cooler than GUI&lt;/li&gt;
-&lt;li&gt;Almost every git guideline is by commands, so CLI help you understand better.&lt;/li&gt;
+&lt;li&gt;Almost every git guideline is by commands, so CLI help you understand git better.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h1 id=&#34;getting-started&#34;&gt;Getting started&lt;/h1&gt;
 &lt;p&gt;Once you got &lt;code&gt;git&lt;/code&gt; installed, let&amp;rsquo;s dive in.&lt;/p&gt;
@@ -52,7 +288,7 @@ git config --global user.email &lt;span class=&#34;s2&#34;&gt;&amp;#34;Your mail
 &lt;p&gt;Want to work on a project from Github? Here&amp;rsquo;s how:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;git clone URL_TO_YOUR_PROJECT
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;It will create a folder and download all the content of the project into that folder.&lt;/p&gt;
-&lt;h2 id=&#34;basic-commands&#34;&gt;Basic commands&lt;/h2&gt;
+&lt;h2 id=&#34;commit&#34;&gt;Commit&lt;/h2&gt;
 &lt;p&gt;So you got you project. Let&amp;rsquo;s make some changes in it. After you complete, you may need to snapshot it to a &amp;ldquo;&lt;em&gt;&lt;strong&gt;commit&lt;/strong&gt;&lt;/em&gt;&amp;rdquo;, like a version of the project, or a checkpoint (if you are a gamer), which will track any changes in there. From that, you can easily trace or go back if you code is not working.&lt;/p&gt;
 &lt;p&gt;In &lt;code&gt;git&lt;/code&gt;, you may see the term &amp;ldquo;&lt;em&gt;&lt;strong&gt;stage&lt;/strong&gt;&lt;/em&gt;&amp;rdquo;. Think it like actors about to perform on stage. They first have to stay in a room behind the stage to prepare, and &amp;ldquo;&lt;em&gt;&lt;strong&gt;stage&lt;/strong&gt;&lt;/em&gt;&amp;rdquo; in &lt;code&gt;git&lt;/code&gt; is like that too. When you working on changes, you first have to place your file into a place called &amp;ldquo;&lt;em&gt;&lt;strong&gt;stage&lt;/strong&gt;&lt;/em&gt;&amp;rdquo; before taking a snapshot.
 &lt;figure 
@@ -80,7 +316,7 @@ git add .
 
 &lt;span class=&#34;c1&#34;&gt;# Create a commit with a message&lt;/span&gt;
 git commit -m &lt;span class=&#34;s2&#34;&gt;&amp;#34;Your message&amp;#34;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;You may see the file named &amp;ldquo;.gitingnore&amp;rdquo; in your project. This file will contain folders and files you don&amp;rsquo;t want to track (add to stage), so when you run &lt;code&gt;git add .&lt;/code&gt;, it will add all changed file which are not in the file, to stage. Here is an example of this file:&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;You may see the file named &lt;em&gt;.gitingnore&lt;/em&gt; in your project. This file will contain folders and files you don&amp;rsquo;t want to track (add to stage), so when you run &lt;code&gt;git add .&lt;/code&gt;, it will add all changed file which are not in the file, to stage. Here is an example of this file:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# Binaries for programs and plugins&lt;/span&gt;
 *.exe
 *.exe~
@@ -128,7 +364,7 @@ public/
 	&lt;figcaption&gt;Example output of git log&lt;/figcaption&gt;
 	
 &lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;You may see &amp;ldquo;&lt;code&gt;HEAD&lt;/code&gt;&amp;rdquo;. It is like a pointer. For example, you are currently at commit &amp;ldquo;Commit 1&amp;rdquo;, so &lt;code&gt;HEAD&lt;/code&gt; will point to this commit.
+&lt;p&gt;You may see &lt;code&gt;HEAD&lt;/code&gt;. It is like a pointer. For example, you are currently at commit &amp;ldquo;Commit 1&amp;rdquo;, so &lt;code&gt;HEAD&lt;/code&gt; will point to this commit.
 &lt;figure 
 	
 		class=&#34;gallery-image&#34; 
@@ -431,230 +667,230 @@ sudo make install
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# You can use other text editor, but it can only be saved with root permission&lt;/span&gt;
 sudo nano /usr/share/X11/xorg.conf.d/50-mtrack.conf
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The configuration file should be in this form (mine):&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;# https://github.com/p2rkw/xf86-input-mtrack
-Section		&amp;quot;InputClass&amp;quot;
-MatchIsTouchpad	&amp;quot;on&amp;quot;
-Identifier	&amp;quot;Touchpads&amp;quot;
-MatchDevicePath &amp;quot;/dev/input/event*&amp;quot;
-Driver		&amp;quot;mtrack&amp;quot;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;c1&#34;&gt;# https://github.com/p2rkw/xf86-input-mtrack&lt;/span&gt;
+Section		&lt;span class=&#34;s2&#34;&gt;&amp;#34;InputClass&amp;#34;&lt;/span&gt;
+MatchIsTouchpad	&lt;span class=&#34;s2&#34;&gt;&amp;#34;on&amp;#34;&lt;/span&gt;
+Identifier	&lt;span class=&#34;s2&#34;&gt;&amp;#34;Touchpads&amp;#34;&lt;/span&gt;
+MatchDevicePath &lt;span class=&#34;s2&#34;&gt;&amp;#34;/dev/input/event*&amp;#34;&lt;/span&gt;
+Driver		&lt;span class=&#34;s2&#34;&gt;&amp;#34;mtrack&amp;#34;&lt;/span&gt;
 
-# Basic
-# Disable Trackpad
-Option		&amp;quot;TrackpadDisable&amp;quot;		&amp;quot;false&amp;quot;
-# Whether or not to enable physical button on trackpad
-Option          &amp;quot;ButtonEnable&amp;quot;                  &amp;quot;true&amp;quot;
-# If the button is integrated into the trackpad like Macbook Pros, this option has to be &amp;quot;true&amp;quot;
-Option          &amp;quot;ButtonIntegrated&amp;quot;              &amp;quot;false&amp;quot;
+&lt;span class=&#34;c1&#34;&gt;# Basic&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# Disable Trackpad&lt;/span&gt;
+Option		&lt;span class=&#34;s2&#34;&gt;&amp;#34;TrackpadDisable&amp;#34;&lt;/span&gt;		&lt;span class=&#34;s2&#34;&gt;&amp;#34;false&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# Whether or not to enable physical button on trackpad&lt;/span&gt;
+Option          &lt;span class=&#34;s2&#34;&gt;&amp;#34;ButtonEnable&amp;#34;&lt;/span&gt;                  &lt;span class=&#34;s2&#34;&gt;&amp;#34;true&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# If the button is integrated into the trackpad like Macbook Pros, this option has to be &amp;#34;true&amp;#34;&lt;/span&gt;
+Option          &lt;span class=&#34;s2&#34;&gt;&amp;#34;ButtonIntegrated&amp;#34;&lt;/span&gt;              &lt;span class=&#34;s2&#34;&gt;&amp;#34;false&amp;#34;&lt;/span&gt;
 
-# Responsiveness
-# The faster you move, the more distance pointer will travel, using &amp;quot;polynomial&amp;quot; profile
-Option          &amp;quot;AccelerationProfile&amp;quot;		&amp;quot;2&amp;quot;
-# Sensitivity controls how fast your cursor will move. 1 is the default
-Option          &amp;quot;Sensitivity&amp;quot;                   &amp;quot;1&amp;quot; 
-# Define the pressure at which a finger is detected as a touch
-Option          &amp;quot;FingerHigh&amp;quot;                    &amp;quot;5&amp;quot;  
-# Defines the pressure at which a finger is detected as a release
-Option          &amp;quot;FingerLow&amp;quot;                     &amp;quot;5&amp;quot;
-# Whether or not to ignore touches that are determined to be thumbs
-Option          &amp;quot;IgnoreThumb&amp;quot;                   &amp;quot;true&amp;quot;
-# The minimum size of what&#39;s considered a thumb.
-# It is expected that a thumb will be larger than other fingers
-Option          &amp;quot;ThumbSize&amp;quot;                     &amp;quot;25&amp;quot;  
-# The width/length ratio of what&#39;s considered a thumb.
-# It is expected that a thumb is longer than it is wide
-Option          &amp;quot;ThumbRatio&amp;quot;                    &amp;quot;70&amp;quot;  
-# Whether or not to disable the entire trackpad when a thumb is touching
-Option          &amp;quot;DisableOnThumb&amp;quot;                &amp;quot;false&amp;quot;
-# Whether or not to ignore touches that are determined to be palms
-Option          &amp;quot;IgnorePalm&amp;quot;                    &amp;quot;true&amp;quot;
-# Whether or not to disable the entire trackpad when a palm is touching
-Option          &amp;quot;DisableOnPalm&amp;quot;                 &amp;quot;false&amp;quot;
-# The minimum size of what&#39;s considered a palm.
-# Palms are expected to be very large on the trackpad
-Option          &amp;quot;PalmSize&amp;quot;                      &amp;quot;40&amp;quot;      
+&lt;span class=&#34;c1&#34;&gt;# Responsiveness&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# The faster you move, the more distance pointer will travel, using &amp;#34;polynomial&amp;#34; profile&lt;/span&gt;
+Option          &lt;span class=&#34;s2&#34;&gt;&amp;#34;AccelerationProfile&amp;#34;&lt;/span&gt;		&lt;span class=&#34;s2&#34;&gt;&amp;#34;2&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# Sensitivity controls how fast your cursor will move. 1 is the default&lt;/span&gt;
+Option          &lt;span class=&#34;s2&#34;&gt;&amp;#34;Sensitivity&amp;#34;&lt;/span&gt;                   &lt;span class=&#34;s2&#34;&gt;&amp;#34;1&amp;#34;&lt;/span&gt; 
+&lt;span class=&#34;c1&#34;&gt;# Define the pressure at which a finger is detected as a touch&lt;/span&gt;
+Option          &lt;span class=&#34;s2&#34;&gt;&amp;#34;FingerHigh&amp;#34;&lt;/span&gt;                    &lt;span class=&#34;s2&#34;&gt;&amp;#34;5&amp;#34;&lt;/span&gt;  
+&lt;span class=&#34;c1&#34;&gt;# Defines the pressure at which a finger is detected as a release&lt;/span&gt;
+Option          &lt;span class=&#34;s2&#34;&gt;&amp;#34;FingerLow&amp;#34;&lt;/span&gt;                     &lt;span class=&#34;s2&#34;&gt;&amp;#34;5&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# Whether or not to ignore touches that are determined to be thumbs&lt;/span&gt;
+Option          &lt;span class=&#34;s2&#34;&gt;&amp;#34;IgnoreThumb&amp;#34;&lt;/span&gt;                   &lt;span class=&#34;s2&#34;&gt;&amp;#34;true&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# The minimum size of what&amp;#39;s considered a thumb.&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# It is expected that a thumb will be larger than other fingers&lt;/span&gt;
+Option          &lt;span class=&#34;s2&#34;&gt;&amp;#34;ThumbSize&amp;#34;&lt;/span&gt;                     &lt;span class=&#34;s2&#34;&gt;&amp;#34;25&amp;#34;&lt;/span&gt;  
+&lt;span class=&#34;c1&#34;&gt;# The width/length ratio of what&amp;#39;s considered a thumb.&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# It is expected that a thumb is longer than it is wide&lt;/span&gt;
+Option          &lt;span class=&#34;s2&#34;&gt;&amp;#34;ThumbRatio&amp;#34;&lt;/span&gt;                    &lt;span class=&#34;s2&#34;&gt;&amp;#34;70&amp;#34;&lt;/span&gt;  
+&lt;span class=&#34;c1&#34;&gt;# Whether or not to disable the entire trackpad when a thumb is touching&lt;/span&gt;
+Option          &lt;span class=&#34;s2&#34;&gt;&amp;#34;DisableOnThumb&amp;#34;&lt;/span&gt;                &lt;span class=&#34;s2&#34;&gt;&amp;#34;false&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# Whether or not to ignore touches that are determined to be palms&lt;/span&gt;
+Option          &lt;span class=&#34;s2&#34;&gt;&amp;#34;IgnorePalm&amp;#34;&lt;/span&gt;                    &lt;span class=&#34;s2&#34;&gt;&amp;#34;true&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# Whether or not to disable the entire trackpad when a palm is touching&lt;/span&gt;
+Option          &lt;span class=&#34;s2&#34;&gt;&amp;#34;DisableOnPalm&amp;#34;&lt;/span&gt;                 &lt;span class=&#34;s2&#34;&gt;&amp;#34;false&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# The minimum size of what&amp;#39;s considered a palm.&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# Palms are expected to be very large on the trackpad&lt;/span&gt;
+Option          &lt;span class=&#34;s2&#34;&gt;&amp;#34;PalmSize&amp;#34;&lt;/span&gt;                      &lt;span class=&#34;s2&#34;&gt;&amp;#34;40&amp;#34;&lt;/span&gt;      
 
-# Zones
-# Whether or not to enable button zones.
-# If button zones are enabled then the trackpad will be
-# split into one, two, or three vertical zones
-Option		&amp;quot;ButtonZonesEnable&amp;quot;		&amp;quot;false&amp;quot;
-# The button to emulate when the zone is pressed.
-# This is the leftmost part of the pad.
-Option		&amp;quot;FirstZoneButton&amp;quot;		&amp;quot;0&amp;quot;
-# The button to emulate when the zone is pressed.
-# This will float to the right of the leftmost zone.
-Option		&amp;quot;SecondZoneButton&amp;quot;		&amp;quot;0&amp;quot;
-# The button to emulate when the zone is pressed.
-# This will float to the right of the leftmost zone.
-Option		&amp;quot;ThirdZoneButton&amp;quot;		&amp;quot;0&amp;quot;
-# Restrict button zones inside the &amp;quot;EdgeBottom&amp;quot; area.
-# So instead of enabling zones on the full pad height,
-# the zone is limited to the percentage set for the &amp;quot;EdgeBottom&amp;quot;.
-Option		&amp;quot;LimitButtonZonesToBottomEdge&amp;quot;	&amp;quot;false&amp;quot;
+&lt;span class=&#34;c1&#34;&gt;# Zones&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# Whether or not to enable button zones.&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# If button zones are enabled then the trackpad will be&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# split into one, two, or three vertical zones&lt;/span&gt;
+Option		&lt;span class=&#34;s2&#34;&gt;&amp;#34;ButtonZonesEnable&amp;#34;&lt;/span&gt;		&lt;span class=&#34;s2&#34;&gt;&amp;#34;false&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# The button to emulate when the zone is pressed.&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# This is the leftmost part of the pad.&lt;/span&gt;
+Option		&lt;span class=&#34;s2&#34;&gt;&amp;#34;FirstZoneButton&amp;#34;&lt;/span&gt;		&lt;span class=&#34;s2&#34;&gt;&amp;#34;0&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# The button to emulate when the zone is pressed.&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# This will float to the right of the leftmost zone.&lt;/span&gt;
+Option		&lt;span class=&#34;s2&#34;&gt;&amp;#34;SecondZoneButton&amp;#34;&lt;/span&gt;		&lt;span class=&#34;s2&#34;&gt;&amp;#34;0&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# The button to emulate when the zone is pressed.&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# This will float to the right of the leftmost zone.&lt;/span&gt;
+Option		&lt;span class=&#34;s2&#34;&gt;&amp;#34;ThirdZoneButton&amp;#34;&lt;/span&gt;		&lt;span class=&#34;s2&#34;&gt;&amp;#34;0&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# Restrict button zones inside the &amp;#34;EdgeBottom&amp;#34; area.&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# So instead of enabling zones on the full pad height,&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# the zone is limited to the percentage set for the &amp;#34;EdgeBottom&amp;#34;.&lt;/span&gt;
+Option		&lt;span class=&#34;s2&#34;&gt;&amp;#34;LimitButtonZonesToBottomEdge&amp;#34;&lt;/span&gt;	&lt;span class=&#34;s2&#34;&gt;&amp;#34;false&amp;#34;&lt;/span&gt;
 
-# Physical Click
-# Which button to emulate when no valid finger placement
-# is touching the trackpad during a click, as on &amp;quot;EdgeBottom&amp;quot;.
-Option		&amp;quot;ClickFinger0&amp;quot;			&amp;quot;0&amp;quot;
-# Which button to emulate when one finger is touching the trackpad during a click.
-Option		&amp;quot;ClickFinger1&amp;quot;			&amp;quot;1&amp;quot;
-# Which button to emulate when two fingers are touching the trackpad during a click.
-Option		&amp;quot;ClickFinger2&amp;quot;			&amp;quot;3&amp;quot;
-# Which button to emulate when three fingers are touching the trackpad during a click.
-Option		&amp;quot;ClickFinger3&amp;quot;			&amp;quot;2&amp;quot;
-# Whether or not to count the moving finger when emulating button clicks.
-Option		&amp;quot;ButtonMoveEmulate&amp;quot;		&amp;quot;true&amp;quot;
-# How long (in ms) to consider a touching finger as part of button emulation.
-Option		&amp;quot;ButtonTouchExpire&amp;quot;		&amp;quot;100&amp;quot;
+&lt;span class=&#34;c1&#34;&gt;# Physical Click&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# Which button to emulate when no valid finger placement&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# is touching the trackpad during a click, as on &amp;#34;EdgeBottom&amp;#34;.&lt;/span&gt;
+Option		&lt;span class=&#34;s2&#34;&gt;&amp;#34;ClickFinger0&amp;#34;&lt;/span&gt;			&lt;span class=&#34;s2&#34;&gt;&amp;#34;0&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# Which button to emulate when one finger is touching the trackpad during a click.&lt;/span&gt;
+Option		&lt;span class=&#34;s2&#34;&gt;&amp;#34;ClickFinger1&amp;#34;&lt;/span&gt;			&lt;span class=&#34;s2&#34;&gt;&amp;#34;1&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# Which button to emulate when two fingers are touching the trackpad during a click.&lt;/span&gt;
+Option		&lt;span class=&#34;s2&#34;&gt;&amp;#34;ClickFinger2&amp;#34;&lt;/span&gt;			&lt;span class=&#34;s2&#34;&gt;&amp;#34;3&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# Which button to emulate when three fingers are touching the trackpad during a click.&lt;/span&gt;
+Option		&lt;span class=&#34;s2&#34;&gt;&amp;#34;ClickFinger3&amp;#34;&lt;/span&gt;			&lt;span class=&#34;s2&#34;&gt;&amp;#34;2&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# Whether or not to count the moving finger when emulating button clicks.&lt;/span&gt;
+Option		&lt;span class=&#34;s2&#34;&gt;&amp;#34;ButtonMoveEmulate&amp;#34;&lt;/span&gt;		&lt;span class=&#34;s2&#34;&gt;&amp;#34;true&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# How long (in ms) to consider a touching finger as part of button emulation.&lt;/span&gt;
+Option		&lt;span class=&#34;s2&#34;&gt;&amp;#34;ButtonTouchExpire&amp;#34;&lt;/span&gt;		&lt;span class=&#34;s2&#34;&gt;&amp;#34;100&amp;#34;&lt;/span&gt;
 
-# Tap
-# Which button to emulate for one-finger tapping.
-Option          &amp;quot;TapButton1&amp;quot;			&amp;quot;1&amp;quot;
-# Which button to emulate for two-finger tapping.
-Option          &amp;quot;TapButton2&amp;quot;			&amp;quot;3&amp;quot;
-# Which button to emulate for three-finger tapping.
-Option          &amp;quot;TapButton3&amp;quot;			&amp;quot;2&amp;quot;
-# Which button to emulate for four-finger tapping.
-Option		&amp;quot;TapButton4&amp;quot;			&amp;quot;0&amp;quot;
-# When tapping, how much time to hold down the emulated button.
-Option		&amp;quot;ClickTime&amp;quot;			&amp;quot;25&amp;quot;
-# The amount of time to wait for incoming touches
-# after first one before counting it as emulated button click.
-Option		&amp;quot;MaxTapTime&amp;quot;			&amp;quot;120&amp;quot;
-# How far a touch is allowed to move before counting it is no longer considered a tap.
-Option		&amp;quot;MaxTapMove&amp;quot;			&amp;quot;400&amp;quot;
+&lt;span class=&#34;c1&#34;&gt;# Tap&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# Which button to emulate for one-finger tapping.&lt;/span&gt;
+Option          &lt;span class=&#34;s2&#34;&gt;&amp;#34;TapButton1&amp;#34;&lt;/span&gt;			&lt;span class=&#34;s2&#34;&gt;&amp;#34;1&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# Which button to emulate for two-finger tapping.&lt;/span&gt;
+Option          &lt;span class=&#34;s2&#34;&gt;&amp;#34;TapButton2&amp;#34;&lt;/span&gt;			&lt;span class=&#34;s2&#34;&gt;&amp;#34;3&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# Which button to emulate for three-finger tapping.&lt;/span&gt;
+Option          &lt;span class=&#34;s2&#34;&gt;&amp;#34;TapButton3&amp;#34;&lt;/span&gt;			&lt;span class=&#34;s2&#34;&gt;&amp;#34;2&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# Which button to emulate for four-finger tapping.&lt;/span&gt;
+Option		&lt;span class=&#34;s2&#34;&gt;&amp;#34;TapButton4&amp;#34;&lt;/span&gt;			&lt;span class=&#34;s2&#34;&gt;&amp;#34;0&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# When tapping, how much time to hold down the emulated button.&lt;/span&gt;
+Option		&lt;span class=&#34;s2&#34;&gt;&amp;#34;ClickTime&amp;#34;&lt;/span&gt;			&lt;span class=&#34;s2&#34;&gt;&amp;#34;25&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# The amount of time to wait for incoming touches&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# after first one before counting it as emulated button click.&lt;/span&gt;
+Option		&lt;span class=&#34;s2&#34;&gt;&amp;#34;MaxTapTime&amp;#34;&lt;/span&gt;			&lt;span class=&#34;s2&#34;&gt;&amp;#34;120&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# How far a touch is allowed to move before counting it is no longer considered a tap.&lt;/span&gt;
+Option		&lt;span class=&#34;s2&#34;&gt;&amp;#34;MaxTapMove&amp;#34;&lt;/span&gt;			&lt;span class=&#34;s2&#34;&gt;&amp;#34;400&amp;#34;&lt;/span&gt;
 
-# Gesture
-# When a gesture triggers a click, how much time to hold down the emulated button.
-Option		&amp;quot;GestureClickTime&amp;quot;		&amp;quot;10&amp;quot;
-# Touches are allowed to transition from one gesture to another.
-# For example, you may go from scrolling to swiping without
-# releasing your fingers from the pad. This value is the amount
-# of time you must be performing the new gesture before it is triggered.
-# This prevents accidental touches from triggering other gestures.
-Option		&amp;quot;GestureWaitTime&amp;quot;		&amp;quot;100&amp;quot;
+&lt;span class=&#34;c1&#34;&gt;# Gesture&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# When a gesture triggers a click, how much time to hold down the emulated button.&lt;/span&gt;
+Option		&lt;span class=&#34;s2&#34;&gt;&amp;#34;GestureClickTime&amp;#34;&lt;/span&gt;		&lt;span class=&#34;s2&#34;&gt;&amp;#34;10&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# Touches are allowed to transition from one gesture to another.&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# For example, you may go from scrolling to swiping without&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# releasing your fingers from the pad. This value is the amount&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# of time you must be performing the new gesture before it is triggered.&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# This prevents accidental touches from triggering other gestures.&lt;/span&gt;
+Option		&lt;span class=&#34;s2&#34;&gt;&amp;#34;GestureWaitTime&amp;#34;&lt;/span&gt;		&lt;span class=&#34;s2&#34;&gt;&amp;#34;100&amp;#34;&lt;/span&gt;
 
-# How far you must move your fingers before a button click is triggered.
-Option		&amp;quot;ScrollDistance&amp;quot;		&amp;quot;22&amp;quot;
-# For two finger scrolling. How long button triggered by scrolling will be hold down.
-Option		&amp;quot;ScrollClickTime&amp;quot;		&amp;quot;12&amp;quot;
-# For two finger scrolling. Sensitivity (movement speed) of pointer during two finger scrolling.
-Option		&amp;quot;ScrollSensitivity&amp;quot;		&amp;quot;0&amp;quot;
-# For two finger scrolling. The button that is triggered by scrolling up.
-Option		&amp;quot;ScrollUpButton&amp;quot;		&amp;quot;5&amp;quot;
-# For two finger scrolling. The button that is triggered by scrolling down.
-Option		&amp;quot;ScrollDownButton&amp;quot;		&amp;quot;4&amp;quot;
-# For two finger scrolling. The button that is triggered by scrolling left.
-Option		&amp;quot;ScrollLeftButton&amp;quot;		&amp;quot;7&amp;quot;
-# For two finger scrolling. The button that is triggered by scrolling right.
-Option		&amp;quot;ScrollRightButton&amp;quot;		&amp;quot;6&amp;quot;
-# For two finger scrolling. Whether to generate high precision scroll events.
-Option		&amp;quot;ScrollSmooth&amp;quot;			&amp;quot;1&amp;quot;
-# How long after finished scrolling movement should be continued. Works only with smooth scrolling enabled.
-Option		&amp;quot;ScrollCoastDuration&amp;quot;		&amp;quot;500&amp;quot;
-# How fast scroll should be to enable coasting feature.
-Option		&amp;quot;ScrollCoastEnableSpeed&amp;quot;	&amp;quot;0.1&amp;quot;
+&lt;span class=&#34;c1&#34;&gt;# How far you must move your fingers before a button click is triggered.&lt;/span&gt;
+Option		&lt;span class=&#34;s2&#34;&gt;&amp;#34;ScrollDistance&amp;#34;&lt;/span&gt;		&lt;span class=&#34;s2&#34;&gt;&amp;#34;22&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# For two finger scrolling. How long button triggered by scrolling will be hold down.&lt;/span&gt;
+Option		&lt;span class=&#34;s2&#34;&gt;&amp;#34;ScrollClickTime&amp;#34;&lt;/span&gt;		&lt;span class=&#34;s2&#34;&gt;&amp;#34;12&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# For two finger scrolling. Sensitivity (movement speed) of pointer during two finger scrolling.&lt;/span&gt;
+Option		&lt;span class=&#34;s2&#34;&gt;&amp;#34;ScrollSensitivity&amp;#34;&lt;/span&gt;		&lt;span class=&#34;s2&#34;&gt;&amp;#34;0&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# For two finger scrolling. The button that is triggered by scrolling up.&lt;/span&gt;
+Option		&lt;span class=&#34;s2&#34;&gt;&amp;#34;ScrollUpButton&amp;#34;&lt;/span&gt;		&lt;span class=&#34;s2&#34;&gt;&amp;#34;5&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# For two finger scrolling. The button that is triggered by scrolling down.&lt;/span&gt;
+Option		&lt;span class=&#34;s2&#34;&gt;&amp;#34;ScrollDownButton&amp;#34;&lt;/span&gt;		&lt;span class=&#34;s2&#34;&gt;&amp;#34;4&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# For two finger scrolling. The button that is triggered by scrolling left.&lt;/span&gt;
+Option		&lt;span class=&#34;s2&#34;&gt;&amp;#34;ScrollLeftButton&amp;#34;&lt;/span&gt;		&lt;span class=&#34;s2&#34;&gt;&amp;#34;7&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# For two finger scrolling. The button that is triggered by scrolling right.&lt;/span&gt;
+Option		&lt;span class=&#34;s2&#34;&gt;&amp;#34;ScrollRightButton&amp;#34;&lt;/span&gt;		&lt;span class=&#34;s2&#34;&gt;&amp;#34;6&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# For two finger scrolling. Whether to generate high precision scroll events.&lt;/span&gt;
+Option		&lt;span class=&#34;s2&#34;&gt;&amp;#34;ScrollSmooth&amp;#34;&lt;/span&gt;			&lt;span class=&#34;s2&#34;&gt;&amp;#34;1&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# How long after finished scrolling movement should be continued. Works only with smooth scrolling enabled.&lt;/span&gt;
+Option		&lt;span class=&#34;s2&#34;&gt;&amp;#34;ScrollCoastDuration&amp;#34;&lt;/span&gt;		&lt;span class=&#34;s2&#34;&gt;&amp;#34;500&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# How fast scroll should be to enable coasting feature.&lt;/span&gt;
+Option		&lt;span class=&#34;s2&#34;&gt;&amp;#34;ScrollCoastEnableSpeed&amp;#34;&lt;/span&gt;	&lt;span class=&#34;s2&#34;&gt;&amp;#34;0.1&amp;#34;&lt;/span&gt;
 
-# For three finger swiping. How far you must move your fingers before a button click is triggered.
-Option		&amp;quot;SwipeDistance&amp;quot;			&amp;quot;1&amp;quot;
-# For three finger swiping. How long button triggered by swiping will be hold down.
-Option		&amp;quot;SwipeClickTime&amp;quot;		&amp;quot;0&amp;quot;
-# For three finger scrolling. Sensitivity (movement speed) of pointer during three finger scrolling.
-Option		&amp;quot;SwipeSensitivity&amp;quot;		&amp;quot;1000&amp;quot;
-# For three finger swiping. The button that is triggered by swiping up.
-Option		&amp;quot;SwipeUpButton&amp;quot;			&amp;quot;1&amp;quot;
-# For three finger swiping. The button that is triggered by swiping down.
-Option		&amp;quot;SwipeDownButton&amp;quot;		&amp;quot;1&amp;quot;
-# For three finger swiping. The button that is triggered by swiping left.
-Option		&amp;quot;SwipeLeftButton&amp;quot;		&amp;quot;1&amp;quot;
-# For three finger swiping. The button that is triggered by swiping right.
-Option		&amp;quot;SwipeRightButton&amp;quot;		&amp;quot;1&amp;quot;
+&lt;span class=&#34;c1&#34;&gt;# For three finger swiping. How far you must move your fingers before a button click is triggered.&lt;/span&gt;
+Option		&lt;span class=&#34;s2&#34;&gt;&amp;#34;SwipeDistance&amp;#34;&lt;/span&gt;			&lt;span class=&#34;s2&#34;&gt;&amp;#34;1&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# For three finger swiping. How long button triggered by swiping will be hold down.&lt;/span&gt;
+Option		&lt;span class=&#34;s2&#34;&gt;&amp;#34;SwipeClickTime&amp;#34;&lt;/span&gt;		&lt;span class=&#34;s2&#34;&gt;&amp;#34;0&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# For three finger scrolling. Sensitivity (movement speed) of pointer during three finger scrolling.&lt;/span&gt;
+Option		&lt;span class=&#34;s2&#34;&gt;&amp;#34;SwipeSensitivity&amp;#34;&lt;/span&gt;		&lt;span class=&#34;s2&#34;&gt;&amp;#34;1000&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# For three finger swiping. The button that is triggered by swiping up.&lt;/span&gt;
+Option		&lt;span class=&#34;s2&#34;&gt;&amp;#34;SwipeUpButton&amp;#34;&lt;/span&gt;			&lt;span class=&#34;s2&#34;&gt;&amp;#34;1&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# For three finger swiping. The button that is triggered by swiping down.&lt;/span&gt;
+Option		&lt;span class=&#34;s2&#34;&gt;&amp;#34;SwipeDownButton&amp;#34;&lt;/span&gt;		&lt;span class=&#34;s2&#34;&gt;&amp;#34;1&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# For three finger swiping. The button that is triggered by swiping left.&lt;/span&gt;
+Option		&lt;span class=&#34;s2&#34;&gt;&amp;#34;SwipeLeftButton&amp;#34;&lt;/span&gt;		&lt;span class=&#34;s2&#34;&gt;&amp;#34;1&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# For three finger swiping. The button that is triggered by swiping right.&lt;/span&gt;
+Option		&lt;span class=&#34;s2&#34;&gt;&amp;#34;SwipeRightButton&amp;#34;&lt;/span&gt;		&lt;span class=&#34;s2&#34;&gt;&amp;#34;1&amp;#34;&lt;/span&gt;
 
-# For four finger swiping. How far you must move your fingers before a button click is triggered.
-Option          &amp;quot;Swipe4Distance&amp;quot;                 &amp;quot;700&amp;quot;
-# For four finger swiping. How long button triggered by swiping will be hold down.
-Option          &amp;quot;Swipe4ClickTime&amp;quot;                &amp;quot;300&amp;quot;
-# For for finger scrolling. Sensitivity (movement speed) of pointer during four finger scrolling.
-Option          &amp;quot;Swipe4Sensitivity&amp;quot;              &amp;quot;0&amp;quot;
-# For four finger swiping. The button that is triggered by swiping up.
-Option          &amp;quot;Swipe4UpButton&amp;quot;                 &amp;quot;8&amp;quot;
-# For four finger swiping. The button that is triggered by swiping down.
-Option          &amp;quot;Swipe4DownButton&amp;quot;               &amp;quot;9&amp;quot;
-# For four finger swiping. The button that is triggered by swiping left.
-Option          &amp;quot;Swipe4LeftButton&amp;quot;               &amp;quot;10&amp;quot;
-# For four finger swiping. The button that is triggered by swiping right.
-Option          &amp;quot;Swipe4RightButton&amp;quot;              &amp;quot;11&amp;quot;
+&lt;span class=&#34;c1&#34;&gt;# For four finger swiping. How far you must move your fingers before a button click is triggered.&lt;/span&gt;
+Option          &lt;span class=&#34;s2&#34;&gt;&amp;#34;Swipe4Distance&amp;#34;&lt;/span&gt;                 &lt;span class=&#34;s2&#34;&gt;&amp;#34;700&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# For four finger swiping. How long button triggered by swiping will be hold down.&lt;/span&gt;
+Option          &lt;span class=&#34;s2&#34;&gt;&amp;#34;Swipe4ClickTime&amp;#34;&lt;/span&gt;                &lt;span class=&#34;s2&#34;&gt;&amp;#34;300&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# For for finger scrolling. Sensitivity (movement speed) of pointer during four finger scrolling.&lt;/span&gt;
+Option          &lt;span class=&#34;s2&#34;&gt;&amp;#34;Swipe4Sensitivity&amp;#34;&lt;/span&gt;              &lt;span class=&#34;s2&#34;&gt;&amp;#34;0&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# For four finger swiping. The button that is triggered by swiping up.&lt;/span&gt;
+Option          &lt;span class=&#34;s2&#34;&gt;&amp;#34;Swipe4UpButton&amp;#34;&lt;/span&gt;                 &lt;span class=&#34;s2&#34;&gt;&amp;#34;8&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# For four finger swiping. The button that is triggered by swiping down.&lt;/span&gt;
+Option          &lt;span class=&#34;s2&#34;&gt;&amp;#34;Swipe4DownButton&amp;#34;&lt;/span&gt;               &lt;span class=&#34;s2&#34;&gt;&amp;#34;9&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# For four finger swiping. The button that is triggered by swiping left.&lt;/span&gt;
+Option          &lt;span class=&#34;s2&#34;&gt;&amp;#34;Swipe4LeftButton&amp;#34;&lt;/span&gt;               &lt;span class=&#34;s2&#34;&gt;&amp;#34;10&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# For four finger swiping. The button that is triggered by swiping right.&lt;/span&gt;
+Option          &lt;span class=&#34;s2&#34;&gt;&amp;#34;Swipe4RightButton&amp;#34;&lt;/span&gt;              &lt;span class=&#34;s2&#34;&gt;&amp;#34;11&amp;#34;&lt;/span&gt;
 
-# For one finger edge scrolling. How far you must move your finger on edge before a button click is triggered.
-Option          &amp;quot;SwipeDistance&amp;quot;                 &amp;quot;700&amp;quot;
-# For one finger edge scrolling. How long button triggered by edge scrolling will be hold down.
-Option          &amp;quot;SwipeClickTime&amp;quot;                &amp;quot;300&amp;quot;
-# For one finger edge scrolling. Sensitivity (movement speed) of pointer during one finger scrolling.
-Option          &amp;quot;SwipeSensitivity&amp;quot;              &amp;quot;0&amp;quot;
-# For one finger edge scrolling. The button that is triggered by edge scrolling up.
-Option          &amp;quot;SwipeUpButton&amp;quot;                 &amp;quot;4&amp;quot;
-# For one finger edge scrolling. The button that is triggered by edge scrolling down.
-Option          &amp;quot;SwipeDownButton&amp;quot;               &amp;quot;5&amp;quot;
-# For one finger edge scrolling. The button that is triggered by edge scrolling left.
-Option          &amp;quot;SwipeLeftButton&amp;quot;               &amp;quot;6&amp;quot;
-# For one finger edge scrolling. The button that is triggered by edge scrolling right.
-Option          &amp;quot;SwipeRightButton&amp;quot;              &amp;quot;7&amp;quot;
+&lt;span class=&#34;c1&#34;&gt;# For one finger edge scrolling. How far you must move your finger on edge before a button click is triggered.&lt;/span&gt;
+Option          &lt;span class=&#34;s2&#34;&gt;&amp;#34;SwipeDistance&amp;#34;&lt;/span&gt;                 &lt;span class=&#34;s2&#34;&gt;&amp;#34;700&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# For one finger edge scrolling. How long button triggered by edge scrolling will be hold down.&lt;/span&gt;
+Option          &lt;span class=&#34;s2&#34;&gt;&amp;#34;SwipeClickTime&amp;#34;&lt;/span&gt;                &lt;span class=&#34;s2&#34;&gt;&amp;#34;300&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# For one finger edge scrolling. Sensitivity (movement speed) of pointer during one finger scrolling.&lt;/span&gt;
+Option          &lt;span class=&#34;s2&#34;&gt;&amp;#34;SwipeSensitivity&amp;#34;&lt;/span&gt;              &lt;span class=&#34;s2&#34;&gt;&amp;#34;0&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# For one finger edge scrolling. The button that is triggered by edge scrolling up.&lt;/span&gt;
+Option          &lt;span class=&#34;s2&#34;&gt;&amp;#34;SwipeUpButton&amp;#34;&lt;/span&gt;                 &lt;span class=&#34;s2&#34;&gt;&amp;#34;4&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# For one finger edge scrolling. The button that is triggered by edge scrolling down.&lt;/span&gt;
+Option          &lt;span class=&#34;s2&#34;&gt;&amp;#34;SwipeDownButton&amp;#34;&lt;/span&gt;               &lt;span class=&#34;s2&#34;&gt;&amp;#34;5&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# For one finger edge scrolling. The button that is triggered by edge scrolling left.&lt;/span&gt;
+Option          &lt;span class=&#34;s2&#34;&gt;&amp;#34;SwipeLeftButton&amp;#34;&lt;/span&gt;               &lt;span class=&#34;s2&#34;&gt;&amp;#34;6&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# For one finger edge scrolling. The button that is triggered by edge scrolling right.&lt;/span&gt;
+Option          &lt;span class=&#34;s2&#34;&gt;&amp;#34;SwipeRightButton&amp;#34;&lt;/span&gt;              &lt;span class=&#34;s2&#34;&gt;&amp;#34;7&amp;#34;&lt;/span&gt;
 
-# For pinch scaling. How far you must move your fingers before a button click is triggered.
-Option		&amp;quot;ScaleDistance&amp;quot;			&amp;quot;300&amp;quot;
-# For pinch scaling. The button that is triggered by scaling up.
-Option		&amp;quot;ScaleUpButton&amp;quot;			&amp;quot;12&amp;quot;
-# For pinch scaling. The button that is triggered by scaling down.
-Option		&amp;quot;ScaleDownButton&amp;quot;		&amp;quot;13&amp;quot;
+&lt;span class=&#34;c1&#34;&gt;# For pinch scaling. How far you must move your fingers before a button click is triggered.&lt;/span&gt;
+Option		&lt;span class=&#34;s2&#34;&gt;&amp;#34;ScaleDistance&amp;#34;&lt;/span&gt;			&lt;span class=&#34;s2&#34;&gt;&amp;#34;300&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# For pinch scaling. The button that is triggered by scaling up.&lt;/span&gt;
+Option		&lt;span class=&#34;s2&#34;&gt;&amp;#34;ScaleUpButton&amp;#34;&lt;/span&gt;			&lt;span class=&#34;s2&#34;&gt;&amp;#34;12&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# For pinch scaling. The button that is triggered by scaling down.&lt;/span&gt;
+Option		&lt;span class=&#34;s2&#34;&gt;&amp;#34;ScaleDownButton&amp;#34;&lt;/span&gt;		&lt;span class=&#34;s2&#34;&gt;&amp;#34;13&amp;#34;&lt;/span&gt;
 
-# For two finger rotation. How far you must move your fingers before a button click is triggered.
-Option		&amp;quot;RotateDistance&amp;quot;		&amp;quot;150&amp;quot;
-# For two finger rotation. The button that is triggered by rotating left.
-Option		&amp;quot;RotateLeftButton&amp;quot;		&amp;quot;14&amp;quot;
-# For two finger rotation. The button that is triggered by rotating right.
-Option		&amp;quot;RotateRightButton&amp;quot;		&amp;quot;15&amp;quot;
+&lt;span class=&#34;c1&#34;&gt;# For two finger rotation. How far you must move your fingers before a button click is triggered.&lt;/span&gt;
+Option		&lt;span class=&#34;s2&#34;&gt;&amp;#34;RotateDistance&amp;#34;&lt;/span&gt;		&lt;span class=&#34;s2&#34;&gt;&amp;#34;150&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# For two finger rotation. The button that is triggered by rotating left.&lt;/span&gt;
+Option		&lt;span class=&#34;s2&#34;&gt;&amp;#34;RotateLeftButton&amp;#34;&lt;/span&gt;		&lt;span class=&#34;s2&#34;&gt;&amp;#34;14&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# For two finger rotation. The button that is triggered by rotating right.&lt;/span&gt;
+Option		&lt;span class=&#34;s2&#34;&gt;&amp;#34;RotateRightButton&amp;#34;&lt;/span&gt;		&lt;span class=&#34;s2&#34;&gt;&amp;#34;15&amp;#34;&lt;/span&gt;
 
-# Edge
-# The size of an area at the top of the trackpad where new touches are ignored
-# (fingers travelling into this area from the bottom will still be tracked).
-Option		&amp;quot;EdgeTopSize&amp;quot;			&amp;quot;0&amp;quot;
-# The size of an area at the bottom of the trackpad where new touches are ignored
-# (fingers travelling into this area from the bottom will still be tracked).
-Option          &amp;quot;EdgeBottomSize&amp;quot;		&amp;quot;0&amp;quot;
-# The size of an area at the left of the trackpad where new touches are ignored
-# (fingers travelling into this area from the bottom will still be tracked).
-Option          &amp;quot;EdgeLeftSize&amp;quot;                  &amp;quot;0&amp;quot;
-# The size of an area at the right of the trackpad where new touches are ignored
-# (fingers travelling into this area from the bottom will still be tracked).
-Option          &amp;quot;EdgeRightSize&amp;quot;                 &amp;quot;0&amp;quot;
+&lt;span class=&#34;c1&#34;&gt;# Edge&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# The size of an area at the top of the trackpad where new touches are ignored&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# (fingers travelling into this area from the bottom will still be tracked).&lt;/span&gt;
+Option		&lt;span class=&#34;s2&#34;&gt;&amp;#34;EdgeTopSize&amp;#34;&lt;/span&gt;			&lt;span class=&#34;s2&#34;&gt;&amp;#34;0&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# The size of an area at the bottom of the trackpad where new touches are ignored&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# (fingers travelling into this area from the bottom will still be tracked).&lt;/span&gt;
+Option          &lt;span class=&#34;s2&#34;&gt;&amp;#34;EdgeBottomSize&amp;#34;&lt;/span&gt;		&lt;span class=&#34;s2&#34;&gt;&amp;#34;0&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# The size of an area at the left of the trackpad where new touches are ignored&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# (fingers travelling into this area from the bottom will still be tracked).&lt;/span&gt;
+Option          &lt;span class=&#34;s2&#34;&gt;&amp;#34;EdgeLeftSize&amp;#34;&lt;/span&gt;                  &lt;span class=&#34;s2&#34;&gt;&amp;#34;0&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# The size of an area at the right of the trackpad where new touches are ignored&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# (fingers travelling into this area from the bottom will still be tracked).&lt;/span&gt;
+Option          &lt;span class=&#34;s2&#34;&gt;&amp;#34;EdgeRightSize&amp;#34;&lt;/span&gt;                 &lt;span class=&#34;s2&#34;&gt;&amp;#34;0&amp;#34;&lt;/span&gt;
 
-# Special Features
-# For two finger hold-and-move functionality. The button that is triggered
-# by holding one finger and moving another one.
-Option		&amp;quot;Hold1Move1StationaryButton&amp;quot;	&amp;quot;1&amp;quot;
-# For two finger hold-and-move functionality. Fow far stationary finger can be moved berfore gesture invalidation.
-Option		&amp;quot;Hold1Move1StationaryMaxMove&amp;quot;	&amp;quot;20&amp;quot;
-# Whether or not to enable tap-to-drag functionality.
-Option		&amp;quot;TapDragEnable&amp;quot;			&amp;quot;false&amp;quot;
-# The tap-to-drag timeout. This is how long the driver will wait
-# after a single tap for a movement event before sending the click.
-Option		&amp;quot;TapDragTime&amp;quot;			&amp;quot;350&amp;quot;
-# How long after detecting movement to trigger a button down event.
-# During this time pointer movement will be disabled.
-Option		&amp;quot;TapDragWait&amp;quot;			&amp;quot;40&amp;quot;
-# How far the finger is allowed to move during drag wait time.
-# If the finger moves farther than this distance during the wait time
-# then dragging will be canceled and pointer movement will resume.
-Option		&amp;quot;TapDragDist&amp;quot;			&amp;quot;200&amp;quot;
-# This is how long the driver will wait after initial drag in &#39;drag ready&#39; state
-# in which it will be able to resume previous drag without additional up, down sequence.
-Option		&amp;quot;TapDragLockTimeout&amp;quot;		&amp;quot;500&amp;quot;
-# Whether or not to invert the X axis.
-Option		&amp;quot;AxisXInvert&amp;quot;			&amp;quot;false&amp;quot;
-# Whether or not to invert the Y axis.
-Option          &amp;quot;AxisYInvert&amp;quot;                   &amp;quot;false&amp;quot;
+&lt;span class=&#34;c1&#34;&gt;# Special Features&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# For two finger hold-and-move functionality. The button that is triggered&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# by holding one finger and moving another one.&lt;/span&gt;
+Option		&lt;span class=&#34;s2&#34;&gt;&amp;#34;Hold1Move1StationaryButton&amp;#34;&lt;/span&gt;	&lt;span class=&#34;s2&#34;&gt;&amp;#34;1&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# For two finger hold-and-move functionality. Fow far stationary finger can be moved berfore gesture invalidation.&lt;/span&gt;
+Option		&lt;span class=&#34;s2&#34;&gt;&amp;#34;Hold1Move1StationaryMaxMove&amp;#34;&lt;/span&gt;	&lt;span class=&#34;s2&#34;&gt;&amp;#34;20&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# Whether or not to enable tap-to-drag functionality.&lt;/span&gt;
+Option		&lt;span class=&#34;s2&#34;&gt;&amp;#34;TapDragEnable&amp;#34;&lt;/span&gt;			&lt;span class=&#34;s2&#34;&gt;&amp;#34;false&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# The tap-to-drag timeout. This is how long the driver will wait&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# after a single tap for a movement event before sending the click.&lt;/span&gt;
+Option		&lt;span class=&#34;s2&#34;&gt;&amp;#34;TapDragTime&amp;#34;&lt;/span&gt;			&lt;span class=&#34;s2&#34;&gt;&amp;#34;350&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# How long after detecting movement to trigger a button down event.&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# During this time pointer movement will be disabled.&lt;/span&gt;
+Option		&lt;span class=&#34;s2&#34;&gt;&amp;#34;TapDragWait&amp;#34;&lt;/span&gt;			&lt;span class=&#34;s2&#34;&gt;&amp;#34;40&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# How far the finger is allowed to move during drag wait time.&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# If the finger moves farther than this distance during the wait time&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# then dragging will be canceled and pointer movement will resume.&lt;/span&gt;
+Option		&lt;span class=&#34;s2&#34;&gt;&amp;#34;TapDragDist&amp;#34;&lt;/span&gt;			&lt;span class=&#34;s2&#34;&gt;&amp;#34;200&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# This is how long the driver will wait after initial drag in &amp;#39;drag ready&amp;#39; state&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# in which it will be able to resume previous drag without additional up, down sequence.&lt;/span&gt;
+Option		&lt;span class=&#34;s2&#34;&gt;&amp;#34;TapDragLockTimeout&amp;#34;&lt;/span&gt;		&lt;span class=&#34;s2&#34;&gt;&amp;#34;500&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# Whether or not to invert the X axis.&lt;/span&gt;
+Option		&lt;span class=&#34;s2&#34;&gt;&amp;#34;AxisXInvert&amp;#34;&lt;/span&gt;			&lt;span class=&#34;s2&#34;&gt;&amp;#34;false&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# Whether or not to invert the Y axis.&lt;/span&gt;
+Option          &lt;span class=&#34;s2&#34;&gt;&amp;#34;AxisYInvert&amp;#34;&lt;/span&gt;                   &lt;span class=&#34;s2&#34;&gt;&amp;#34;false&amp;#34;&lt;/span&gt;
 EndSection
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;It&amp;rsquo;s quite long, but it contains all options for the trackpad with the detail explaination, so you don&amp;rsquo;t need to search google for any other options. My configuration above is as close as my Mac experience as I can get, and you can adjust to suit your need too.&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;It&amp;rsquo;s quite long, but it contains all options for the trackpad with the detail explaination, so you don&amp;rsquo;t need to search google for any other options. My configuration above is as close as my Mac experience as I can get, and you can adjust to suit your need too.&lt;/p&gt;
 &lt;p&gt;More tweaks, head to the driver&amp;rsquo;s &lt;a class=&#34;link&#34; href=&#34;https://github.com/p2rkw/xf86-input-mtrack&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;README&lt;/a&gt;.&lt;/p&gt;
 &lt;h2 id=&#34;disable-when-typing&#34;&gt;Disable when typing&lt;/h2&gt;
@@ -734,57 +970,52 @@ sudo make install
 &lt;p&gt;Next, we wll pick a theme at &lt;a class=&#34;link&#34; href=&#34;https://themes.gohugo.io/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;Hugo theme website&lt;/a&gt; and install in &lt;code&gt;themes&lt;/code&gt; folder. I will choose &lt;strong&gt;Hugo Stack Theme&lt;/strong&gt; for the demonstration.&lt;/p&gt;
 &lt;p&gt;Copy the theme&amp;rsquo;s github path, and install:&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;git submodule add https://github.com/CaiJimmy/hugo-theme-stack themes/hugo-theme-stack
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Go to the installed theme directory, you will see the &lt;code&gt;exampleSite&lt;/code&gt; folder. Copy its content and paste into &lt;code&gt;content&lt;/code&gt; folder. It stores all page and post we create for the website, so we will use it to test the new site.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;git submodule add https://github.com/CaiJimmy/hugo-theme-stack themes/hugo-theme-stack
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Go to the installed theme directory, you will see the &lt;code&gt;exampleSite&lt;/code&gt; folder. Copy its content and paste into &lt;code&gt;content&lt;/code&gt; folder. It stores all page and post we create for the website, so we will use it to test the new site.&lt;/p&gt;
 &lt;p&gt;Replace &lt;code&gt;config.toml&lt;/code&gt; by &lt;code&gt;config.yaml&lt;/code&gt; copied above, and modify this file as in &lt;a class=&#34;link&#34; href=&#34;https://docs.stack.jimmycai.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;this intruction&lt;/a&gt;.&lt;/p&gt;
 &lt;h2 id=&#34;publish-to-github-page&#34;&gt;Publish to Github Page&lt;/h2&gt;
 &lt;p&gt;After you add a post or a site, it&amp;rsquo;s time to push into the repository and publish. But first, we have to link the Github page repository to the current development repository:&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;git submodule add -b master https://github.com/username/username.github.io.git public
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;It will clone the repository into &lt;code&gt;public&lt;/code&gt; folder, as in Hugo documentation about directory structure.
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;git submodule add -b master https://github.com/username/username.github.io.git public
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;It will clone the repository into &lt;code&gt;public&lt;/code&gt; folder, as in Hugo documentation about directory structure.
 Check again with &lt;code&gt;git remote -v&lt;/code&gt;:&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;origin	https://github.com/username/username.github.io.git (fetch)
 origin	https://github.com/username/username.github.io.git (push)
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Then publish the site by running &lt;code&gt;./deploy.sh&lt;/code&gt;:&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;#!/bin/sh
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span class=&#34;cp&#34;&gt;#!/bin/sh
+&lt;/span&gt;&lt;span class=&#34;cp&#34;&gt;&lt;/span&gt;
+&lt;span class=&#34;c1&#34;&gt;# If a command fails then the deploy stops&lt;/span&gt;
+&lt;span class=&#34;nb&#34;&gt;set&lt;/span&gt; -e
 
-# If a command fails then the deploy stops
-set -e
+&lt;span class=&#34;c1&#34;&gt;# Build the project&lt;/span&gt;
+&lt;span class=&#34;nb&#34;&gt;printf&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;\033[0;32mDeploying updates to GitHub...\033[0m\n&amp;#34;&lt;/span&gt;
+hugo -D --buildFuture
 
-printf &amp;quot;\033[0;32mDeploying updates to GitHub...\033[0m\n&amp;quot;
+&lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;
 
-# Create commit message
-msg=&amp;quot;rebuilding site $(date)&amp;quot;
-if [ -n &amp;quot;$*&amp;quot; ]; then
-	msg=&amp;quot;$*&amp;quot;
-fi
-
-# Build the project.
-echo &amp;quot;&amp;quot;
-echo &amp;quot;&amp;quot;
-echo &amp;quot;Committing changes to $(pwd)&amp;quot;
-hugo -D
-
-# Go To Public folder
-cd public
-
-# Add &#39;public&#39; (Github Pages repo) changes to git and commit/push.
-echo &amp;quot;&amp;quot;
-echo &amp;quot;&amp;quot;
-echo &amp;quot;Committing changes to $(pwd)&amp;quot;
+&lt;span class=&#34;c1&#34;&gt;# Commit and push to GitHub Page repository&lt;/span&gt;
+&lt;span class=&#34;nb&#34;&gt;printf&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;\033[0;32mGo to /public...\033[0m\n&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; public
 git add .
-git commit -m &amp;quot;$msg&amp;quot;
-git push origin master
+&lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;nb&#34;&gt;read&lt;/span&gt; -p &lt;span class=&#34;s2&#34;&gt;&amp;#34;Enter your commit message: &amp;#34;&lt;/span&gt; msg
+&lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;\033[0;32mCommitting changes...\033[0m\n&amp;#34;&lt;/span&gt;
+git commit -m &lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$msg&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;
+git push
+&lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;
 
-# Add this repos changes to git and commit/push. First &#39;cd&#39; out of public
-cd ..
-echo &amp;quot;&amp;quot;
-echo &amp;quot;&amp;quot;
-echo &amp;quot;Committing changes to $(pwd)&amp;quot;
+&lt;span class=&#34;c1&#34;&gt;# Commit and push to site repository&lt;/span&gt;
+&lt;span class=&#34;nb&#34;&gt;printf&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;\033[0;32mGo to root...\033[0m\n&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; ..
 git add .
-git commit -m &amp;quot;$msg&amp;quot;
-git push origin master
-&lt;/code&gt;&lt;/pre&gt;&lt;h1 id=&#34;modification&#34;&gt;Modification&lt;/h1&gt;
+&lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;nb&#34;&gt;read&lt;/span&gt; -p &lt;span class=&#34;s2&#34;&gt;&amp;#34;Enter your commit message: &amp;#34;&lt;/span&gt; msg
+&lt;span class=&#34;nb&#34;&gt;echo&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;\033[0;32mCommitting changes...\033[0m\n&amp;#34;&lt;/span&gt;
+git commit -m &lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;$msg&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;
+git push
+&lt;span class=&#34;nb&#34;&gt;printf&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;\033[0;32mChanges are commited and push successfully! Go to https://username.github.io to see.\033[0m\n&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;nb&#34;&gt;printf&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;\033[0;32mFinishing...\033[0m\n&amp;#34;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id=&#34;modification&#34;&gt;Modification&lt;/h1&gt;
 &lt;p&gt;You can also modify the theme to suit your need. All documentations is on these websites:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://docs.stack.jimmycai.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -795,7 +1026,7 @@ git push origin master
 &lt;p&gt;Here is my work:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/MasterPi-2124/Personal-Blog&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;The blog sourece code&lt;/a&gt;&lt;/li&gt;
+    &gt;The blog source code&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/MasterPi-2124/MasterPi-2124.github.io&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;The Github Page repository&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
@@ -1152,7 +1383,7 @@ git push origin master
 &lt;a href=&#34;https://vimeo.com/4.8912912e&amp;#43;07&#34; rel=&#34;noopener&#34; target=&#34;_blank&#34;&gt;
 
 
-&lt;img src=&#34;https://i.vimeocdn.com/video/337401969_640&#34; srcset=&#34;https://i.vimeocdn.com/video/337401969_640 1x, https://i.vimeocdn.com/video/337401969_640 2x&#34; alt=&#34;Sing Jan Swing - Kinetic Type&#34;&gt;
+&lt;img src=&#34;https://i.vimeocdn.com/video/337401969-979f0cc9f55fdf305fb8984e90d92639ec9d7ecc4c9dfbc6536e28edb43784ce-d_640&#34; srcset=&#34;https://i.vimeocdn.com/video/337401969-979f0cc9f55fdf305fb8984e90d92639ec9d7ecc4c9dfbc6536e28edb43784ce-d_640 1x, https://i.vimeocdn.com/video/337401969-979f0cc9f55fdf305fb8984e90d92639ec9d7ecc4c9dfbc6536e28edb43784ce-d_640 2x&#34; alt=&#34;Sing Jan Swing - Kinetic Type&#34;&gt;
 &lt;div class=&#34;play&#34;&gt;&lt;svg version=&#34;1&#34; xmlns=&#34;http://www.w3.org/2000/svg&#34; viewBox=&#34;0 0 61 61&#34;&gt;&lt;circle cx=&#34;30.5&#34; cy=&#34;30.5&#34; r=&#34;30.5&#34; opacity=&#34;.8&#34; fill=&#34;#000&#34;&gt;&lt;/circle&gt;&lt;path d=&#34;M25.3 19.2c-2.1-1.2-3.8-.2-3.8 2.2v18.1c0 2.4 1.7 3.4 3.8 2.2l16.6-9.1c2.1-1.2 2.1-3.2 0-4.4l-16.6-9z&#34; fill=&#34;#fff&#34;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/div&gt;&lt;/a&gt;&lt;/div&gt;</description>
         </item>
         <item>

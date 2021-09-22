@@ -6,11 +6,20 @@
     <description>Recent content in Tags on Master Pi</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 18 Sep 2021 16:36:56 +0700</lastBuildDate><atom:link href="https://masterpi-2124.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 19 Sep 2021 14:11:37 +0700</lastBuildDate><atom:link href="https://masterpi-2124.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>branch</title>
+      <link>https://masterpi-2124.github.io/tags/branch/</link>
+      <pubDate>Sun, 19 Sep 2021 14:11:37 +0700</pubDate>
+      
+      <guid>https://masterpi-2124.github.io/tags/branch/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>git</title>
       <link>https://masterpi-2124.github.io/tags/git/</link>
-      <pubDate>Sat, 18 Sep 2021 16:36:56 +0700</pubDate>
+      <pubDate>Sun, 19 Sep 2021 14:11:37 +0700</pubDate>
       
       <guid>https://masterpi-2124.github.io/tags/git/</guid>
       <description></description>
@@ -19,9 +28,18 @@
     <item>
       <title>github 101</title>
       <link>https://masterpi-2124.github.io/tags/github-101/</link>
-      <pubDate>Sat, 18 Sep 2021 16:36:56 +0700</pubDate>
+      <pubDate>Sun, 19 Sep 2021 14:11:37 +0700</pubDate>
       
       <guid>https://masterpi-2124.github.io/tags/github-101/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>commit</title>
+      <link>https://masterpi-2124.github.io/tags/commit/</link>
+      <pubDate>Sat, 18 Sep 2021 16:36:56 +0700</pubDate>
+      
+      <guid>https://masterpi-2124.github.io/tags/commit/</guid>
       <description></description>
     </item>
     

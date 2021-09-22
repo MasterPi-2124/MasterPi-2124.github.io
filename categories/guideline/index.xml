@@ -7,7 +7,17 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language><atom:link href="https://masterpi-2124.github.io/categories/guideline/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Getting Used To GitHub, Eps. 1</title>
+      <title>Getting Used to GitHub, Eps. 2</title>
+      <link>https://masterpi-2124.github.io/p/getting-used-to-github-eps-2/</link>
+      <pubDate>Sun, 19 Sep 2021 14:11:37 +0700</pubDate>
+      
+      <guid>https://masterpi-2124.github.io/p/getting-used-to-github-eps-2/</guid>
+      <description>Hello, in this episode we will discuss branches in git, and how to push, pull or merge. We also talk about the remote repository and local repository, and how to connect them. There are a lot of things to discuss but I will focus on the background, and the remain can be learned by exercising.
+Remote repository When you clone a repository from the Internet, you may notice that it will copy all the content of the project, even every versions, branches, &amp;hellip; In other word, you are simply link the remote project to your local repository.</description>
+    </item>
+    
+    <item>
+      <title>Getting Used to GitHub, Eps. 1</title>
       <link>https://masterpi-2124.github.io/p/getting-used-to-github-eps-1/</link>
       <pubDate>Sat, 18 Sep 2021 16:36:56 +0700</pubDate>
       

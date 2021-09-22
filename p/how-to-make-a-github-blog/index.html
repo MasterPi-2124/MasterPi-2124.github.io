@@ -180,57 +180,52 @@
 <p>Next, we wll pick a theme at <a class="link" href="https://themes.gohugo.io/"  target="_blank" rel="noopener"
     >Hugo theme website</a> and install in <code>themes</code> folder. I will choose <strong>Hugo Stack Theme</strong> for the demonstration.</p>
 <p>Copy the theme&rsquo;s github path, and install:</p>
-<pre tabindex="0"><code>git submodule add https://github.com/CaiJimmy/hugo-theme-stack themes/hugo-theme-stack
-</code></pre><p>Go to the installed theme directory, you will see the <code>exampleSite</code> folder. Copy its content and paste into <code>content</code> folder. It stores all page and post we create for the website, so we will use it to test the new site.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">git submodule add https://github.com/CaiJimmy/hugo-theme-stack themes/hugo-theme-stack
+</code></pre></div><p>Go to the installed theme directory, you will see the <code>exampleSite</code> folder. Copy its content and paste into <code>content</code> folder. It stores all page and post we create for the website, so we will use it to test the new site.</p>
 <p>Replace <code>config.toml</code> by <code>config.yaml</code> copied above, and modify this file as in <a class="link" href="https://docs.stack.jimmycai.com/"  target="_blank" rel="noopener"
     >this intruction</a>.</p>
 <h2 id="publish-to-github-page">Publish to Github Page</h2>
 <p>After you add a post or a site, it&rsquo;s time to push into the repository and publish. But first, we have to link the Github page repository to the current development repository:</p>
-<pre tabindex="0"><code>git submodule add -b master https://github.com/username/username.github.io.git public
-</code></pre><p>It will clone the repository into <code>public</code> folder, as in Hugo documentation about directory structure.
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">git submodule add -b master https://github.com/username/username.github.io.git public
+</code></pre></div><p>It will clone the repository into <code>public</code> folder, as in Hugo documentation about directory structure.
 Check again with <code>git remote -v</code>:</p>
 <pre tabindex="0"><code>origin	https://github.com/username/username.github.io.git (fetch)
 origin	https://github.com/username/username.github.io.git (push)
 </code></pre><p>Then publish the site by running <code>./deploy.sh</code>:</p>
-<pre tabindex="0"><code>#!/bin/sh
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="cp">#!/bin/sh
+</span><span class="cp"></span>
+<span class="c1"># If a command fails then the deploy stops</span>
+<span class="nb">set</span> -e
 
-# If a command fails then the deploy stops
-set -e
+<span class="c1"># Build the project</span>
+<span class="nb">printf</span> <span class="s2">&#34;\033[0;32mDeploying updates to GitHub...\033[0m\n&#34;</span>
+hugo -D --buildFuture
 
-printf &quot;\033[0;32mDeploying updates to GitHub...\033[0m\n&quot;
+<span class="nb">echo</span> <span class="s2">&#34;&#34;</span>
 
-# Create commit message
-msg=&quot;rebuilding site $(date)&quot;
-if [ -n &quot;$*&quot; ]; then
-	msg=&quot;$*&quot;
-fi
-
-# Build the project.
-echo &quot;&quot;
-echo &quot;&quot;
-echo &quot;Committing changes to $(pwd)&quot;
-hugo -D
-
-# Go To Public folder
-cd public
-
-# Add 'public' (Github Pages repo) changes to git and commit/push.
-echo &quot;&quot;
-echo &quot;&quot;
-echo &quot;Committing changes to $(pwd)&quot;
+<span class="c1"># Commit and push to GitHub Page repository</span>
+<span class="nb">printf</span> <span class="s2">&#34;\033[0;32mGo to /public...\033[0m\n&#34;</span>
+<span class="nb">cd</span> public
 git add .
-git commit -m &quot;$msg&quot;
-git push origin master
+<span class="nb">echo</span> <span class="s2">&#34;&#34;</span>
+<span class="nb">read</span> -p <span class="s2">&#34;Enter your commit message: &#34;</span> msg
+<span class="nb">echo</span> <span class="s2">&#34;\033[0;32mCommitting changes...\033[0m\n&#34;</span>
+git commit -m <span class="s2">&#34;</span><span class="nv">$msg</span><span class="s2">&#34;</span>
+git push
+<span class="nb">echo</span> <span class="s2">&#34;&#34;</span>
 
-# Add this repos changes to git and commit/push. First 'cd' out of public
-cd ..
-echo &quot;&quot;
-echo &quot;&quot;
-echo &quot;Committing changes to $(pwd)&quot;
+<span class="c1"># Commit and push to site repository</span>
+<span class="nb">printf</span> <span class="s2">&#34;\033[0;32mGo to root...\033[0m\n&#34;</span>
+<span class="nb">cd</span> ..
 git add .
-git commit -m &quot;$msg&quot;
-git push origin master
-</code></pre><h1 id="modification">Modification</h1>
+<span class="nb">echo</span> <span class="s2">&#34;&#34;</span>
+<span class="nb">read</span> -p <span class="s2">&#34;Enter your commit message: &#34;</span> msg
+<span class="nb">echo</span> <span class="s2">&#34;\033[0;32mCommitting changes...\033[0m\n&#34;</span>
+git commit -m <span class="s2">&#34;</span><span class="nv">$msg</span><span class="s2">&#34;</span>
+git push
+<span class="nb">printf</span> <span class="s2">&#34;\033[0;32mChanges are commited and push successfully! Go to https://username.github.io to see.\033[0m\n&#34;</span>
+<span class="nb">printf</span> <span class="s2">&#34;\033[0;32mFinishing...\033[0m\n&#34;</span>
+</code></pre></div><h1 id="modification">Modification</h1>
 <p>You can also modify the theme to suit your need. All documentations is on these websites:</p>
 <ul>
 <li><a class="link" href="https://docs.stack.jimmycai.com/"  target="_blank" rel="noopener"
@@ -241,7 +236,7 @@ git push origin master
 <p>Here is my work:</p>
 <ul>
 <li><a class="link" href="https://github.com/MasterPi-2124/Personal-Blog"  target="_blank" rel="noopener"
-    >The blog sourece code</a></li>
+    >The blog source code</a></li>
 <li><a class="link" href="https://github.com/MasterPi-2124/MasterPi-2124.github.io"  target="_blank" rel="noopener"
     >The Github Page repository</a></li>
 </ul>
@@ -301,47 +296,61 @@ git push origin master
      
      
         
-    <div class="disqus-container">
-    <div id="disqus_thread"></div>
-<script type="application/javascript">
-    var disqus_config = function () {
-    
-    
-    
-    };
-    (function() {
-        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
-            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
-            return;
+    <div id="giscus" class="giscus-container">
+    <style>
+        .giscus-container {
+            background-color: var(--card-background);
+            border-radius: var(--card-border-radius);
+            box-shadow: var(--shadow-l1);
+            padding: var(--card-padding);
         }
-        var d = document, s = d.createElement('script'); s.async = true;
-        s.src = '//' + "masterpi007" + '.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-</div>
+    </style><script
+        src="https://giscus.app/client.js"
+        data-repo="MasterPi-2124/MasterPi-2124.github.io"
+        data-repo-id="MDEwOlJlcG9zaXRvcnk0MDQwNDgxMjM="
+        data-category="General"
+        data-category-id="DIC_kwDOGBVI-84B_HDA"
+        data-mapping="title"
+        data-reactions-enabled="1"
+        data-emit-metadata="1"
+        data-theme="light"
+        crossorigin="anonymous"
+        async
+    ></script>
 
-<style>
-    .disqus-container {
-        background-color: var(--card-background);
-        border-radius: var(--card-border-radius);
-        box-shadow: var(--shadow-l1);
-        padding: var(--card-padding);
-    }
-</style>
+    <script>
+        function setGiscusTheme(theme) {
+            let giscus = document.querySelector('iframe.giscus-frame');
+            if (giscus) {
+                giscus.contentWindow.postMessage(
+                    { 
+                        giscus: {
+                            setConfig: { 
+                                theme: theme 
+                            }
+                        }
+                    },
+                    "https://giscus.app"
+                );
+            };
+        };
 
-<script>
-    window.addEventListener('onColorSchemeChange', (e) => {
-        if (DISQUS) {
-            DISQUS.reset({
-                reload: true
+        (function(){
+            addEventListener('message', (e) => {
+                if (event.origin !== 'https://giscus.app') return;
+                handler()
             });
-        }
-    })
-</script>
+            window.addEventListener('onColorSchemeChange', handler);
+
+            function handler() {
+                if (document.documentElement.dataset.scheme === "light") {
+                    setGiscusTheme('light');
+                } else {
+                    setGiscusTheme('dark_dimmed');
+                };
+            };
+        }());
+    </script></div>
 
     
 

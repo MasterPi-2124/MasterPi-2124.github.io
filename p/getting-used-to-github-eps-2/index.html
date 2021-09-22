@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head><meta charset='utf-8'>
+
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Remote and Branches'><title>Getting Used to GitHub, Eps. 2</title>
+
+<link rel='canonical' href='https://masterpi-2124.github.io/p/getting-used-to-github-eps-2/'>
+
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='Getting Used to GitHub, Eps. 2'>
+<meta property='og:description' content='Remote and Branches'>
+<meta property='og:url' content='https://masterpi-2124.github.io/p/getting-used-to-github-eps-2/'>
+<meta property='og:site_name' content='Master Pi'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='git' /><meta property='article:tag' content='github 101' /><meta property='article:tag' content='branch' /><meta property='article:published_time' content='2021-09-19T14:11:37&#43;07:00'/><meta property='article:modified_time' content='2021-09-19T14:11:37&#43;07:00'/><meta property='og:image' content='https://masterpi-2124.github.io/p/getting-used-to-github-eps-2/cover.png' />
+<meta name="twitter:title" content="Getting Used to GitHub, Eps. 2">
+<meta name="twitter:description" content="Remote and Branches"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://masterpi-2124.github.io/p/getting-used-to-github-eps-2/cover.png' />
+    <link rel="shortcut icon" href="/img/logo.jpg" />
+
+    </head>
+    <body class="
+    article-page has-toc
+">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex 
+    
+        extended
+    
+">
+    
+        <div id="article-toolbar">
+            <a href="https://masterpi-2124.github.io" class="back-home">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+                <span>Back</span>
+            </a>
+        </div>
+    
+<main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/getting-used-to-github-eps-2/">
+                <img src="/p/getting-used-to-github-eps-2/cover_hu556c4ec09a3780b9f6b4506e3d45f0ae_562273_800x0_resize_box_3.png"
+                        srcset="/p/getting-used-to-github-eps-2/cover_hu556c4ec09a3780b9f6b4506e3d45f0ae_562273_800x0_resize_box_3.png 800w, /p/getting-used-to-github-eps-2/cover_hu556c4ec09a3780b9f6b4506e3d45f0ae_562273_1600x0_resize_box_3.png 1600w"
+                        width="800" 
+                        height="450" 
+                        loading="lazy"
+                        alt="Featured image of post Getting Used to GitHub, Eps. 2" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-tags">
+        
+            <a href="/tags/git/" >
+                git
+            </a>
+        
+            <a href="/tags/github-101/" >
+                github 101
+            </a>
+        
+            <a href="/tags/branch/" >
+                branch
+            </a>
+        
+    </header>
+    
+
+    <h2 class="article-title">
+        <a href="/p/getting-used-to-github-eps-2/">Getting Used to GitHub, Eps. 2</a>
+    </h2>
+
+    
+    <h3 class="article-subtitle">
+        Remote and Branches
+    </h3>
+    
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Sep 19, 2021</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    5 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+</div>
+</header>
+
+    <section class="article-content">
+    <p>Hello, in this episode we will discuss branches in git, and how to push, pull or merge. We also talk about the remote repository and local repository, and how to connect them. There are a lot of things to discuss but I will focus on the background, and the remain can be learned by exercising.</p>
+<h1 id="remote-repository">Remote repository</h1>
+<p>When you clone a repository from the Internet, you may notice that it will copy <em><strong>all the content</strong></em> of the project, even every versions, branches, &hellip; In other word, you are simply <em><strong>link</strong></em> the remote project to your local repository. You can check the remote repository with:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">git remote -v
+</code></pre></div><p>The result may be similar to this:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">origin  https://github.com/MasterPi-2124/MasterPi-2124.github.io.git <span class="o">(</span>fetch<span class="o">)</span>
+origin  https://github.com/MasterPi-2124/MasterPi-2124.github.io.git <span class="o">(</span>push<span class="o">)</span>
+</code></pre></div><p><code>origin</code> is the shortname of the remote repository that your project was originally cloned from. It is the replacement for the repository&rsquo;s URL, and can be helpful when you push or pull from this remote one. You can change this too, but it&rsquo;s better to leave it unchanged (because people leave that too).</p>
+<p>So if you have a local repository and want to connect to a remote repository, simply do this:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">git remote add origin URL_TO_YOUR_PROJECT
+</code></pre></div><p>Be careful before connecting. Run <code>git commit</code> if there are unsaved changes.</p>
+<h1 id="branch">Branch</h1>
+<p>Let&rsquo;s say, you have a project about an application. There are so many versions of it, and you are working on a specific version, <code>v1.0.6</code>. The stable version of the application is <code>v1.0.0</code>, so you should not fuck up with this because any errors in your code may ruin the project. In this case, you will have to create a new branch, named <code>v1.0.6</code> or something, so your change is on this branch, not the stable branch <code>v1.0.0</code>. Here is an illustration of <strong>branches</strong> in git:
+<figure 
+	>
+	<a href="/p/getting-used-to-github-eps-2/branches.svg" >
+		<img src="/p/getting-used-to-github-eps-2/branches.svg"
+			
+			
+			
+			loading="lazy"
+			alt="Branches">
+	</a>
+	
+	<figcaption>Branches</figcaption>
+	
+</figure>
+From the image, you can see that branch is a version of the project, which is isolated from the others and does not affect other versions of the project. You can work in branches, commit changes, push, and merge branches, which will be discussed in this episode.</p>
+<p>You can check all branches in your local repository:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">git branch
+<span class="c1"># Similar to git branch -l</span>
+</code></pre></div><p>Want to see all remote branches too?</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">git branch -r
+</code></pre></div><p>You can use <code>-a</code> flag to see all local and remote branches.</p>
+<p>You can create a new branch too, but not check out to it yet:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">git branch BRANCH_NAME
+</code></pre></div><p>If you want to create a branch and check out:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">git checkout -b BRANCH_NAME
+</code></pre></div><p>Remember that the branches you created above are not shown on the remote repository, they are just at the local and can be checked with <code>git branch -a</code>. If you want to create a branch in a remote repository, jump to &ldquo;<a class="link" href="#push" >Push</a>&rdquo; section.</p>
+<p>Want to delete the branch you are working on?</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">git branch -d BRANCH_NAME
+</code></pre></div><p>This will <em>safely</em> delete the specific branch, it stops if this branch has unmerged changes. You can overwrite this by using <code>-D</code> flag, it will delete everything in this branch.</p>
+<p>You can jump to different branches too:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">git checkout BRANCH_NAME
+</code></pre></div><p>Make sure <code>BRANCH_NAME</code> exists.</p>
+<p>Let&rsquo;s go to a specific example. You are here, <code>main</code> branch&quot;
+<figure 
+	
+		class="gallery-image" 
+		style="
+			flex-grow: 234; 
+			flex-basis: 562px"
+	>
+	<a href="/p/getting-used-to-github-eps-2/ahihi.jpg" data-size="890x380">
+		<img src="/p/getting-used-to-github-eps-2/ahihi.jpg"
+			width="890"
+			height="380"
+			srcset="/p/getting-used-to-github-eps-2/ahihi_hu824ff75bdace2ba661bbd61165973b9c_22244_480x0_resize_q75_box.jpg 480w, /p/getting-used-to-github-eps-2/ahihi_hu824ff75bdace2ba661bbd61165973b9c_22244_1024x0_resize_q75_box.jpg 1024w"
+			loading="lazy"
+			alt="You are at &ldquo;main&rdquo;">
+	</a>
+	
+	<figcaption>You are at “main”</figcaption>
+	
+</figure>
+Then, create and check out to a local branch named &ldquo;ahihi&rdquo;:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">git checkout -b ahihi
+</code></pre></div><p><figure 
+	
+		class="gallery-image" 
+		style="
+			flex-grow: 210; 
+			flex-basis: 506px"
+	>
+	<a href="/p/getting-used-to-github-eps-2/main.jpg" data-size="890x422">
+		<img src="/p/getting-used-to-github-eps-2/main.jpg"
+			width="890"
+			height="422"
+			srcset="/p/getting-used-to-github-eps-2/main_hu4d49d0c5becc6ccc13af81a3972b3267_27319_480x0_resize_q75_box.jpg 480w, /p/getting-used-to-github-eps-2/main_hu4d49d0c5becc6ccc13af81a3972b3267_27319_1024x0_resize_q75_box.jpg 1024w"
+			loading="lazy"
+			alt="You are now at &ldquo;ahihi&rdquo;">
+	</a>
+	
+	<figcaption>You are now at “ahihi”</figcaption>
+	
+</figure>
+Remember, <code>HEAD</code> is now at <code>ahihi</code>, not <code>main</code> anymore.
+<figure 
+	
+		class="gallery-image" 
+		style="
+			flex-grow: 197; 
+			flex-basis: 473px"
+	>
+	<a href="/p/getting-used-to-github-eps-2/commit.jpg" data-size="1080x547">
+		<img src="/p/getting-used-to-github-eps-2/commit.jpg"
+			width="1080"
+			height="547"
+			srcset="/p/getting-used-to-github-eps-2/commit_hu14706a334267d74149546e96407c7e04_36162_480x0_resize_q75_box.jpg 480w, /p/getting-used-to-github-eps-2/commit_hu14706a334267d74149546e96407c7e04_36162_1024x0_resize_q75_box.jpg 1024w"
+			loading="lazy"
+			alt="HEAD is now at &ldquo;ahihi&rdquo;">
+	</a>
+	
+	<figcaption>HEAD is now at “ahihi”</figcaption>
+	
+</figure>
+<code>ahihi</code> is now ahead of <code>main</code> with unmerged changes, so you just can&rsquo;t delete <code>ahihi</code> safely. You have to use <code>-D</code> to completely remove this branch:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">git branch -D ahihi
+</code></pre></div><h1 id="push">Push</h1>
+<p>When you are in a local branch and want to push to the remote repository, you have to commit your change and make sure that <em><strong>your local repository is synced with the remote</strong></em>.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">git push origin BRANCH_NAME
+</code></pre></div><p>This will push to the specific branch in the remote repository. If the branch is not on the remote, this branch will be created. So check carefully before pushing. Here is an illustration of push:
+<figure 
+	
+		class="gallery-image" 
+		style="
+			flex-grow: 150; 
+			flex-basis: 360px"
+	>
+	<a href="/p/getting-used-to-github-eps-2/before_push.png" data-size="420x280">
+		<img src="/p/getting-used-to-github-eps-2/before_push.png"
+			width="420"
+			height="280"
+			srcset="/p/getting-used-to-github-eps-2/before_push_hua7db8a64f967fd74f478a0d48192f6b2_12009_480x0_resize_box_3.png 480w, /p/getting-used-to-github-eps-2/before_push_hua7db8a64f967fd74f478a0d48192f6b2_12009_1024x0_resize_box_3.png 1024w"
+			loading="lazy"
+			alt="Before push">
+	</a>
+	
+	<figcaption>Before push</figcaption>
+	
+</figure><figure 
+	
+		class="gallery-image" 
+		style="
+			flex-grow: 159; 
+			flex-basis: 382px"
+	>
+	<a href="/p/getting-used-to-github-eps-2/after_push.png" data-size="434x272">
+		<img src="/p/getting-used-to-github-eps-2/after_push.png"
+			width="434"
+			height="272"
+			srcset="/p/getting-used-to-github-eps-2/after_push_hu4c16a0ab9ceb0ae9cff7b3d38c17856b_12636_480x0_resize_box_3.png 480w, /p/getting-used-to-github-eps-2/after_push_hu4c16a0ab9ceb0ae9cff7b3d38c17856b_12636_1024x0_resize_box_3.png 1024w"
+			loading="lazy"
+			alt="After push">
+	</a>
+	
+	<figcaption>After push</figcaption>
+	
+</figure>
+You can also use <code>git push</code> to delete a remote branch too:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">git push origin :BRANCH_NAME
+</code></pre></div><p>The colon <code>:</code> before branch will tell git push to delete the remote branch. It&rsquo;s suggested to delete both local and remote branches.</p>
+<h1 id="fetch-pull-and-merge">Fetch, Pull and Merge</h1>
+<p><code>git fetch</code> is a primary command used to download contents from a remote repository. <code>git fetch</code> has similar behavior to <code>git pull</code>, however, <code>git fetch</code> can be considered a safer, nondestructive version. Think <code>git fetch</code> like synchronizing the *<strong>remote repository</strong>, which will download all content from the repository without updating the local repository to match that content, while <code>git pull</code> creates a merge commit and <code>HEAD</code> is updated to point at the new commit.</p>
+<p>In conclusion,</p>
+<blockquote>
+<p><code>git pull</code> = <code>git fetch</code> + <code>git merge</code></p>
+</blockquote>
+<p><figure 
+	
+		class="gallery-image" 
+		style="
+			flex-grow: 98; 
+			flex-basis: 235px"
+	>
+	<a href="/p/getting-used-to-github-eps-2/before_fetch.png" data-size="270x275">
+		<img src="/p/getting-used-to-github-eps-2/before_fetch.png"
+			width="270"
+			height="275"
+			srcset="/p/getting-used-to-github-eps-2/before_fetch_hu00d3723cc82135c669a3288d6103c962_10374_480x0_resize_box_3.png 480w, /p/getting-used-to-github-eps-2/before_fetch_hu00d3723cc82135c669a3288d6103c962_10374_1024x0_resize_box_3.png 1024w"
+			loading="lazy"
+			alt="Before fetch">
+	</a>
+	
+	<figcaption>Before fetch</figcaption>
+	
+</figure><figure 
+	
+		class="gallery-image" 
+		style="
+			flex-grow: 153; 
+			flex-basis: 368px"
+	>
+	<a href="/p/getting-used-to-github-eps-2/after_fetch.png" data-size="543x354">
+		<img src="/p/getting-used-to-github-eps-2/after_fetch.png"
+			width="543"
+			height="354"
+			srcset="/p/getting-used-to-github-eps-2/after_fetch_hu2b424cfb4db83a39cd6089c0dafcfc7c_17022_480x0_resize_box_3.png 480w, /p/getting-used-to-github-eps-2/after_fetch_hu2b424cfb4db83a39cd6089c0dafcfc7c_17022_1024x0_resize_box_3.png 1024w"
+			loading="lazy"
+			alt="After fetch">
+	</a>
+	
+	<figcaption>After fetch</figcaption>
+	
+</figure><figure 
+	
+		class="gallery-image" 
+		style="
+			flex-grow: 199; 
+			flex-basis: 479px"
+	>
+	<a href="/p/getting-used-to-github-eps-2/after_merge.png" data-size="543x272">
+		<img src="/p/getting-used-to-github-eps-2/after_merge.png"
+			width="543"
+			height="272"
+			srcset="/p/getting-used-to-github-eps-2/after_merge_hu2ce81a2748c331142ff05615a7800de4_17734_480x0_resize_box_3.png 480w, /p/getting-used-to-github-eps-2/after_merge_hu2ce81a2748c331142ff05615a7800de4_17734_1024x0_resize_box_3.png 1024w"
+			loading="lazy"
+			alt="After merge">
+	</a>
+	
+	<figcaption>After merge</figcaption>
+	
+</figure>
+In many scenarios, <code>git pull</code> may lead to conflict when trying to merge branches, that require you to manually check for differences. More particular situations will be shown in the next episodes.</p>
+<h1 id="final-words">Final words</h1>
+<p>So above is &ldquo;<strong>Getting used to Github</strong>&rdquo;, eps. 2. This episode contains the most important parts of <code>git</code>, so be sure you understand it. If not, leave comments below and try some real-life problems.</p>
+<p>There are some images in the post, some are mine, some are from the Internet, and it&rsquo;s free to use as in the LICENSE below. But I always leave credit here to support authors, and so do you if you want to use content in my article.</p>
+<ul>
+<li>Visualisation of push, pull, fetch and merge: <a class="link" href="https://www.atlassian.com/git/tutorials"  target="_blank" rel="noopener"
+    >https://www.atlassian.com/git/tutorials</a></li>
+<li>Cover image: <a class="link" href="https://www.hostinger.vn/huong-dan/huong-dan-su-dung-git-lenh-git-co-ban"  target="_blank" rel="noopener"
+    >https://www.hostinger.vn/huong-dan/huong-dan-su-dung-git-lenh-git-co-ban</a></li>
+</ul>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>MIT</span>
+    </section>
+    <section class="article-author">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+        <span>
+            Written with ❤️ by  Master Pi
+        </span>
+    </section></footer>
+
+
+    
+</article>
+
+    <aside class="related-contents--wrapper">
+    
+    
+        <h2 class="section-title">Related contents</h2>
+        <div class="related-contents">
+            <div class="flex article-list--tile">
+                
+                    
+<article class="has-image">
+    <a href="/p/getting-used-to-github-eps-1/">
+        
+        
+            <div class="article-image">
+                <img src="/p/getting-used-to-github-eps-1/cover.84ac4ba9b1031214989f9c297342d364_hu3f667bd6338ccc80c74b23dcbcacaf49_106240_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy" 
+                        data-key="getting-used-to-github-eps-1" 
+                        data-hash="md5-hKxLqbEDEhSYn5wpc0LTZA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Getting Used to GitHub, Eps. 1</h2>
+        </div>
+    </a>
+</article>
+                
+            </div>
+        </div>
+    
+</aside>
+
+     
+     
+        
+    <div id="giscus" class="giscus-container">
+    <style>
+        .giscus-container {
+            background-color: var(--card-background);
+            border-radius: var(--card-border-radius);
+            box-shadow: var(--shadow-l1);
+            padding: var(--card-padding);
+        }
+    </style><script
+        src="https://giscus.app/client.js"
+        data-repo="MasterPi-2124/MasterPi-2124.github.io"
+        data-repo-id="MDEwOlJlcG9zaXRvcnk0MDQwNDgxMjM="
+        data-category="General"
+        data-category-id="DIC_kwDOGBVI-84B_HDA"
+        data-mapping="title"
+        data-reactions-enabled="1"
+        data-emit-metadata="1"
+        data-theme="light"
+        crossorigin="anonymous"
+        async
+    ></script>
+
+    <script>
+        function setGiscusTheme(theme) {
+            let giscus = document.querySelector('iframe.giscus-frame');
+            if (giscus) {
+                giscus.contentWindow.postMessage(
+                    { 
+                        giscus: {
+                            setConfig: { 
+                                theme: theme 
+                            }
+                        }
+                    },
+                    "https://giscus.app"
+                );
+            };
+        };
+
+        (function(){
+            addEventListener('message', (e) => {
+                if (event.origin !== 'https://giscus.app') return;
+                handler()
+            });
+            window.addEventListener('onColorSchemeChange', handler);
+
+            function handler() {
+                if (document.documentElement.dataset.scheme === "light") {
+                    setGiscusTheme('light');
+                } else {
+                    setGiscusTheme('dark_dimmed');
+                };
+            };
+        }());
+    </script></div>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+        2021 Master Pi
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.2.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
+            >
+
+            </main>
+    
+        <aside class="sidebar right-sidebar sticky">
+            <section class="widget archives">
+                <div class="widget-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                </div>
+                <h2 class="widget-title section-title">Table of contents</h2>
+                
+                <div class="widget--toc">
+                    <nav id="TableOfContents">
+  <ol>
+    <li><a href="#remote-repository">Remote repository</a></li>
+    <li><a href="#branch">Branch</a></li>
+    <li><a href="#push">Push</a></li>
+    <li><a href="#fetch-pull-and-merge">Fetch, Pull and Merge</a></li>
+    <li><a href="#final-words">Final words</a></li>
+  </ol>
+</nav>
+                </div>
+            </section>
+
+            <section class="widget archives">
+                
+  
+  
+  
+  <div class="widget-icon">
+    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-share" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <circle cx="6" cy="12" r="3"></circle>
+   <circle cx="18" cy="6" r="3"></circle>
+   <circle cx="18" cy="18" r="3"></circle>
+   <line x1="8.7" y1="10.7" x2="15.3" y2="7.3"></line>
+   <line x1="8.7" y1="13.3" x2="15.3" y2="16.7"></line>
+</svg>
+</div>
+<h2 class="widget-title section-title">Share</h2>
+  <section class="social-share">
+    <ul class="share-icons">
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?hashtags=codingnconcepts&amp;url=https%3a%2f%2fmasterpi-2124.github.io%2fp%2fgetting-used-to-github-eps-2%2f&amp;text=Getting%20Used%20to%20GitHub%2c%20Eps.%202" target="_blank" rel="noopener" title="Tweet me!" class="share-btn twitter">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z"></path>
+</svg>
+          <p></p>
+          </a>
+      </li>
+      
+
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fmasterpi-2124.github.io%2fp%2fgetting-used-to-github-eps-2%2f" target="_blank" rel="noopener" title="Share me on Facebook!" class="share-btn facebook">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-facebook" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M7 10v4h3v7h4v-7h3l1 -4h-4v-2a1 1 0 0 1 1 -1h3v-4h-3a5 5 0 0 0 -5 5v2h-3"></path>
+</svg>
+          <p>Share me on Facebook!</p>
+          </a>
+      </li>
+      
+
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fmasterpi-2124.github.io%2fp%2fgetting-used-to-github-eps-2%2f&amp;source=https%3a%2f%2fmasterpi-2124.github.io%2fp%2fgetting-used-to-github-eps-2%2f&amp;title=Getting%20Used%20to%20GitHub%2c%20Eps.%202&amp;summary=Getting%20Used%20to%20GitHub%2c%20Eps.%202" target="_blank" rel="noopener" title="Share me on LinkedIn!" class="share-btn linkedin">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-linkedin" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <rect x="4" y="4" width="16" height="16" rx="2"></rect>
+   <line x1="8" y1="11" x2="8" y2="16"></line>
+   <line x1="8" y1="8" x2="8" y2="8.01"></line>
+   <line x1="12" y1="16" x2="12" y2="11"></line>
+   <path d="M16 16v-3a2 2 0 0 0 -4 0"></path>
+</svg>
+            <p>Share me on LinkedIn!</p>
+          </a>
+      </li>
+      
+
+      
+      
+      <li>
+        <a href="mailto:?subject=Master%20Pi - Getting%20Used%20to%20GitHub%2c%20Eps.%202.&amp;body=Getting%20Used%20to%20GitHub%2c%20Eps.%202%2c%20by%20Master%20Pi%0aRemote%20and%20Branches%0a%0ahttps%3a%2f%2fmasterpi-2124.github.io%2fp%2fgetting-used-to-github-eps-2%2f%0a" target="_blank" title="Send me via email!" class="share-btn email">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-mail" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+   <polyline points="3 7 12 13 21 7"></polyline>
+</svg>
+          <p>Send me via Email!</p>
+        </a>
+      </li>
+    </ul>
+  </section>
+  
+            </section>
+        </aside>
+    
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
+                defer="false"
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>
