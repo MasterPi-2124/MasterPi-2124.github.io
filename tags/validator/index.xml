@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>validator on Master Pi</title>
+    <link>https://masterpi-2124.github.io/tags/validator/</link>
+    <description>Recent content in validator on Master Pi</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 10 Oct 2021 20:25:54 +0700</lastBuildDate><atom:link href="https://masterpi-2124.github.io/tags/validator/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Every Problem With Running Node</title>
+      <link>https://masterpi-2124.github.io/p/every-problem-with-running-node/</link>
+      <pubDate>Sun, 10 Oct 2021 20:25:54 +0700</pubDate>
+      
+      <guid>https://masterpi-2124.github.io/p/every-problem-with-running-node/</guid>
+      <description>Here are every error I got when trying to run a full node. For difference between nodes and validators, see other posts in my blog.
+Common step in every node Below are the common setup for all node:
+ Clone from a remote repository Checkout a version. This step is really important and is the most difficult step because you don&amp;rsquo;t know which version can run or not. Most problems occur can be fixed by change the version, which is only by try-and-fail.</description>
+    </item>
+    
+  </channel>
+</rss>

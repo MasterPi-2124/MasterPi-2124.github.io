@@ -6,7 +6,56 @@
         <description>Recent content on Master Pi</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Sun, 19 Sep 2021 14:11:37 +0700</lastBuildDate><atom:link href="https://masterpi-2124.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Tue, 07 Dec 2021 10:05:34 +0700</lastBuildDate><atom:link href="https://masterpi-2124.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Uptime Monitor Tool</title>
+        <link>https://masterpi-2124.github.io/p/uptime-monitor-tool/</link>
+        <pubDate>Tue, 07 Dec 2021 10:05:34 +0700</pubDate>
+        
+        <guid>https://masterpi-2124.github.io/p/uptime-monitor-tool/</guid>
+        <description>&lt;p&gt;See at &lt;a class=&#34;link&#34; href=&#34;https://MasterPi-2124.github.io/uptime-monitor-tool&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://MasterPi-2124.github.io/uptime-monitor-tool&lt;/a&gt;&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>Every Problem With Running Node</title>
+        <link>https://masterpi-2124.github.io/p/every-problem-with-running-node/</link>
+        <pubDate>Sun, 10 Oct 2021 20:25:54 +0700</pubDate>
+        
+        <guid>https://masterpi-2124.github.io/p/every-problem-with-running-node/</guid>
+        <description>&lt;p&gt;Here are every error I got when trying to run a full node. For difference between nodes and validators, see other posts in my blog.&lt;/p&gt;
+&lt;h1 id=&#34;common-step-in-every-node&#34;&gt;Common step in every node&lt;/h1&gt;
+&lt;p&gt;Below are the common setup for all node:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Clone from a remote repository&lt;/li&gt;
+&lt;li&gt;Checkout a version. This step is really important and is the most difficult step because you don&amp;rsquo;t know which version can run or not. Most problems occur can be fixed by change the version, which is only by try-and-fail.&lt;/li&gt;
+&lt;li&gt;Install with &lt;code&gt;go install&lt;/code&gt; or &lt;code&gt;make install&lt;/code&gt;. If you want to reinstall after a failed set up, try with &lt;code&gt;make clean install&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Initialize the node name: &lt;code&gt;chaind init moniker --chain-id network&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Replace the &lt;strong&gt;genesis.json&lt;/strong&gt; created in step above with the genesis file from the repo.&lt;/li&gt;
+&lt;li&gt;Set up the ports:
+&lt;ul&gt;
+&lt;li&gt;RPC:&lt;/li&gt;
+&lt;li&gt;gRPC:&lt;/li&gt;
+&lt;li&gt;P2P:&lt;/li&gt;
+&lt;li&gt;API:&lt;/li&gt;
+&lt;li&gt;NODE:&lt;/li&gt;
+&lt;li&gt;PEERS:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Start the node with &lt;code&gt;chaind start&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;problem-1&#34;&gt;Problem #1:&lt;/h1&gt;
+</description>
+        </item>
+        <item>
+        <title>Relayer in Cosmos</title>
+        <link>https://masterpi-2124.github.io/p/relayer-in-cosmos/</link>
+        <pubDate>Sun, 10 Oct 2021 02:27:43 +0700</pubDate>
+        
+        <guid>https://masterpi-2124.github.io/p/relayer-in-cosmos/</guid>
+        <description>&lt;p&gt;Hi, this is the first blog about my project in Notional. At first, I really didn&amp;rsquo;t know what to note about the project, because the&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>Getting Used to GitHub, Eps. 2</title>
         <link>https://masterpi-2124.github.io/p/getting-used-to-github-eps-2/</link>
         <pubDate>Sun, 19 Sep 2021 14:11:37 +0700</pubDate>
@@ -387,7 +436,12 @@ public/
 &lt;p&gt;You can see details of a commit, by running this:&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;git show COMMIT_ADDRESS
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;While &lt;code&gt;COMMIT_ADDRESS&lt;/code&gt; is the string of characters right after &amp;ldquo;commit&amp;rdquo;, or you just use &lt;code&gt;HEAD&lt;/code&gt; for current commit.&lt;/p&gt;
-&lt;h1 id=&#34;final-words&#34;&gt;Final words&lt;/h1&gt;
+&lt;p&gt;If you want to undo commit, or return to a previous commit, run this command:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;git reset --soft COMMIT_ADDRESS
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;or&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;git reset --soft HEAD~n
+&lt;span class=&#34;c1&#34;&gt;# n is number of last commits you want to undo&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id=&#34;final-words&#34;&gt;Final words&lt;/h1&gt;
 &lt;p&gt;So above is &amp;ldquo;&lt;strong&gt;Getting used to Github&lt;/strong&gt;&amp;rdquo;, eps. 1. I really want to show more, but a rule in my blog that every post should not exceed 20 minutes read, and I am revising for exam too, I have to spend other usefull commands on next post. You can subscribe to read other articles in the future.&lt;/p&gt;
 &lt;p&gt;There are some images in the post, some are mine, some are from the Internet, and it&amp;rsquo;s free to use as in the LICENSE below. But I always leave credit here to support authors, and so do you if you want to use content in my article.&lt;/p&gt;
 &lt;ul&gt;

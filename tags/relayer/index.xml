@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>relayer on Master Pi</title>
+    <link>https://masterpi-2124.github.io/tags/relayer/</link>
+    <description>Recent content in relayer on Master Pi</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 10 Oct 2021 02:27:43 +0700</lastBuildDate><atom:link href="https://masterpi-2124.github.io/tags/relayer/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Relayer in Cosmos</title>
+      <link>https://masterpi-2124.github.io/p/relayer-in-cosmos/</link>
+      <pubDate>Sun, 10 Oct 2021 02:27:43 +0700</pubDate>
+      
+      <guid>https://masterpi-2124.github.io/p/relayer-in-cosmos/</guid>
+      <description>Hi, this is the first blog about my project in Notional. At first, I really didn&amp;rsquo;t know what to note about the project, because the</description>
+    </item>
+    
+  </channel>
+</rss>
