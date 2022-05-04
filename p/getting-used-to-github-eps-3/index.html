@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head><meta charset='utf-8'>
+
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Merge and Merge Conflicts'><title>Getting Used to GitHub, Eps. 3</title>
+
+<link rel='canonical' href='https://masterpi-2124.github.io/p/getting-used-to-github-eps-3/'>
+
+<link rel="stylesheet" href="/scss/style.min.css"><meta property='og:title' content='Getting Used to GitHub, Eps. 3'>
+<meta property='og:description' content='Merge and Merge Conflicts'>
+<meta property='og:url' content='https://masterpi-2124.github.io/p/getting-used-to-github-eps-3/'>
+<meta property='og:site_name' content='Master Pi'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='git' /><meta property='article:tag' content='github 101' /><meta property='article:tag' content='merge' /><meta property='article:published_time' content='2022-05-04T21:55:37&#43;07:00'/><meta property='article:modified_time' content='2022-05-04T22:06:18&#43;07:00'/><meta property='og:image' content='https://masterpi-2124.github.io/p/getting-used-to-github-eps-3/merge.gif' />
+<meta name="twitter:title" content="Getting Used to GitHub, Eps. 3">
+<meta name="twitter:description" content="Merge and Merge Conflicts"><meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content='https://masterpi-2124.github.io/p/getting-used-to-github-eps-3/merge.gif' />
+    <link rel="shortcut icon" href="/img/logo.jpg" />
+
+    </head>
+    <body class="
+    article-page has-toc
+">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex 
+    
+        extended
+    
+">
+    
+        <div id="article-toolbar">
+            <a href="https://masterpi-2124.github.io" class="back-home">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="15 6 9 12 15 18" />
+</svg>
+
+
+
+                <span>Back</span>
+            </a>
+        </div>
+    
+<main class="main full-width">
+    <article class="has-image main-article">
+    <header class="article-header">
+        <div class="article-image">
+            <a href="/p/getting-used-to-github-eps-3/">
+                <img src="/p/getting-used-to-github-eps-3/merge_hu6ae8c8c5fad9c14566ba268e2c0186cc_78697_800x0_resize_box.gif"
+                        srcset="/p/getting-used-to-github-eps-3/merge_hu6ae8c8c5fad9c14566ba268e2c0186cc_78697_800x0_resize_box.gif 800w, /p/getting-used-to-github-eps-3/merge_hu6ae8c8c5fad9c14566ba268e2c0186cc_78697_1600x0_resize_box.gif 1600w"
+                        width="800" 
+                        height="436" 
+                        loading="lazy"
+                        alt="Featured image of post Getting Used to GitHub, Eps. 3" />
+                
+            </a>
+        </div>
+    
+
+    <div class="article-details">
+    
+    <header class="article-tags">
+        
+            <a href="/tags/git/" >
+                git
+            </a>
+        
+            <a href="/tags/github-101/" >
+                github 101
+            </a>
+        
+            <a href="/tags/merge/" >
+                merge
+            </a>
+        
+    </header>
+    
+
+    <h2 class="article-title">
+        <a href="/p/getting-used-to-github-eps-3/">Getting Used to GitHub, Eps. 3</a>
+    </h2>
+
+    
+    <h3 class="article-subtitle">
+        Merge and Merge Conflicts
+    </h3>
+    
+
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">May 04, 2022</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    8 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+</div>
+</header>
+
+    <section class="article-content">
+    <p>Hi again. This is Dung Dao Minh, vice president of SoICT Innovation Club, and in this third post of series &ldquo;Github 101&rdquo;, I will talk about some kind of scenarios that can happen when you work on multiple branches in your work repositories, or work in collaboration with a team on a project.</p>
+<h1 id="first-words">First words</h1>
+<p>In many cases, you (and your collaborators) create multiple branches for different purpose: creating features, bug fixing, code versioning,&hellip; Most of the issues happen when you try to combine the code between those branches: you may realize that you still commit to the main branch while fixing bugs/adding features, another developer may add a little documentation on your code (which is great), or your evil coworker might mess up with your code and make it full of bugs. In short, there may be some modification on the branch you are trying to merge into, that you need to resolve to (happily) combine the two different commits.</p>
+<p>I will create (with additional references from other sources) some different scenarios here that represent the problem you might face when working on different branches, and make it easy to introduce some new definition, as well as some good practices when working with Git and Github</p>
+<h1 id="scenario-1-working-on-new-feature-no-file-conflict-yet">Scenario #1: Working on new feature (no file conflict yet)</h1>
+<p>Suppose that you are working on a project about real estate recommendation system, and you want to try using <strong>location</strong> information for your system. In the middle of your work, your boss want you to focus 100% of your time on improving system based on <strong>demographic</strong> information.</p>
+<p><strong>Step 1: assume that you are on the <code>develop</code> branch. You should create a new branch <code>location</code> for developing the new feature:</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># Create and switch to new branch</span>
+git checkout -b location
+<span class="c1"># Commit as you go </span>
+git commit -m <span class="s2">&#34;add recommendation based on city&#39;
+</span></code></pre></div><p><strong>Step 2: however, you boss want you to focus on <code>demographic</code> features. You have not completed the <code>location</code> feature yet</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># Switch back to the develop branch</span>
+git checkout develop
+<span class="c1"># Create and switch to `demographic` branch</span>
+git checkout -b demographic
+<span class="c1"># Working on that branch and commit changes</span>
+git commit -m <span class="s2">&#34;finalized demographic-based recommendation&#34;</span>
+</code></pre></div><p><strong>Step 3: after you finish your work on <code>demographic</code> feature, you can merge it to the <code>develop</code> branch and push this to the remote <code>origin/develop</code> branch (assuming that both <code>develop</code> and <code>origin/develop</code> have no additional commit in the mean time)</strong></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># Switch back to the develop branch</span>
+git checkout develop
+<span class="c1"># Merge the `demographic` branch into the `develop` branch</span>
+git merge --no-ff demographic
+<span class="c1"># Push to the remote repository</span>
+git push origin develop
+</code></pre></div><h2 id="quick-note-on-merge-fast-forward-vs-no-fast-forward">Quick note on <code>merge</code>: fast-forward vs. no fast-forward</h2>
+<p>You might see the <code>--no-ff</code> (no fast-forward) in the step 3 above. The new demographic code seems to only add new code, without any modification.</p>
+<p>A picture is worth a thousand words:</p>
+<p><figure 
+	
+		class="gallery-image" 
+		style="
+			flex-grow: 111; 
+			flex-basis: 268px"
+	>
+	<a href="/p/getting-used-to-github-eps-3/fast-forward.png" data-size="463x414">
+		<img src="/p/getting-used-to-github-eps-3/fast-forward.png"
+			width="463"
+			height="414"
+			srcset="/p/getting-used-to-github-eps-3/fast-forward_hu827ec79cdf04ac9ff920a800e8bee8db_40553_480x0_resize_box_3.png 480w, /p/getting-used-to-github-eps-3/fast-forward_hu827ec79cdf04ac9ff920a800e8bee8db_40553_1024x0_resize_box_3.png 1024w"
+			loading="lazy"
+			alt="Fast forward">
+	</a>
+	
+	<figcaption>Fast forward</figcaption>
+	
+</figure></p>
+<p><code>--no-ff</code> will create a new commit (with new id, but the file content is the same), while by default, <code>git merge</code> will fast-forward - moving your branch pointer (in this case, at <code>develop</code>) to point at the incoming commit (from <code>demographic</code>).</p>
+<p><strong>Note:</strong> when you merge with <code>--no-ff</code>, as a new commit is created, you might be asked to create message for that commit.</p>
+<p>In many cases, you want to prevent fast-forward from happening, because you want to maintain a specific branch &ldquo;shape&rdquo;, and someone (your manager) can read the history of changes that you made from creating the <code>demographic</code> branch (instead of losing information when fast-forward)</p>
+<p>You can change you command or do some setups to merge with or without feed-forward:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># Execute for once: add the `--ff-only`, or `--no-ff` flag</span>
+<span class="c1"># Apply for both pull and merge (pull = fetch + merge)</span>
+git pull --ff-only
+git pull --no-ff
+<span class="c1"># Using git config to do it by default </span>
+<span class="c1"># (git pull or git merge won&#39;t need specific flag)</span>
+git config --add merge.ff <span class="nb">false</span>
+git config --add merge.ff only
+</code></pre></div><h1 id="scenario-2-same-file-names-different-file-contents-on-different-branches-conflict">Scenario #2: Same file names, different file contents on different branches (conflict)</h1>
+<p>You might wonder what&rsquo;s the purpose of the <code>location</code> branch created above. Now I will use it to demonstrate merge conflict.</p>
+<p>In a bad mood, you forgot that you create that <code>location</code> branch for experimenting with location data, and you do some commit directly on the <code>develop</code> branch to work with that data. Let review some of the recent commits you made (notice the <code>HEAD-&gt;location</code> (current branch) at commit f3b1b57 and the <code>develop</code> branch at commit 9a5187c)</p>
+<pre tabindex="0"><code>git log --graph --decorate --oneline --all
+
+* 9a5187c (develop) add recommendation based on city in develop
+*   1fe34c7 Merge branch 'demographic' into develop
+|\  
+| * 0883fd7 (demographic) finalized demographic-based recommendation
+|/  
+| * f3b1b57 (HEAD -&gt; location) add recommendation based on city
+|/  
+* b3a463a (origin/develop) Create develop branch
+</code></pre><p>For simple demonstration purpose, here are the 2 versions of <code>location.txt</code> on that 2 branches:</p>
+<pre tabindex="0"><code># On `develop` branch
+location file in develop
+
+# On `location` branch
+location file
+</code></pre><h2 id="some-ways-you-might-consider-to-resolve-the-conflict">Some ways you might consider to resolve the conflict</h2>
+<p>When you realize the mistake, there are some cases here:</p>
+<p><strong>Case 1: You recognize that there are part of the features you develop from both branches would be useful, and you want to combine them together.</strong></p>
+<p>Run the command <code>git merge develop</code> will create the following message:</p>
+<pre tabindex="0"><code>Auto-merging location.txt
+CONFLICT (add/add): Merge conflict in location.txt
+Automatic merge failed; fix conflicts and then commit the result.
+</code></pre><p>This is inevitable, since the 2 files have different contents inside. Inside the <code>location.txt</code> file, you can see that the content has been modified. The upper part is the line of the current commit pointed by <code>HEAD</code> and the lower part is the</p>
+<pre tabindex="0"><code>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+location file
+=======
+location file in develop
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; develop
+</code></pre><p>Check <code>git status</code> for additional understanding:</p>
+<pre tabindex="0"><code>On branch location
+You have unmerged paths.
+...
+Unmerged paths:
+  (use &quot;git add &lt;file&gt;...&quot; to mark resolution)
+        both added:      location.txt
+</code></pre><p>To resolve the problem, simply modify the <code>location.txt</code> file as you wish (obviously, you don&rsquo;t want those &ldquo;&laquo;&lt;&rdquo; or &ldquo;===&rdquo; characters anyway) and add it to the staging area, then create a new commit. Here I will modify the text into <strong>&ldquo;location file after resolve conflict&rdquo;</strong>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">git add location.txt
+git status
+<span class="c1"># On branch location</span>
+<span class="c1"># All conflicts fixed but you are still merging.</span>
+<span class="c1"># ...</span>
+</code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">git commit -m <span class="s2">&#34;resolve conflict in location feature&#34;</span>
+git log --graph --decorate --oneline --all
+
+<span class="c1"># Now we see that the `location` branch has new commit</span>
+*   1f79c56 <span class="o">(</span>location<span class="o">)</span> resolve conflict in location feature
+<span class="p">|</span><span class="se">\ </span> 
+<span class="p">|</span> * 9a5187c <span class="o">(</span>HEAD -&gt; develop<span class="o">)</span> add recommendation based on city in develop
+<span class="p">|</span> *   1fe34c7 Merge branch <span class="s1">&#39;demographic&#39;</span> into develop
+</code></pre></div><p><strong>Case 2: You have done a far better work in the <code>develop</code> branch, and you don&rsquo;t need the same code on <code>location</code> branch anymore. Or the other way around, you soon realize the mistake, and the <code>location</code> branch has more valuable code</strong></p>
+<p>The obvious solution is to use the code in <code>develop</code> instead of that code on <code>location</code>, or the other way around. You can use the approach in Case 1, observing that in some IDE, they support you with choosing the respective version you want. An example in VSCode (you can accept either change or both changes):</p>
+<p><figure 
+	
+		class="gallery-image" 
+		style="
+			flex-grow: 416; 
+			flex-basis: 998px"
+	>
+	<a href="/p/getting-used-to-github-eps-3/conflict_vscode.png" data-size="1040x250">
+		<img src="/p/getting-used-to-github-eps-3/conflict_vscode.png"
+			width="1040"
+			height="250"
+			srcset="/p/getting-used-to-github-eps-3/conflict_vscode_hu25a6cb6d96d9a698a29d308a4461dbd3_47410_480x0_resize_box_3.png 480w, /p/getting-used-to-github-eps-3/conflict_vscode_hu25a6cb6d96d9a698a29d308a4461dbd3_47410_1024x0_resize_box_3.png 1024w"
+			loading="lazy"
+			alt="Conflict VSCode">
+	</a>
+	
+	<figcaption>Conflict VSCode</figcaption>
+	
+</figure></p>
+<p>A quicker way is to use additional flags, in favor of one of the branch (<code>ours</code> strategy refer to preference of the current branch, and <code>theirs</code> is the preference of the incoming branch):</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">git merge --strategy<span class="o">=</span>ours develop
+git merge -X theirs branchB
+</code></pre></div><p><strong>Note:</strong> <code>-s</code> or <code>--strategy</code> completely ignore the other side, while <code>-X</code> or <code>--strategy-option</code> resolve any conflicts using the chosen side.</p>
+<h2 id="additional-note-merge-vs-rebase-and-options-for-git-pull">Additional note: <code>merge</code> vs <code>rebase</code>, and options for <code>git pull</code></h2>
+<p>Perhaps some animation is great here (acknowledgement to <a class="link" href="https://blog.developer.atlassian.com/pull-request-merge-strategies-the-great-debate/"  target="_blank" rel="noopener"
+    >Nicola Paolucci&rsquo;s post</a>  with the animations):
+<figure 
+	
+		class="gallery-image" 
+		style="
+			flex-grow: 183; 
+			flex-basis: 440px"
+	>
+	<a href="/p/getting-used-to-github-eps-3/merge.gif" data-size="883x481">
+		<img src="/p/getting-used-to-github-eps-3/merge.gif"
+			width="883"
+			height="481"
+			srcset="/p/getting-used-to-github-eps-3/merge_hu6ae8c8c5fad9c14566ba268e2c0186cc_78697_480x0_resize_box.gif 480w, /p/getting-used-to-github-eps-3/merge_hu6ae8c8c5fad9c14566ba268e2c0186cc_78697_1024x0_resize_box.gif 1024w"
+			loading="lazy"
+			alt="Merge">
+	</a>
+	
+	<figcaption>Merge</figcaption>
+	
+</figure>
+<figure 
+	
+		class="gallery-image" 
+		style="
+			flex-grow: 183; 
+			flex-basis: 440px"
+	>
+	<a href="/p/getting-used-to-github-eps-3/rebase.gif" data-size="883x481">
+		<img src="/p/getting-used-to-github-eps-3/rebase.gif"
+			width="883"
+			height="481"
+			srcset="/p/getting-used-to-github-eps-3/rebase_hu80fbca7437410330302d7a8016dd5d26_69827_480x0_resize_box.gif 480w, /p/getting-used-to-github-eps-3/rebase_hu80fbca7437410330302d7a8016dd5d26_69827_1024x0_resize_box.gif 1024w"
+			loading="lazy"
+			alt="Rebase">
+	</a>
+	
+	<figcaption>Rebase</figcaption>
+	
+</figure></p>
+<p>You should use <code>git rebase</code> when your changes do not &ldquo;deserve&rdquo; a separate branch for its own. All the commands with <code>merge</code> above can also be done with <code>rebase</code>; note that it has a different behaviour as in the animations</p>
+<p>When working with remote directories, if you want to rebase instead of merge after fetching changes, you can add <code>--rebase</code> flag to the <code>pull</code> command:</p>
+<ul>
+<li><code>git pull</code> = <code>git fetch</code> + <code>git merge</code> against tracking upstream branch</li>
+<li><code>git pull --rebase</code> = <code>git fetch</code> + <code>git rebase</code> against tracking upstream branch</li>
+</ul>
+<h1 id="final-words">Final words</h1>
+<p>The conflict in reality can be more complex, but in this episode, I have list the common cases you might face when you need to merge 2 branches together.</p>
+<p>There are some images in the post, some are mine, some are from the Internet, and it’s free to use as in the LICENSE below. But I always leave credit here to support authors, and so do you if you want to use content in my article.</p>
+<ul>
+<li>A scenario from the Udacity&rsquo;s Machine Learning DevOps Engineer helps me a lot in creating a bunch of scenarios above: <a class="link" href="https://www.udacity.com/course/machine-learning-dev-ops-engineer-nanodegree--nd0821"  target="_blank" rel="noopener"
+    >https://www.udacity.com/course/machine-learning-dev-ops-engineer-nanodegree--nd0821</a></li>
+<li>Answers on StackOverflow that help me with explanation (and images) in the process:
+<ul>
+<li><a class="link" href="https://stackoverflow.com/questions/9069061/what-effect-does-the-no-ff-flag-have-for-git-merge"  target="_blank" rel="noopener"
+    >https://stackoverflow.com/questions/9069061/what-effect-does-the-no-ff-flag-have-for-git-merge</a></li>
+<li><a class="link" href="https://stackoverflow.com/questions/18930527/difference-between-git-pull-and-git-pull-rebase"  target="_blank" rel="noopener"
+    >https://stackoverflow.com/questions/18930527/difference-between-git-pull-and-git-pull-rebase</a></li>
+<li><a class="link" href="https://stackoverflow.com/questions/173919/is-there-a-theirs-version-of-git-merge-s-ours"  target="_blank" rel="noopener"
+    >https://stackoverflow.com/questions/173919/is-there-a-theirs-version-of-git-merge-s-ours</a></li>
+<li><a class="link" href="https://stackoverflow.com/questions/2500296/can-i-make-fast-forwarding-be-off-by-default-in-git"  target="_blank" rel="noopener"
+    >https://stackoverflow.com/questions/2500296/can-i-make-fast-forwarding-be-off-by-default-in-git</a></li>
+</ul>
+</li>
+<li>Amazing images and explanations from Nicola Paolucci&rsquo;s blog post: <a class="link" href="https://blog.developer.atlassian.com/pull-request-merge-strategies-the-great-debate/"  target="_blank" rel="noopener"
+    >https://blog.developer.atlassian.com/pull-request-merge-strategies-the-great-debate/</a></li>
+</ul>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    
+    <section class="article-copyright">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <path d="M14.5 9a3.5 4 0 1 0 0 6" />
+</svg>
+
+
+
+        <span>MIT</span>
+    </section>
+    <section class="article-lastmod">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+        <span>
+            Last updated on May 04, 2022 22:06 GMT&#43;7
+        </span>
+    </section><section class="article-author">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+        <span>
+            Written with ❤️ by  Dung Dao Minh
+        </span>
+    </section></footer>
+
+
+    
+</article>
+
+    <aside class="related-contents--wrapper">
+    
+    
+        <h2 class="section-title">Related contents</h2>
+        <div class="related-contents">
+            <div class="flex article-list--tile">
+                
+                    
+<article class="has-image">
+    <a href="/p/getting-used-to-github-eps-2/">
+        
+        
+            <div class="article-image">
+                <img src="/p/getting-used-to-github-eps-2/cover.47a38a0d8f037a87ccf490af0f618be7_hu556c4ec09a3780b9f6b4506e3d45f0ae_562273_250x150_fill_box_smart1_3.png" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy" 
+                        data-key="getting-used-to-github-eps-2" 
+                        data-hash="md5-R6OKDY8DeofM9JCvD2GL5w==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Getting Used to GitHub, Eps. 2</h2>
+        </div>
+    </a>
+</article>
+                
+                    
+<article class="has-image">
+    <a href="/p/getting-used-to-github-eps-1/">
+        
+        
+            <div class="article-image">
+                <img src="/p/getting-used-to-github-eps-1/cover.84ac4ba9b1031214989f9c297342d364_hu3f667bd6338ccc80c74b23dcbcacaf49_106240_250x150_fill_q75_box_smart1.jpg" 
+                        width="250" 
+                        height="150" 
+                        loading="lazy" 
+                        data-key="getting-used-to-github-eps-1" 
+                        data-hash="md5-hKxLqbEDEhSYn5wpc0LTZA==">
+                
+            </div>
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Getting Used to GitHub, Eps. 1</h2>
+        </div>
+    </a>
+</article>
+                
+            </div>
+        </div>
+    
+</aside>
+
+     
+     
+        
+    <div id="giscus" class="giscus-container">
+    <style>
+        .giscus-container {
+            background-color: var(--card-background);
+            border-radius: var(--card-border-radius);
+            box-shadow: var(--shadow-l1);
+            padding: var(--card-padding);
+        }
+    </style><script
+        src="https://giscus.app/client.js"
+        data-repo="MasterPi-2124/MasterPi-2124.github.io"
+        data-repo-id="MDEwOlJlcG9zaXRvcnk0MDQwNDgxMjM="
+        data-category="General"
+        data-category-id="DIC_kwDOGBVI-84B_HDA"
+        data-mapping="title"
+        data-reactions-enabled="1"
+        data-emit-metadata="1"
+        data-theme="light"
+        crossorigin="anonymous"
+        async
+    ></script>
+
+    <script>
+        function setGiscusTheme(theme) {
+            let giscus = document.querySelector('iframe.giscus-frame');
+            if (giscus) {
+                giscus.contentWindow.postMessage(
+                    { 
+                        giscus: {
+                            setConfig: { 
+                                theme: theme 
+                            }
+                        }
+                    },
+                    "https://giscus.app"
+                );
+            };
+        };
+
+        (function(){
+            addEventListener('message', (e) => {
+                if (event.origin !== 'https://giscus.app') return;
+                handler()
+            });
+            window.addEventListener('onColorSchemeChange', handler);
+
+            function handler() {
+                if (document.documentElement.dataset.scheme === "light") {
+                    setGiscusTheme('light');
+                } else {
+                    setGiscusTheme('dark_dimmed');
+                };
+            };
+        }());
+    </script></div>
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2021 - 
+        
+        2022 Master Pi
+    </section>
+    
+    <section class="powerby">
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.2.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer="true"
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.css"integrity="sha256-c0uckgykQ9v5k&#43;IqViZOZKc47Jn7KQil4/MP3ySA3F8="crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.css"integrity="sha256-SBLU4vv6CA6lHsZ1XyTdhyjJxCjPif/TRkjnsyGAGnE="crossorigin="anonymous"
+            >
+
+            </main>
+    
+        <aside class="sidebar right-sidebar sticky">
+            <section class="widget archives">
+                <div class="widget-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                </div>
+                <h2 class="widget-title section-title">Table of contents</h2>
+                
+                <div class="widget--toc">
+                    <nav id="TableOfContents">
+  <ol>
+    <li><a href="#first-words">First words</a></li>
+    <li><a href="#scenario-1-working-on-new-feature-no-file-conflict-yet">Scenario #1: Working on new feature (no file conflict yet)</a>
+      <ol>
+        <li><a href="#quick-note-on-merge-fast-forward-vs-no-fast-forward">Quick note on <code>merge</code>: fast-forward vs. no fast-forward</a></li>
+      </ol>
+    </li>
+    <li><a href="#scenario-2-same-file-names-different-file-contents-on-different-branches-conflict">Scenario #2: Same file names, different file contents on different branches (conflict)</a>
+      <ol>
+        <li><a href="#some-ways-you-might-consider-to-resolve-the-conflict">Some ways you might consider to resolve the conflict</a></li>
+        <li><a href="#additional-note-merge-vs-rebase-and-options-for-git-pull">Additional note: <code>merge</code> vs <code>rebase</code>, and options for <code>git pull</code></a></li>
+      </ol>
+    </li>
+    <li><a href="#final-words">Final words</a></li>
+  </ol>
+</nav>
+                </div>
+            </section>
+
+            <section class="widget archives">
+                
+  
+  
+  
+  <div class="widget-icon">
+    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-share" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <circle cx="6" cy="12" r="3"></circle>
+   <circle cx="18" cy="6" r="3"></circle>
+   <circle cx="18" cy="18" r="3"></circle>
+   <line x1="8.7" y1="10.7" x2="15.3" y2="7.3"></line>
+   <line x1="8.7" y1="13.3" x2="15.3" y2="16.7"></line>
+</svg>
+</div>
+<h2 class="widget-title section-title">Share</h2>
+  <section class="social-share">
+    <ul class="share-icons">
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?hashtags=codingnconcepts&amp;url=https%3a%2f%2fmasterpi-2124.github.io%2fp%2fgetting-used-to-github-eps-3%2f&amp;text=Getting%20Used%20to%20GitHub%2c%20Eps.%203" target="_blank" rel="noopener" title="Tweet me!" class="share-btn twitter">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z"></path>
+</svg>
+          <p></p>
+          </a>
+      </li>
+      
+
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fmasterpi-2124.github.io%2fp%2fgetting-used-to-github-eps-3%2f" target="_blank" rel="noopener" title="Share me on Facebook!" class="share-btn facebook">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-facebook" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M7 10v4h3v7h4v-7h3l1 -4h-4v-2a1 1 0 0 1 1 -1h3v-4h-3a5 5 0 0 0 -5 5v2h-3"></path>
+</svg>
+          <p>Share me on Facebook!</p>
+          </a>
+      </li>
+      
+
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fmasterpi-2124.github.io%2fp%2fgetting-used-to-github-eps-3%2f&amp;source=https%3a%2f%2fmasterpi-2124.github.io%2fp%2fgetting-used-to-github-eps-3%2f&amp;title=Getting%20Used%20to%20GitHub%2c%20Eps.%203&amp;summary=Getting%20Used%20to%20GitHub%2c%20Eps.%203" target="_blank" rel="noopener" title="Share me on LinkedIn!" class="share-btn linkedin">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-linkedin" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <rect x="4" y="4" width="16" height="16" rx="2"></rect>
+   <line x1="8" y1="11" x2="8" y2="16"></line>
+   <line x1="8" y1="8" x2="8" y2="8.01"></line>
+   <line x1="12" y1="16" x2="12" y2="11"></line>
+   <path d="M16 16v-3a2 2 0 0 0 -4 0"></path>
+</svg>
+            <p>Share me on LinkedIn!</p>
+          </a>
+      </li>
+      
+
+      
+      
+      <li>
+        <a href="mailto:?subject=Master%20Pi - Getting%20Used%20to%20GitHub%2c%20Eps.%203.&amp;body=Getting%20Used%20to%20GitHub%2c%20Eps.%203%2c%20by%20Master%20Pi%0aMerge%20and%20Merge%20Conflicts%0a%0ahttps%3a%2f%2fmasterpi-2124.github.io%2fp%2fgetting-used-to-github-eps-3%2f%0a" target="_blank" title="Send me via email!" class="share-btn email">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-mail" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+   <polyline points="3 7 12 13 21 7"></polyline>
+</svg>
+          <p>Send me via Email!</p>
+        </a>
+      </li>
+    </ul>
+  </section>
+  
+            </section>
+        </aside>
+    
+
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.5/dist/vibrant.min.js"integrity="sha256-5NovOZc4iwiAWTYIFiIM7DxKUXKWvpVEuMEPLzcm5/g="crossorigin="anonymous"
+                defer="false"
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

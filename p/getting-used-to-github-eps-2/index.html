@@ -10,7 +10,7 @@
 <meta property='og:description' content='Remote and Branches'>
 <meta property='og:url' content='https://masterpi-2124.github.io/p/getting-used-to-github-eps-2/'>
 <meta property='og:site_name' content='Master Pi'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='git' /><meta property='article:tag' content='github 101' /><meta property='article:tag' content='merge' /><meta property='article:published_time' content='2022-05-04T21:55:37&#43;07:00'/><meta property='article:modified_time' content='2022-05-04T21:55:37&#43;07:00'/><meta property='og:image' content='https://masterpi-2124.github.io/p/getting-used-to-github-eps-2/cover.png' />
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='git' /><meta property='article:tag' content='github 101' /><meta property='article:tag' content='branch' /><meta property='article:published_time' content='2021-09-19T14:11:37&#43;07:00'/><meta property='article:modified_time' content='2021-09-22T19:15:41&#43;07:00'/><meta property='og:image' content='https://masterpi-2124.github.io/p/getting-used-to-github-eps-2/cover.png' />
 <meta name="twitter:title" content="Getting Used to GitHub, Eps. 2">
 <meta name="twitter:description" content="Remote and Branches"><meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content='https://masterpi-2124.github.io/p/getting-used-to-github-eps-2/cover.png' />
@@ -71,7 +71,7 @@
                         width="800" 
                         height="450" 
                         loading="lazy"
-                        alt="Featured image of post Getting Used to GitHub, Eps. 3" />
+                        alt="Featured image of post Getting Used to GitHub, Eps. 2" />
                 
             </a>
         </div>
@@ -144,210 +144,228 @@
 </header>
 
     <section class="article-content">
-    <p>Hi again. This is Dung Dao Minh, vice president of SoICT Innovation Club, and in this third post of series &ldquo;Github 101&rdquo;, I will talk about some kind of scenarios that can happen when you work on multiple branches in your work repositories, or work in collaboration with a team on a project.</p>
-<h1 id="first-words">First words</h1>
-<p>In many cases, you (and your collaborators) create multiple branches for different purpose: creating features, bug fixing, code versioning,&hellip; Most of the issues happen when you try to combine the code between those branches: you may realize that you still commit to the main branch while fixing bugs/adding features, another developer may add a little documentation on your code (which is great), or your evil coworker might mess up with your code and make it full of bugs. In short, there may be some modification on the branch you are trying to merge into, that you need to resolve to (happily) combine the two different commits.</p>
-<p>I will create (with additional references from other sources) some different scenarios here that represent the problem you might face when working on different branches, and make it easy to introduce some new definition, as well as some good practices when working with Git and Github</p>
-<h1 id="scenario-1-working-on-new-feature-no-file-conflict-yet">Scenario #1: Working on new feature (no file conflict yet)</h1>
-<p>Suppose that you are working on a project about real estate recommendation system, and you want to try using <strong>location</strong> information for your system. In the middle of your work, your boss want you to focus 100% of your time on improving system based on <strong>demographic</strong> information.</p>
-<p><strong>Step 1: assume that you are on the <code>develop</code> branch. You should create a new branch <code>location</code> for developing the new feature:</strong></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># Create and switch to new branch</span>
-git checkout -b location
-<span class="c1"># Commit as you go </span>
-git commit -m <span class="s2">&#34;add recommendation based on city&#39;
-</span></code></pre></div><p><strong>Step 2: however, you boss want you to focus on <code>demographic</code> features. You have not completed the <code>location</code> feature yet</strong></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># Switch back to the develop branch</span>
-git checkout develop
-<span class="c1"># Create and switch to `demographic` branch</span>
-git checkout -b demographic
-<span class="c1"># Working on that branch and commit changes</span>
-git commit -m <span class="s2">&#34;finalized demographic-based recommendation&#34;</span>
-</code></pre></div><p><strong>Step 3: after you finish your work on <code>demographic</code> feature, you can merge it to the <code>develop</code> branch and push this to the remote <code>origin/develop</code> branch (assuming that both <code>develop</code> and <code>origin/develop</code> have no additional commit in the mean time)</strong></p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># Switch back to the develop branch</span>
-git checkout develop
-<span class="c1"># Merge the `demographic` branch into the `develop` branch</span>
-git merge --no-ff demographic
-<span class="c1"># Push to the remote repository</span>
-git push origin develop
-</code></pre></div><h2 id="quick-note-on-merge-fast-forward-vs-no-fast-forward">Quick note on <code>merge</code>: fast-forward vs. no fast-forward</h2>
-<p>You might see the <code>--no-ff</code> (no fast-forward) in the step 3 above. The new demographic code seems to only add new code, without any modification.</p>
-<p>A picture is worth a thousand words:</p>
-<p><figure 
-	
-		class="gallery-image" 
-		style="
-			flex-grow: 111; 
-			flex-basis: 268px"
-	>
-	<a href="/p/getting-used-to-github-eps-2/fast-forward.png" data-size="463x414">
-		<img src="/p/getting-used-to-github-eps-2/fast-forward.png"
-			width="463"
-			height="414"
-			srcset="/p/getting-used-to-github-eps-2/fast-forward_hu827ec79cdf04ac9ff920a800e8bee8db_40553_480x0_resize_box_3.png 480w, /p/getting-used-to-github-eps-2/fast-forward_hu827ec79cdf04ac9ff920a800e8bee8db_40553_1024x0_resize_box_3.png 1024w"
-			loading="lazy"
-			alt="Fast forward">
-	</a>
-	
-	<figcaption>Fast forward</figcaption>
-	
-</figure></p>
-<p><code>--no-ff</code> will create a new commit (with new id, but the file content is the same), while by default, <code>git merge</code> will fast-forward - moving your branch pointer (in this case, at <code>develop</code>) to point at the incoming commit (from <code>demographic</code>).</p>
-<p><strong>Note:</strong> when you merge with <code>--no-ff</code>, as a new commit is created, you might be asked to create message for that commit.</p>
-<p>In many cases, you want to prevent fast-forward from happening, because you want to maintain a specific branch &ldquo;shape&rdquo;, and someone (your manager) can read the history of changes that you made from creating the <code>demographic</code> branch (instead of losing information when fast-forward)</p>
-<p>You can change you command or do some setups to merge with or without feed-forward:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># Execute for once: add the `--ff-only`, or `--no-ff` flag</span>
-<span class="c1"># Apply for both pull and merge (pull = fetch + merge)</span>
-git pull --ff-only
-git pull --no-ff
-<span class="c1"># Using git config to do it by default </span>
-<span class="c1"># (git pull or git merge won&#39;t need specific flag)</span>
-git config --add merge.ff <span class="nb">false</span>
-git config --add merge.ff only
-</code></pre></div><h1 id="scenario-2-same-file-names-different-file-contents-on-different-branches-conflict">Scenario #2: Same file names, different file contents on different branches (conflict)</h1>
-<p>You might wonder what&rsquo;s the purpose of the <code>location</code> branch created above. Now I will use it to demonstrate merge conflict.</p>
-<p>In a bad mood, you forgot that you create that <code>location</code> branch for experimenting with location data, and you do some commit directly on the <code>develop</code> branch to work with that data. Let review some of the recent commits you made (notice the <code>HEAD-&gt;location</code> (current branch) at commit f3b1b57 and the <code>develop</code> branch at commit 9a5187c)</p>
-<pre tabindex="0"><code>git log --graph --decorate --oneline --all
-
-* 9a5187c (develop) add recommendation based on city in develop
-*   1fe34c7 Merge branch 'demographic' into develop
-|\  
-| * 0883fd7 (demographic) finalized demographic-based recommendation
-|/  
-| * f3b1b57 (HEAD -&gt; location) add recommendation based on city
-|/  
-* b3a463a (origin/develop) Create develop branch
-</code></pre><p>For simple demonstration purpose, here are the 2 versions of <code>location.txt</code> on that 2 branches:</p>
-<pre tabindex="0"><code># On `develop` branch
-location file in develop
-
-# On `location` branch
-location file
-</code></pre><h2 id="some-ways-you-might-consider-to-resolve-the-conflict">Some ways you might consider to resolve the conflict</h2>
-<p>When you realize the mistake, there are some cases here:</p>
-<p><strong>Case 1: You recognize that there are part of the features you develop from both branches would be useful, and you want to combine them together.</strong></p>
-<p>Run the command <code>git merge develop</code> will create the following message:</p>
-<pre tabindex="0"><code>Auto-merging location.txt
-CONFLICT (add/add): Merge conflict in location.txt
-Automatic merge failed; fix conflicts and then commit the result.
-</code></pre><p>This is inevitable, since the 2 files have different contents inside. Inside the <code>location.txt</code> file, you can see that the content has been modified. The upper part is the line of the current commit pointed by <code>HEAD</code> and the lower part is the</p>
-<pre tabindex="0"><code>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
-location file
-=======
-location file in develop
-&gt;&gt;&gt;&gt;&gt;&gt;&gt; develop
-</code></pre><p>Check <code>git status</code> for additional understanding:</p>
-<pre tabindex="0"><code>On branch location
-You have unmerged paths.
-...
-Unmerged paths:
-  (use &quot;git add &lt;file&gt;...&quot; to mark resolution)
-        both added:      location.txt
-</code></pre><p>To resolve the problem, simply modify the <code>location.txt</code> file as you wish (obviously, you don&rsquo;t want those &ldquo;&laquo;&lt;&rdquo; or &ldquo;===&rdquo; characters anyway) and add it to the staging area, then create a new commit. Here I will modify the text into <strong>&ldquo;location file after resolve conflict&rdquo;</strong>:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">git add location.txt
-git status
-<span class="c1"># On branch location</span>
-<span class="c1"># All conflicts fixed but you are still merging.</span>
-<span class="c1"># ...</span>
-</code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">git commit -m <span class="s2">&#34;resolve conflict in location feature&#34;</span>
-git log --graph --decorate --oneline --all
-
-<span class="c1"># Now we see that the `location` branch has new commit</span>
-*   1f79c56 <span class="o">(</span>location<span class="o">)</span> resolve conflict in location feature
-<span class="p">|</span><span class="se">\ </span> 
-<span class="p">|</span> * 9a5187c <span class="o">(</span>HEAD -&gt; develop<span class="o">)</span> add recommendation based on city in develop
-<span class="p">|</span> *   1fe34c7 Merge branch <span class="s1">&#39;demographic&#39;</span> into develop
-</code></pre></div><p><strong>Case 2: You have done a far better work in the <code>develop</code> branch, and you don&rsquo;t need the same code on <code>location</code> branch anymore. Or the other way around, you soon realize the mistake, and the <code>location</code> branch has more valuable code</strong></p>
-<p>The obvious solution is to use the code in <code>develop</code> instead of that code on <code>location</code>, or the other way around. You can use the approach in Case 1, observing that in some IDE, they support you with choosing the respective version you want. An example in VSCode (you can accept either change or both changes):</p>
-<p><figure 
-	
-		class="gallery-image" 
-		style="
-			flex-grow: 416; 
-			flex-basis: 998px"
-	>
-	<a href="/p/getting-used-to-github-eps-2/conflict_vscode.png" data-size="1040x250">
-		<img src="/p/getting-used-to-github-eps-2/conflict_vscode.png"
-			width="1040"
-			height="250"
-			srcset="/p/getting-used-to-github-eps-2/conflict_vscode_hu25a6cb6d96d9a698a29d308a4461dbd3_47410_480x0_resize_box_3.png 480w, /p/getting-used-to-github-eps-2/conflict_vscode_hu25a6cb6d96d9a698a29d308a4461dbd3_47410_1024x0_resize_box_3.png 1024w"
-			loading="lazy"
-			alt="Conflict VSCode">
-	</a>
-	
-	<figcaption>Conflict VSCode</figcaption>
-	
-</figure></p>
-<p>A quicker way is to use additional flags, in favor of one of the branch (<code>ours</code> strategy refer to preference of the current branch, and <code>theirs</code> is the preference of the incoming branch):</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">git merge --strategy<span class="o">=</span>ours develop
-git merge -X theirs branchB
-</code></pre></div><p><strong>Note:</strong> <code>-s</code> or <code>--strategy</code> completely ignore the other side, while <code>-X</code> or <code>--strategy-option</code> resolve any conflicts using the chosen side.</p>
-<h2 id="additional-note-merge-vs-rebase-and-options-for-git-pull">Additional note: <code>merge</code> vs <code>rebase</code>, and options for <code>git pull</code></h2>
-<p>Perhaps some animation is great here (acknowledgement to <a class="link" href="https://blog.developer.atlassian.com/pull-request-merge-strategies-the-great-debate/"  target="_blank" rel="noopener"
-    >Nicola Paolucci&rsquo;s post</a>  with the animations):
+    <p>Hello, in this episode we will discuss branches in git, and how to push, pull or merge. We also talk about the remote repository and local repository, and how to connect them. There are a lot of things to discuss but I will focus on the background, and the remain can be learned by exercising.</p>
+<h1 id="remote-repository">Remote repository</h1>
+<p>When you clone a repository from the Internet, you may notice that it will copy <em><strong>all the content</strong></em> of the project, even every versions, branches, &hellip; In other word, you are simply <em><strong>link</strong></em> the remote project to your local repository. You can check the remote repository with:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">git remote -v
+</code></pre></div><p>The result may be similar to this:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">origin  https://github.com/MasterPi-2124/MasterPi-2124.github.io.git <span class="o">(</span>fetch<span class="o">)</span>
+origin  https://github.com/MasterPi-2124/MasterPi-2124.github.io.git <span class="o">(</span>push<span class="o">)</span>
+</code></pre></div><p><code>origin</code> is the shortname of the remote repository that your project was originally cloned from. It is the replacement for the repository&rsquo;s URL, and can be helpful when you push or pull from this remote one. You can change this too, but it&rsquo;s better to leave it unchanged (because people leave that too).</p>
+<p>So if you have a local repository and want to connect to a remote repository, simply do this:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">git remote add origin URL_TO_YOUR_PROJECT
+</code></pre></div><p>Be careful before connecting. Run <code>git commit</code> if there are unsaved changes.</p>
+<h1 id="branch">Branch</h1>
+<p>Let&rsquo;s say, you have a project about an application. There are so many versions of it, and you are working on a specific version, <code>v1.0.6</code>. The stable version of the application is <code>v1.0.0</code>, so you should not fuck up with this because any errors in your code may ruin the project. In this case, you will have to create a new branch, named <code>v1.0.6</code> or something, so your change is on this branch, not the stable branch <code>v1.0.0</code>. Here is an illustration of <strong>branches</strong> in git:
 <figure 
-	
-		class="gallery-image" 
-		style="
-			flex-grow: 183; 
-			flex-basis: 440px"
 	>
-	<a href="/p/getting-used-to-github-eps-2/merge.gif" data-size="883x481">
-		<img src="/p/getting-used-to-github-eps-2/merge.gif"
-			width="883"
-			height="481"
-			srcset="/p/getting-used-to-github-eps-2/merge_hu6ae8c8c5fad9c14566ba268e2c0186cc_78697_480x0_resize_box.gif 480w, /p/getting-used-to-github-eps-2/merge_hu6ae8c8c5fad9c14566ba268e2c0186cc_78697_1024x0_resize_box.gif 1024w"
+	<a href="/p/getting-used-to-github-eps-2/branches.svg" >
+		<img src="/p/getting-used-to-github-eps-2/branches.svg"
+			
+			
+			
 			loading="lazy"
-			alt="Merge">
+			alt="Branches">
 	</a>
 	
-	<figcaption>Merge</figcaption>
+	<figcaption>Branches</figcaption>
 	
 </figure>
+From the image, you can see that branch is a version of the project, which is isolated from the others and does not affect other versions of the project. You can work in branches, commit changes, push, and merge branches, which will be discussed in this episode.</p>
+<p>You can check all branches in your local repository:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">git branch
+<span class="c1"># Similar to git branch -l</span>
+</code></pre></div><p>Want to see all remote branches too?</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">git branch -r
+</code></pre></div><p>You can use <code>-a</code> flag to see all local and remote branches.</p>
+<p>You can create a new branch too, but not check out to it yet:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">git branch BRANCH_NAME
+</code></pre></div><p>If you want to create a branch and check out:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">git checkout -b BRANCH_NAME
+</code></pre></div><p>Remember that the branches you created above are not shown on the remote repository, they are just at the local and can be checked with <code>git branch -a</code>. If you want to create a branch in a remote repository, jump to &ldquo;<a class="link" href="#push" >Push</a>&rdquo; section.</p>
+<p>Want to delete the branch you are working on?</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">git branch -d BRANCH_NAME
+</code></pre></div><p>This will <em>safely</em> delete the specific branch, it stops if this branch has unmerged changes. You can overwrite this by using <code>-D</code> flag, it will delete everything in this branch.</p>
+<p>You can jump to different branches too:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">git checkout BRANCH_NAME
+</code></pre></div><p>Make sure <code>BRANCH_NAME</code> exists.</p>
+<p>Let&rsquo;s go to a specific example. You are here, <code>main</code> branch&quot;
 <figure 
 	
 		class="gallery-image" 
 		style="
-			flex-grow: 183; 
-			flex-basis: 440px"
+			flex-grow: 234; 
+			flex-basis: 562px"
 	>
-	<a href="/p/getting-used-to-github-eps-2/rebase.gif" data-size="883x481">
-		<img src="/p/getting-used-to-github-eps-2/rebase.gif"
-			width="883"
-			height="481"
-			srcset="/p/getting-used-to-github-eps-2/rebase_hu80fbca7437410330302d7a8016dd5d26_69827_480x0_resize_box.gif 480w, /p/getting-used-to-github-eps-2/rebase_hu80fbca7437410330302d7a8016dd5d26_69827_1024x0_resize_box.gif 1024w"
+	<a href="/p/getting-used-to-github-eps-2/ahihi.jpg" data-size="890x380">
+		<img src="/p/getting-used-to-github-eps-2/ahihi.jpg"
+			width="890"
+			height="380"
+			srcset="/p/getting-used-to-github-eps-2/ahihi_hu824ff75bdace2ba661bbd61165973b9c_22244_480x0_resize_q75_box.jpg 480w, /p/getting-used-to-github-eps-2/ahihi_hu824ff75bdace2ba661bbd61165973b9c_22244_1024x0_resize_q75_box.jpg 1024w"
 			loading="lazy"
-			alt="Rebase">
+			alt="You are at &ldquo;main&rdquo;">
 	</a>
 	
-	<figcaption>Rebase</figcaption>
+	<figcaption>You are at “main”</figcaption>
 	
-</figure></p>
-<p>You should use <code>git rebase</code> when your changes do not &ldquo;deserve&rdquo; a separate branch for its own. All the commands with <code>merge</code> above can also be done with <code>rebase</code>; note that it has a different behaviour as in the animations</p>
-<p>When working with remote directories, if you want to rebase instead of merge after fetching changes, you can add <code>--rebase</code> flag to the <code>pull</code> command:</p>
-<ul>
-<li><code>git pull</code> = <code>git fetch</code> + <code>git merge</code> against tracking upstream branch</li>
-<li><code>git pull --rebase</code> = <code>git fetch</code> + <code>git rebase</code> against tracking upstream branch</li>
-</ul>
+</figure>
+Then, create and check out to a local branch named &ldquo;ahihi&rdquo;:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">git checkout -b ahihi
+</code></pre></div><p><figure 
+	
+		class="gallery-image" 
+		style="
+			flex-grow: 210; 
+			flex-basis: 506px"
+	>
+	<a href="/p/getting-used-to-github-eps-2/main.jpg" data-size="890x422">
+		<img src="/p/getting-used-to-github-eps-2/main.jpg"
+			width="890"
+			height="422"
+			srcset="/p/getting-used-to-github-eps-2/main_hu4d49d0c5becc6ccc13af81a3972b3267_27319_480x0_resize_q75_box.jpg 480w, /p/getting-used-to-github-eps-2/main_hu4d49d0c5becc6ccc13af81a3972b3267_27319_1024x0_resize_q75_box.jpg 1024w"
+			loading="lazy"
+			alt="You are now at &ldquo;ahihi&rdquo;">
+	</a>
+	
+	<figcaption>You are now at “ahihi”</figcaption>
+	
+</figure>
+Remember, <code>HEAD</code> is now at <code>ahihi</code>, not <code>main</code> anymore.
+<figure 
+	
+		class="gallery-image" 
+		style="
+			flex-grow: 197; 
+			flex-basis: 473px"
+	>
+	<a href="/p/getting-used-to-github-eps-2/commit.jpg" data-size="1080x547">
+		<img src="/p/getting-used-to-github-eps-2/commit.jpg"
+			width="1080"
+			height="547"
+			srcset="/p/getting-used-to-github-eps-2/commit_hu14706a334267d74149546e96407c7e04_36162_480x0_resize_q75_box.jpg 480w, /p/getting-used-to-github-eps-2/commit_hu14706a334267d74149546e96407c7e04_36162_1024x0_resize_q75_box.jpg 1024w"
+			loading="lazy"
+			alt="HEAD is now at &ldquo;ahihi&rdquo;">
+	</a>
+	
+	<figcaption>HEAD is now at “ahihi”</figcaption>
+	
+</figure>
+<code>ahihi</code> is now ahead of <code>main</code> with unmerged changes, so you just can&rsquo;t delete <code>ahihi</code> safely. You have to use <code>-D</code> to completely remove this branch:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">git branch -D ahihi
+</code></pre></div><h1 id="push">Push</h1>
+<p>When you are in a local branch and want to push to the remote repository, you have to commit your change and make sure that <em><strong>your local repository is synced with the remote</strong></em>.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">git push origin BRANCH_NAME
+</code></pre></div><p>This will push to the specific branch in the remote repository. If the branch is not on the remote, this branch will be created. So check carefully before pushing. Here is an illustration of push:
+<figure 
+	
+		class="gallery-image" 
+		style="
+			flex-grow: 150; 
+			flex-basis: 360px"
+	>
+	<a href="/p/getting-used-to-github-eps-2/before_push.png" data-size="420x280">
+		<img src="/p/getting-used-to-github-eps-2/before_push.png"
+			width="420"
+			height="280"
+			srcset="/p/getting-used-to-github-eps-2/before_push_hua7db8a64f967fd74f478a0d48192f6b2_12009_480x0_resize_box_3.png 480w, /p/getting-used-to-github-eps-2/before_push_hua7db8a64f967fd74f478a0d48192f6b2_12009_1024x0_resize_box_3.png 1024w"
+			loading="lazy"
+			alt="Before push">
+	</a>
+	
+	<figcaption>Before push</figcaption>
+	
+</figure><figure 
+	
+		class="gallery-image" 
+		style="
+			flex-grow: 159; 
+			flex-basis: 382px"
+	>
+	<a href="/p/getting-used-to-github-eps-2/after_push.png" data-size="434x272">
+		<img src="/p/getting-used-to-github-eps-2/after_push.png"
+			width="434"
+			height="272"
+			srcset="/p/getting-used-to-github-eps-2/after_push_hu4c16a0ab9ceb0ae9cff7b3d38c17856b_12636_480x0_resize_box_3.png 480w, /p/getting-used-to-github-eps-2/after_push_hu4c16a0ab9ceb0ae9cff7b3d38c17856b_12636_1024x0_resize_box_3.png 1024w"
+			loading="lazy"
+			alt="After push">
+	</a>
+	
+	<figcaption>After push</figcaption>
+	
+</figure>
+You can also use <code>git push</code> to delete a remote branch too:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">git push origin :BRANCH_NAME
+</code></pre></div><p>The colon <code>:</code> before branch will tell git push to delete the remote branch. It&rsquo;s suggested to delete both local and remote branches.</p>
+<h1 id="fetch-pull-and-merge">Fetch, Pull and Merge</h1>
+<p><code>git fetch</code> is a primary command used to download contents from a remote repository. <code>git fetch</code> has similar behavior to <code>git pull</code>, however, <code>git fetch</code> can be considered a safer, nondestructive version. Think <code>git fetch</code> like synchronizing the *<strong>remote repository</strong>, which will download all content from the repository without updating the local repository to match that content, while <code>git pull</code> creates a merge commit and <code>HEAD</code> is updated to point at the new commit.</p>
+<p>In conclusion,</p>
+<blockquote>
+<p><code>git pull</code> = <code>git fetch</code> + <code>git merge</code></p>
+</blockquote>
+<p><figure 
+	
+		class="gallery-image" 
+		style="
+			flex-grow: 98; 
+			flex-basis: 235px"
+	>
+	<a href="/p/getting-used-to-github-eps-2/before_fetch.png" data-size="270x275">
+		<img src="/p/getting-used-to-github-eps-2/before_fetch.png"
+			width="270"
+			height="275"
+			srcset="/p/getting-used-to-github-eps-2/before_fetch_hu00d3723cc82135c669a3288d6103c962_10374_480x0_resize_box_3.png 480w, /p/getting-used-to-github-eps-2/before_fetch_hu00d3723cc82135c669a3288d6103c962_10374_1024x0_resize_box_3.png 1024w"
+			loading="lazy"
+			alt="Before fetch">
+	</a>
+	
+	<figcaption>Before fetch</figcaption>
+	
+</figure><figure 
+	
+		class="gallery-image" 
+		style="
+			flex-grow: 153; 
+			flex-basis: 368px"
+	>
+	<a href="/p/getting-used-to-github-eps-2/after_fetch.png" data-size="543x354">
+		<img src="/p/getting-used-to-github-eps-2/after_fetch.png"
+			width="543"
+			height="354"
+			srcset="/p/getting-used-to-github-eps-2/after_fetch_hu2b424cfb4db83a39cd6089c0dafcfc7c_17022_480x0_resize_box_3.png 480w, /p/getting-used-to-github-eps-2/after_fetch_hu2b424cfb4db83a39cd6089c0dafcfc7c_17022_1024x0_resize_box_3.png 1024w"
+			loading="lazy"
+			alt="After fetch">
+	</a>
+	
+	<figcaption>After fetch</figcaption>
+	
+</figure><figure 
+	
+		class="gallery-image" 
+		style="
+			flex-grow: 199; 
+			flex-basis: 479px"
+	>
+	<a href="/p/getting-used-to-github-eps-2/after_merge.png" data-size="543x272">
+		<img src="/p/getting-used-to-github-eps-2/after_merge.png"
+			width="543"
+			height="272"
+			srcset="/p/getting-used-to-github-eps-2/after_merge_hu2ce81a2748c331142ff05615a7800de4_17734_480x0_resize_box_3.png 480w, /p/getting-used-to-github-eps-2/after_merge_hu2ce81a2748c331142ff05615a7800de4_17734_1024x0_resize_box_3.png 1024w"
+			loading="lazy"
+			alt="After merge">
+	</a>
+	
+	<figcaption>After merge</figcaption>
+	
+</figure>
+In many scenarios, <code>git pull</code> may lead to conflict when trying to merge branches, that require you to manually check for differences. More particular situations will be shown in the next episodes.</p>
 <h1 id="final-words">Final words</h1>
-<p>The conflict in reality can be more complex, but in this episode, I have list the common cases you might face when you need to merge 2 branches together.</p>
-<p>There are some images in the post, some are mine, some are from the Internet, and it’s free to use as in the LICENSE below. But I always leave credit here to support authors, and so do you if you want to use content in my article.</p>
+<p>So above is &ldquo;<strong>Getting used to Github</strong>&rdquo;, eps. 2. This episode contains the most important parts of <code>git</code>, so be sure you understand it. If not, leave comments below and try some real-life problems.</p>
+<p>There are some images in the post, some are mine, some are from the Internet, and it&rsquo;s free to use as in the LICENSE below. But I always leave credit here to support authors, and so do you if you want to use content in my article.</p>
 <ul>
-<li>A scenario from the Udacity&rsquo;s Machine Learning DevOps Engineer helps me a lot in creating a bunch of scenarios above: <a class="link" href="https://www.udacity.com/course/machine-learning-dev-ops-engineer-nanodegree--nd0821"  target="_blank" rel="noopener"
-    >https://www.udacity.com/course/machine-learning-dev-ops-engineer-nanodegree--nd0821</a></li>
-<li>Answers on StackOverflow that help me with explanation (and images) in the process:
-<ul>
-<li><a class="link" href="https://stackoverflow.com/questions/9069061/what-effect-does-the-no-ff-flag-have-for-git-merge"  target="_blank" rel="noopener"
-    >https://stackoverflow.com/questions/9069061/what-effect-does-the-no-ff-flag-have-for-git-merge</a></li>
-<li><a class="link" href="https://stackoverflow.com/questions/18930527/difference-between-git-pull-and-git-pull-rebase"  target="_blank" rel="noopener"
-    >https://stackoverflow.com/questions/18930527/difference-between-git-pull-and-git-pull-rebase</a></li>
-<li><a class="link" href="https://stackoverflow.com/questions/173919/is-there-a-theirs-version-of-git-merge-s-ours"  target="_blank" rel="noopener"
-    >https://stackoverflow.com/questions/173919/is-there-a-theirs-version-of-git-merge-s-ours</a></li>
-<li><a class="link" href="https://stackoverflow.com/questions/2500296/can-i-make-fast-forwarding-be-off-by-default-in-git"  target="_blank" rel="noopener"
-    >https://stackoverflow.com/questions/2500296/can-i-make-fast-forwarding-be-off-by-default-in-git</a></li>
-</ul>
-</li>
-<li>Amazing images and explanations from Nicola Paolucci&rsquo;s blog post: <a class="link" href="https://blog.developer.atlassian.com/pull-request-merge-strategies-the-great-debate/"  target="_blank" rel="noopener"
-    >https://blog.developer.atlassian.com/pull-request-merge-strategies-the-great-debate/</a></li>
+<li>Visualisation of push, pull, fetch and merge: <a class="link" href="https://www.atlassian.com/git/tutorials"  target="_blank" rel="noopener"
+    >https://www.atlassian.com/git/tutorials</a></li>
+<li>Cover image: <a class="link" href="https://www.hostinger.vn/huong-dan/huong-dan-su-dung-git-lenh-git-co-ban"  target="_blank" rel="noopener"
+    >https://www.hostinger.vn/huong-dan/huong-dan-su-dung-git-lenh-git-co-ban</a></li>
 </ul>
 
 </section>
@@ -367,7 +385,19 @@ git merge -X theirs branchB
 
         <span>MIT</span>
     </section>
-    <section class="article-author">
+    <section class="article-lastmod">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+        <span>
+            Last updated on Sep 22, 2021 19:15 GMT&#43;7
+        </span>
+    </section><section class="article-author">
         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z"/>
   <circle cx="12" cy="7" r="4" />
@@ -377,7 +407,7 @@ git merge -X theirs branchB
 
 
         <span>
-            Written with ❤️ by  Dung Dao Minh
+            Written with ❤️ by  Master Pi
         </span>
     </section></footer>
 
@@ -394,22 +424,22 @@ git merge -X theirs branchB
                 
                     
 <article class="has-image">
-    <a href="/p/getting-used-to-github-eps-2/">
+    <a href="/p/getting-used-to-github-eps-3/">
         
         
             <div class="article-image">
-                <img src="/p/getting-used-to-github-eps-2/merge.075105d8e5078709038e4bdf7b7884a0_hu6ae8c8c5fad9c14566ba268e2c0186cc_78697_250x150_fill_box_smart1.gif" 
+                <img src="/p/getting-used-to-github-eps-3/merge.075105d8e5078709038e4bdf7b7884a0_hu6ae8c8c5fad9c14566ba268e2c0186cc_78697_250x150_fill_box_smart1.gif" 
                         width="250" 
                         height="150" 
                         loading="lazy" 
-                        data-key="getting-used-to-github-eps-2" 
+                        data-key="getting-used-to-github-eps-3" 
                         data-hash="md5-B1EF2OUHhwkDjkvfe3iEoA==">
                 
             </div>
         
 
         <div class="article-details">
-            <h2 class="article-title">Getting Used to GitHub, Eps. 2</h2>
+            <h2 class="article-title">Getting Used to GitHub, Eps. 3</h2>
         </div>
     </a>
 </article>
@@ -617,18 +647,10 @@ git merge -X theirs branchB
                 <div class="widget--toc">
                     <nav id="TableOfContents">
   <ol>
-    <li><a href="#first-words">First words</a></li>
-    <li><a href="#scenario-1-working-on-new-feature-no-file-conflict-yet">Scenario #1: Working on new feature (no file conflict yet)</a>
-      <ol>
-        <li><a href="#quick-note-on-merge-fast-forward-vs-no-fast-forward">Quick note on <code>merge</code>: fast-forward vs. no fast-forward</a></li>
-      </ol>
-    </li>
-    <li><a href="#scenario-2-same-file-names-different-file-contents-on-different-branches-conflict">Scenario #2: Same file names, different file contents on different branches (conflict)</a>
-      <ol>
-        <li><a href="#some-ways-you-might-consider-to-resolve-the-conflict">Some ways you might consider to resolve the conflict</a></li>
-        <li><a href="#additional-note-merge-vs-rebase-and-options-for-git-pull">Additional note: <code>merge</code> vs <code>rebase</code>, and options for <code>git pull</code></a></li>
-      </ol>
-    </li>
+    <li><a href="#remote-repository">Remote repository</a></li>
+    <li><a href="#branch">Branch</a></li>
+    <li><a href="#push">Push</a></li>
+    <li><a href="#fetch-pull-and-merge">Fetch, Pull and Merge</a></li>
     <li><a href="#final-words">Final words</a></li>
   </ol>
 </nav>
@@ -656,7 +678,7 @@ git merge -X theirs branchB
       
       
       <li>
-        <a href="https://twitter.com/intent/tweet?hashtags=codingnconcepts&amp;url=https%3a%2f%2fmasterpi-2124.github.io%2fp%2fgetting-used-to-github-eps-2%2f&amp;text=Getting%20Used%20to%20GitHub%2c%20Eps.%203" target="_blank" rel="noopener" title="Tweet me!" class="share-btn twitter">
+        <a href="https://twitter.com/intent/tweet?hashtags=codingnconcepts&amp;url=https%3a%2f%2fmasterpi-2124.github.io%2fp%2fgetting-used-to-github-eps-2%2f&amp;text=Getting%20Used%20to%20GitHub%2c%20Eps.%202" target="_blank" rel="noopener" title="Tweet me!" class="share-btn twitter">
           <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
    <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z"></path>
@@ -682,7 +704,7 @@ git merge -X theirs branchB
       
       
       <li>
-        <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fmasterpi-2124.github.io%2fp%2fgetting-used-to-github-eps-2%2f&amp;source=https%3a%2f%2fmasterpi-2124.github.io%2fp%2fgetting-used-to-github-eps-2%2f&amp;title=Getting%20Used%20to%20GitHub%2c%20Eps.%203&amp;summary=Getting%20Used%20to%20GitHub%2c%20Eps.%203" target="_blank" rel="noopener" title="Share me on LinkedIn!" class="share-btn linkedin">
+        <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fmasterpi-2124.github.io%2fp%2fgetting-used-to-github-eps-2%2f&amp;source=https%3a%2f%2fmasterpi-2124.github.io%2fp%2fgetting-used-to-github-eps-2%2f&amp;title=Getting%20Used%20to%20GitHub%2c%20Eps.%202&amp;summary=Getting%20Used%20to%20GitHub%2c%20Eps.%202" target="_blank" rel="noopener" title="Share me on LinkedIn!" class="share-btn linkedin">
           <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-linkedin" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
    <rect x="4" y="4" width="16" height="16" rx="2"></rect>
@@ -699,7 +721,7 @@ git merge -X theirs branchB
       
       
       <li>
-        <a href="mailto:?subject=Master%20Pi - Getting%20Used%20to%20GitHub%2c%20Eps.%203.&amp;body=Getting%20Used%20to%20GitHub%2c%20Eps.%203%2c%20by%20Master%20Pi%0aMerge%20and%20Merge%20Conflicts%0a%0ahttps%3a%2f%2fmasterpi-2124.github.io%2fp%2fgetting-used-to-github-eps-2%2f%0a" target="_blank" title="Send me via email!" class="share-btn email">
+        <a href="mailto:?subject=Master%20Pi - Getting%20Used%20to%20GitHub%2c%20Eps.%202.&amp;body=Getting%20Used%20to%20GitHub%2c%20Eps.%202%2c%20by%20Master%20Pi%0aRemote%20and%20Branches%0a%0ahttps%3a%2f%2fmasterpi-2124.github.io%2fp%2fgetting-used-to-github-eps-2%2f%0a" target="_blank" title="Send me via email!" class="share-btn email">
           <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-mail" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
    <rect x="3" y="5" width="18" height="14" rx="2"></rect>

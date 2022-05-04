@@ -8,11 +8,11 @@
         <language>en-us</language>
         <lastBuildDate>Wed, 04 May 2022 21:55:37 +0700</lastBuildDate><atom:link href="https://masterpi-2124.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Getting Used to GitHub, Eps. 3</title>
-        <link>https://masterpi-2124.github.io/p/getting-used-to-github-eps-2/</link>
+        <link>https://masterpi-2124.github.io/p/getting-used-to-github-eps-3/</link>
         <pubDate>Wed, 04 May 2022 21:55:37 +0700</pubDate>
         
-        <guid>https://masterpi-2124.github.io/p/getting-used-to-github-eps-2/</guid>
-        <description>&lt;img src="https://masterpi-2124.github.io/p/getting-used-to-github-eps-2/merge.gif" alt="Featured image of post Getting Used to GitHub, Eps. 3" /&gt;&lt;p&gt;Hi again. This is Dung Dao Minh, vice president of SoICT Innovation Club, and in this third post of series &amp;ldquo;Github 101&amp;rdquo;, I will talk about some kind of scenarios that can happen when you work on multiple branches in your work repositories, or work in collaboration with a team on a project.&lt;/p&gt;
+        <guid>https://masterpi-2124.github.io/p/getting-used-to-github-eps-3/</guid>
+        <description>&lt;img src="https://masterpi-2124.github.io/p/getting-used-to-github-eps-3/merge.gif" alt="Featured image of post Getting Used to GitHub, Eps. 3" /&gt;&lt;p&gt;Hi again. This is Dung Dao Minh, vice president of SoICT Innovation Club, and in this third post of series &amp;ldquo;Github 101&amp;rdquo;, I will talk about some kind of scenarios that can happen when you work on multiple branches in your work repositories, or work in collaboration with a team on a project.&lt;/p&gt;
 &lt;h1 id=&#34;first-words&#34;&gt;First words&lt;/h1&gt;
 &lt;p&gt;In many cases, you (and your collaborators) create multiple branches for different purpose: creating features, bug fixing, code versioning,&amp;hellip; Most of the issues happen when you try to combine the code between those branches: you may realize that you still commit to the main branch while fixing bugs/adding features, another developer may add a little documentation on your code (which is great), or your evil coworker might mess up with your code and make it full of bugs. In short, there may be some modification on the branch you are trying to merge into, that you need to resolve to (happily) combine the two different commits.&lt;/p&gt;
 &lt;p&gt;I will create (with additional references from other sources) some different scenarios here that represent the problem you might face when working on different branches, and make it easy to introduce some new definition, as well as some good practices when working with Git and Github&lt;/p&gt;
@@ -47,11 +47,11 @@ git push origin develop
 			flex-grow: 111; 
 			flex-basis: 268px&#34;
 	&gt;
-	&lt;a href=&#34;https://masterpi-2124.github.io/p/getting-used-to-github-eps-2/fast-forward.png&#34; data-size=&#34;463x414&#34;&gt;
-		&lt;img src=&#34;https://masterpi-2124.github.io/p/getting-used-to-github-eps-2/fast-forward.png&#34;
+	&lt;a href=&#34;https://masterpi-2124.github.io/p/getting-used-to-github-eps-3/fast-forward.png&#34; data-size=&#34;463x414&#34;&gt;
+		&lt;img src=&#34;https://masterpi-2124.github.io/p/getting-used-to-github-eps-3/fast-forward.png&#34;
 			width=&#34;463&#34;
 			height=&#34;414&#34;
-			srcset=&#34;https://masterpi-2124.github.io/p/getting-used-to-github-eps-2/fast-forward_hu827ec79cdf04ac9ff920a800e8bee8db_40553_480x0_resize_box_3.png 480w, https://masterpi-2124.github.io/p/getting-used-to-github-eps-2/fast-forward_hu827ec79cdf04ac9ff920a800e8bee8db_40553_1024x0_resize_box_3.png 1024w&#34;
+			srcset=&#34;https://masterpi-2124.github.io/p/getting-used-to-github-eps-3/fast-forward_hu827ec79cdf04ac9ff920a800e8bee8db_40553_480x0_resize_box_3.png 480w, https://masterpi-2124.github.io/p/getting-used-to-github-eps-3/fast-forward_hu827ec79cdf04ac9ff920a800e8bee8db_40553_1024x0_resize_box_3.png 1024w&#34;
 			loading=&#34;lazy&#34;
 			alt=&#34;Fast forward&#34;&gt;
 	&lt;/a&gt;
@@ -133,11 +133,11 @@ git log --graph --decorate --oneline --all
 			flex-grow: 416; 
 			flex-basis: 998px&#34;
 	&gt;
-	&lt;a href=&#34;https://masterpi-2124.github.io/p/getting-used-to-github-eps-2/conflict_vscode.png&#34; data-size=&#34;1040x250&#34;&gt;
-		&lt;img src=&#34;https://masterpi-2124.github.io/p/getting-used-to-github-eps-2/conflict_vscode.png&#34;
+	&lt;a href=&#34;https://masterpi-2124.github.io/p/getting-used-to-github-eps-3/conflict_vscode.png&#34; data-size=&#34;1040x250&#34;&gt;
+		&lt;img src=&#34;https://masterpi-2124.github.io/p/getting-used-to-github-eps-3/conflict_vscode.png&#34;
 			width=&#34;1040&#34;
 			height=&#34;250&#34;
-			srcset=&#34;https://masterpi-2124.github.io/p/getting-used-to-github-eps-2/conflict_vscode_hu25a6cb6d96d9a698a29d308a4461dbd3_47410_480x0_resize_box_3.png 480w, https://masterpi-2124.github.io/p/getting-used-to-github-eps-2/conflict_vscode_hu25a6cb6d96d9a698a29d308a4461dbd3_47410_1024x0_resize_box_3.png 1024w&#34;
+			srcset=&#34;https://masterpi-2124.github.io/p/getting-used-to-github-eps-3/conflict_vscode_hu25a6cb6d96d9a698a29d308a4461dbd3_47410_480x0_resize_box_3.png 480w, https://masterpi-2124.github.io/p/getting-used-to-github-eps-3/conflict_vscode_hu25a6cb6d96d9a698a29d308a4461dbd3_47410_1024x0_resize_box_3.png 1024w&#34;
 			loading=&#34;lazy&#34;
 			alt=&#34;Conflict VSCode&#34;&gt;
 	&lt;/a&gt;
@@ -159,11 +159,11 @@ git merge -X theirs branchB
 			flex-grow: 183; 
 			flex-basis: 440px&#34;
 	&gt;
-	&lt;a href=&#34;https://masterpi-2124.github.io/p/getting-used-to-github-eps-2/merge.gif&#34; data-size=&#34;883x481&#34;&gt;
-		&lt;img src=&#34;https://masterpi-2124.github.io/p/getting-used-to-github-eps-2/merge.gif&#34;
+	&lt;a href=&#34;https://masterpi-2124.github.io/p/getting-used-to-github-eps-3/merge.gif&#34; data-size=&#34;883x481&#34;&gt;
+		&lt;img src=&#34;https://masterpi-2124.github.io/p/getting-used-to-github-eps-3/merge.gif&#34;
 			width=&#34;883&#34;
 			height=&#34;481&#34;
-			srcset=&#34;https://masterpi-2124.github.io/p/getting-used-to-github-eps-2/merge_hu6ae8c8c5fad9c14566ba268e2c0186cc_78697_480x0_resize_box.gif 480w, https://masterpi-2124.github.io/p/getting-used-to-github-eps-2/merge_hu6ae8c8c5fad9c14566ba268e2c0186cc_78697_1024x0_resize_box.gif 1024w&#34;
+			srcset=&#34;https://masterpi-2124.github.io/p/getting-used-to-github-eps-3/merge_hu6ae8c8c5fad9c14566ba268e2c0186cc_78697_480x0_resize_box.gif 480w, https://masterpi-2124.github.io/p/getting-used-to-github-eps-3/merge_hu6ae8c8c5fad9c14566ba268e2c0186cc_78697_1024x0_resize_box.gif 1024w&#34;
 			loading=&#34;lazy&#34;
 			alt=&#34;Merge&#34;&gt;
 	&lt;/a&gt;
@@ -178,11 +178,11 @@ git merge -X theirs branchB
 			flex-grow: 183; 
 			flex-basis: 440px&#34;
 	&gt;
-	&lt;a href=&#34;https://masterpi-2124.github.io/p/getting-used-to-github-eps-2/rebase.gif&#34; data-size=&#34;883x481&#34;&gt;
-		&lt;img src=&#34;https://masterpi-2124.github.io/p/getting-used-to-github-eps-2/rebase.gif&#34;
+	&lt;a href=&#34;https://masterpi-2124.github.io/p/getting-used-to-github-eps-3/rebase.gif&#34; data-size=&#34;883x481&#34;&gt;
+		&lt;img src=&#34;https://masterpi-2124.github.io/p/getting-used-to-github-eps-3/rebase.gif&#34;
 			width=&#34;883&#34;
 			height=&#34;481&#34;
-			srcset=&#34;https://masterpi-2124.github.io/p/getting-used-to-github-eps-2/rebase_hu80fbca7437410330302d7a8016dd5d26_69827_480x0_resize_box.gif 480w, https://masterpi-2124.github.io/p/getting-used-to-github-eps-2/rebase_hu80fbca7437410330302d7a8016dd5d26_69827_1024x0_resize_box.gif 1024w&#34;
+			srcset=&#34;https://masterpi-2124.github.io/p/getting-used-to-github-eps-3/rebase_hu80fbca7437410330302d7a8016dd5d26_69827_480x0_resize_box.gif 480w, https://masterpi-2124.github.io/p/getting-used-to-github-eps-3/rebase_hu80fbca7437410330302d7a8016dd5d26_69827_1024x0_resize_box.gif 1024w&#34;
 			loading=&#34;lazy&#34;
 			alt=&#34;Rebase&#34;&gt;
 	&lt;/a&gt;
