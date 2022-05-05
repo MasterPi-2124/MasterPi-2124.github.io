@@ -147,11 +147,11 @@ git log --graph --decorate --oneline --all
 &lt;/figure&gt;&lt;/p&gt;
 &lt;p&gt;A quicker way is to use additional flags, in favor of one of the branch (&lt;code&gt;ours&lt;/code&gt; strategy refer to preference of the current branch, and &lt;code&gt;theirs&lt;/code&gt; is the preference of the incoming branch):&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;git merge --strategy&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;ours develop
-git merge -X theirs branchB
+git merge -X theirs develop
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; &lt;code&gt;-s&lt;/code&gt; or &lt;code&gt;--strategy&lt;/code&gt; completely ignore the other side, while &lt;code&gt;-X&lt;/code&gt; or &lt;code&gt;--strategy-option&lt;/code&gt; resolve any conflicts using the chosen side.&lt;/p&gt;
 &lt;h2 id=&#34;additional-note-merge-vs-rebase-and-options-for-git-pull&#34;&gt;Additional note: &lt;code&gt;merge&lt;/code&gt; vs &lt;code&gt;rebase&lt;/code&gt;, and options for &lt;code&gt;git pull&lt;/code&gt;&lt;/h2&gt;
 &lt;p&gt;Perhaps some animation is great here (acknowledgement to &lt;a class=&#34;link&#34; href=&#34;https://blog.developer.atlassian.com/pull-request-merge-strategies-the-great-debate/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;Nicola Paolucci&amp;rsquo;s post&lt;/a&gt;  with the animations):
+    &gt;Nicola Paolucci&amp;rsquo;s post&lt;/a&gt;  with the animations). Click on animated images to see how it works:
 &lt;figure 
 	
 		class=&#34;gallery-image&#34; 

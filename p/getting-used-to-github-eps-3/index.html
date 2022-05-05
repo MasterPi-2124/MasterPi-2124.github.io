@@ -279,11 +279,11 @@ git log --graph --decorate --oneline --all
 </figure></p>
 <p>A quicker way is to use additional flags, in favor of one of the branch (<code>ours</code> strategy refer to preference of the current branch, and <code>theirs</code> is the preference of the incoming branch):</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash">git merge --strategy<span class="o">=</span>ours develop
-git merge -X theirs branchB
+git merge -X theirs develop
 </code></pre></div><p><strong>Note:</strong> <code>-s</code> or <code>--strategy</code> completely ignore the other side, while <code>-X</code> or <code>--strategy-option</code> resolve any conflicts using the chosen side.</p>
 <h2 id="additional-note-merge-vs-rebase-and-options-for-git-pull">Additional note: <code>merge</code> vs <code>rebase</code>, and options for <code>git pull</code></h2>
 <p>Perhaps some animation is great here (acknowledgement to <a class="link" href="https://blog.developer.atlassian.com/pull-request-merge-strategies-the-great-debate/"  target="_blank" rel="noopener"
-    >Nicola Paolucci&rsquo;s post</a>  with the animations):
+    >Nicola Paolucci&rsquo;s post</a>  with the animations). Click on animated images to see how it works:
 <figure 
 	
 		class="gallery-image" 
